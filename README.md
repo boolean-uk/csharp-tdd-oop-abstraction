@@ -19,19 +19,19 @@ Consider driving a car. The steering wheel, pedals and gear stick are the public
 
 What I've described there is *abstraction*; hiding the implementation details of a system. Let's try it with a class:
 
-```java
+```C#
 public class TrafficLight {
-    public String colour;
+    public string colour;
     
     public TrafficLight() {
         this.colour = "green";
     }
     
-    public void setColour(String colour) {
+    public void setColour(string colour) {
         this.colour = colour;
     }
     
-    public String getColour() {
+    public string getColour() {
         return this.colour;
     }
 }
@@ -39,7 +39,7 @@ public class TrafficLight {
 
 In order for a developer to use this class, they need to understand the colours that the light should be!
 
-```java
+```C#
 public class Car {
     public void main() {
         TrafficLight tLight = new TrafficLight();
@@ -64,9 +64,9 @@ public class Car {
 
 The TrafficLight class has *poor abstraction*. The implementation details are completely exposed! In order to use the class, the developer must know the light colour is represented as a string, they must know all the possible values the string could be, they must know what green means and what red means. It's a mess! We should properly hide the implementation details, *abstract* away the logic, and provide an easier public interface.
 
-```java
+```C#
 public class TrafficLight {
-    public String colour;
+    public string colour;
 
     public TrafficLight() {
         this.colour = "green";
