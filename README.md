@@ -92,10 +92,10 @@ There is still one problem: the `colour` member is marked as `public`! This mean
 
 ## Exercise 1
 
-There is a `TodoItem` class with poor abstraction in the `./src/main/com/booleanuk/core/` directory. It exposes a lot of implementation details and provides a bad public interface to other classes.
+There is a `TodoItem` class with poor abstraction in the `./tdd-oop-abstraction.CSharp.Main` directory. It exposes a lot of implementation details and provides a bad public interface to other classes.
 
 - Refactor the class to demonstrate abstraction
-- Use a test-driven development approach by writing your tests first in the `./tdd-oop-abstraction.CSharp.Main/Core.cs` class
+- Use a test-driven development approach by writing your tests first in the `./tdd-oop-abstraction.CSharp.Test/CoreTests.cs` class
 - Share your work with your morning teacher for feedback and discussion
 
 ## Exercise 2
