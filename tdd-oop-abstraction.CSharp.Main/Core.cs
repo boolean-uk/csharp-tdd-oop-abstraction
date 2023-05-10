@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace tdd_oop_abstraction.CSharp.Main
 {
     public class TodoItem {
-        public String title;
-        public String detail;
-        public String status;
+        public string title;
+        public string detail;
+        public string status;
 
         public TodoItem(String title, String detail, String status) {
             this.title = title;
