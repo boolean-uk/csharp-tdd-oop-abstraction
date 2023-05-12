@@ -7,22 +7,17 @@ using System.Threading.Tasks;
 namespace tdd_oop_abstraction.CSharp.Main
 {
     public class TodoItem {
-        public string title;
-        public string detail;
-        public string status;
+        private string title;
+        private string detail;
+        private string status;
 
-        public TodoItem(String title, String detail, String status) {
-            this.title = title;
-            this.detail = detail;
-            this.status = status;
+        public TodoItem()
+        {
+
         }
 
-        public void setStatus(String status) {
-            this.status = status;
-        }
-
-        public String getStatus() {
-            return this.status;
-        }
+        public string Status { get => this.status; set => this.status = value; }
+        public string Title { get => this.title; set => this.title = value; }
+        public string Detail { get => this.detail; set => this.detail = value; }
     }
 }

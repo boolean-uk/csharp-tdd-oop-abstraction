@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace tdd_oop_abstraction.CSharp.Main
 {
-    internal class Extension
+    public class Extension
     {
     }
 }
