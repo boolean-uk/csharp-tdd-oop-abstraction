@@ -1,13 +1,15 @@
-﻿using tdd_oop_abstraction.CSharp.Main;
+﻿using NUnit.Framework;
+using tdd_oop_abstraction.CSharp.Main;
 
 namespace Boolean.CSharp.Test
 {
+    [TestFixture]
     public class CoreTests
     {
-        private Core _core;
-        public CoreTests()
+        [Test]
+        public void FirstTest()
         {
-            _core = new Core();
+            Assert.Pass();
         }
     }
 }

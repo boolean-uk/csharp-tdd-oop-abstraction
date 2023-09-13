@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace tdd_oop_abstraction.CSharp.Main
 {
     public class TodoItem {
+        
         public string title;
         public string detail;
         public string status;
