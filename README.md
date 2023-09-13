@@ -90,20 +90,32 @@ This class is now much easier for a developer to use. They don't need to know wh
 
 There is still one problem: the `colour` member is marked as `public`! This means that any other class can reach in and change the value of this member without going through the methods that the TrafficLight class has defined. This exposes implementation details, too!
 
-## Exercise 1
+## Core
 
-There is a `TodoItem` class with poor abstraction in the `./tdd-oop-abstraction.CSharp.Main` directory. It exposes a lot of implementation details and provides a bad public interface to other classes.
-
-- Refactor the class to demonstrate abstraction
+- Refactor the `TodoItem.cs` class to have good encapsulation and/or abstraction 
 - Use a test-driven development approach by writing your tests first in the `./tdd-oop-abstraction.CSharp.Test/CoreTests.cs` class
-- Share your work with your morning teacher for feedback and discussion
+- Share your work with your morning teacher for feedback and discussion if required
+- Use the CoreDomainModel.md in the Solution Items folder for the domain model
+- Use the CoreClassDiagram.cd in the ClassDiagrams folder if required or add another diagram using another tool/photo.
 
-## Exercise 2
 
-Using the user stories below, create a domain model or class diagram before creating an implementation in the `./tdd-oop-abstraction.CSharp.Main` directory.
+Using the user stories below  
 
-- Your solution should demonstrate good abstraction
-- Add your model / diagram to the project.
+```
+I want to see a Date and Time the task was created but I do not want it changed.   
+```
+
+## Extension
+
+- create implementation in the `./tdd-oop-abstraction.CSharp.Main` directory.
+- Your solution should demonstrate good encapsulation and/or abstraction 
+- Use a test-driven development approach by writing your tests first in the `./tdd-oop-abstraction.CSharp.Test/ExtensionTests.cs` class
+- - Share your work with your morning teacher for feedback and discussion if required
+- Use the ExtensionDomainModel.md in the Solution Items folder for the domain model
+- Use the ExtensionClassDiagram.cd in the ClassDiagrams folder if required or add another diagram using another tool/photo.
+
+
+Using the user stories below 
 
 ```
 As a system administrator,
