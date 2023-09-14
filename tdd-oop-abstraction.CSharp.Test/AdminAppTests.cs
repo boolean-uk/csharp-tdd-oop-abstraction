@@ -12,9 +12,11 @@ namespace tdd_oop_abstraction.CSharp.Test
     public class AdminAppTests
     {
         [Test]
-        public void FirstTest()
+        public void CreateAccountTest()
         {
-            Assert.Pass();
+            AdminApp app = new AdminApp();
+            string result = app.CreateAccount("foo@bar.baz", "1234567890");
+            Assert.IsTrue(result == "account created");
         }
     }
 }
