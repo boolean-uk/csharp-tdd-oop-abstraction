@@ -34,5 +34,19 @@ namespace tdd_oop_abstraction.CSharp.Test
             string result = app.CreateAccount("foo.bar.baz", "1234567890");
             Assert.IsTrue(result == "invalid email");
         }
+
+        [Test]
+        public void IsEnabledAccountTest()
+        {
+            string email = "foo@bar.baz";
+            AdminApp app = new AdminApp();
+            app.CreateAccount(email, "1234567890");
+
+            Assert.IsFalse(app.IsEnabledAccount(email));
+
+            app.SetEnabledAccount(email);
+
+            Assert.IsTrue(app.IsEnabledAccount(email));
+        }
     }
 }
