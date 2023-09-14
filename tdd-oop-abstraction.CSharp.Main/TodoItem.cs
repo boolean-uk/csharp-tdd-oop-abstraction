@@ -9,21 +9,21 @@ namespace tdd_oop_abstraction.CSharp.Main
     public class TodoItem {
         
         public string title;
-        public string detail;
-        public string status;
+        private string _detail;
+        private string _status;
 
         public TodoItem(String title, String detail, String status) {
             this.title = title;
-            this.detail = detail;
-            this.status = status;
+            this._detail = detail;
+            this._status = status;
         }
 
-        public void setStatus(String status) {
-            this.status = status;
+        private void setStatus(String status) {
+            this._status = status;
         }
 
         public String getStatus() {
-            return this.status;
+            return this._status;
         }
     }
 }
