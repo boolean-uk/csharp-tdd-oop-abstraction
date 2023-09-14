@@ -12,6 +12,8 @@ namespace tdd_oop_abstraction.CSharp.Main
 
         public string CreateAccount(string email, string password)
         {
+            if (!email.Contains('@'))
+                return "invalid email";
             _accounts[email] = new Account(email, password);
             return "account created";
         }
