@@ -22,12 +22,12 @@ namespace tdd_oop_abstraction.CSharp.Main
 
         public void SetEnabledAccount(string email)
         {
-
+            _accounts[email].SetEnabled();
         }
 
         public bool IsEnabledAccount(string email)
         {
-            return true;
+            return _accounts[email].IsEnabled;
         }
     }
 }
