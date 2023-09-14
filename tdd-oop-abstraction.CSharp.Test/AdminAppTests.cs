@@ -20,6 +20,14 @@ namespace tdd_oop_abstraction.CSharp.Test
         }
 
         [Test]
+        public void DontCreateAccountWithInvalidPasswordTest()
+        {
+            AdminApp app = new AdminApp();
+            string result = app.CreateAccount("foo@ar.baz", "1234");
+            Assert.IsTrue(result == "invalid password");
+        }
+
+        [Test]
         public void DontCreateAccountWithInvalidEmailTest()
         {
             AdminApp app = new AdminApp();
