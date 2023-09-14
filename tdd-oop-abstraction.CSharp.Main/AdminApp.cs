@@ -8,12 +8,12 @@ namespace tdd_oop_abstraction.CSharp.Main
 {
     public class AdminApp
     {
-        List<Account> _accounts = new List<Account>();
-
+        private Dictionary<string, Account> _accounts = new Dictionary<string, Account>();
 
         public string CreateAccount(string email, string password)
         {
-            return "";
+            _accounts[email] = new Account(email, password);
+            return "account created";
         }
 
         public void SetEnabledAccount(string email)

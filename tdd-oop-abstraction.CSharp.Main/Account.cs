@@ -12,11 +12,11 @@ namespace tdd_oop_abstraction.CSharp.Main
         private string _password;
         private bool _isEnabled;
 
-        public Account(string email, string password, bool isEnabled)
+        public Account(string email, string password)
         {
             _email = email;
             _password = password;
-            _isEnabled = isEnabled;
+            _isEnabled = false;
         }
 
         public void SetEnabled()
