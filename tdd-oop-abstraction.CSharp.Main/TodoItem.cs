@@ -8,22 +8,25 @@ namespace tdd_oop_abstraction.CSharp.Main
 {
     public class TodoItem {
         
-        public string title;
-        public string detail;
-        public string status;
+        private string title;
+        private string detail;
+        private string status;
 
-        public TodoItem(String title, String detail, String status) {
+        public TodoItem(String title, String detail, string status) {
             this.title = title;
             this.detail = detail;
             this.status = status;
         }
 
-        public void setStatus(String status) {
+        public void setStatus(string status) {
             this.status = status;
         }
 
         public String getStatus() {
             return this.status;
         }
+
+        public string Title { get => title; }
+        public string Detail { get => detail; }
     }
 }
