@@ -34,5 +34,20 @@ namespace Boolean.CSharp.Test
             // assert
             Assert.IsTrue(todo.getStatus() == "done");
         }
+
+        [Test]
+        public void GetDateTimeOfTodoItem()
+        {
+            // arrange
+            string title = "complete exercise";
+            string detail = "write code for core and extension parts";
+            string status = "doing";
+            TodoItem todo = new TodoItem(title, detail, status);
+            string expected = DateTime.Now.ToString("dddd, dd MMMM yyyy ");
+            // act
+            string result = todo.DateTimeCreated;
+            // assert
+            Assert.IsTrue(result.StartsWith(expected));
+        }
     }
 }
