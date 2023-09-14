@@ -7,9 +7,13 @@ namespace Boolean.CSharp.Test
     public class CoreTests
     {
         [Test]
-        public void FirstTest()
+        public void TryGetStatus()
         {
-            Assert.Pass();
+            TodoItem todo = new TodoItem("Service my car","Change oil and Brakedisks","12:00 16 August 2023");
+
+            todo.getStatus();
+
+            Assert.IsTrue(todo.getStatus() == "12:00 16 August 2023");
         }
     }
 }
