@@ -14,6 +14,8 @@ namespace tdd_oop_abstraction.CSharp.Main
         {
             if (!email.Contains('@'))
                 return "invalid email";
+            if (password.Length < 8)
+                return "invalid password";
             _accounts[email] = new Account(email, password);
             return "account created";
         }
