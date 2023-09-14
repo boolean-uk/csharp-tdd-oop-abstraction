@@ -9,7 +9,7 @@ using NUnit.Framework;
 namespace tdd_oop_abstraction.CSharp.Test
 {
     [TestFixture]
-    public class ExtensionTests
+    public class AdminAppTests
     {
         [Test]
         public void FirstTest()
