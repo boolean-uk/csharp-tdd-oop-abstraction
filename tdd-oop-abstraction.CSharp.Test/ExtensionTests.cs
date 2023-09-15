@@ -12,9 +12,12 @@ namespace tdd_oop_abstraction.CSharp.Test
     public class ExtensionTests
     {
         [Test]
-        public void FirstTest()
+        public void CheckTitle()
         {
-            Assert.Pass();
+            
+
+
+
         }
     }
 }
