@@ -12,9 +12,44 @@ namespace tdd_oop_abstraction.CSharp.Test
     public class ExtensionTests
     {
         [Test]
-        public void FirstTest()
+        public void IsPasswordSet()
         {
-            Assert.Pass();
+            UserAccount user = new UserAccount("Avadakedavro@voldemort.Harry");
+            user.SetPassword("thisisvoldemortspassword");
+            Assert.IsTrue(user.IsThePasswordValid());
+        }
+        [Test]
+        public void PaswordShouldBeLongerThenEightCharacters()
+        {
+            UserAccount user = new UserAccount("Avadakedavro@voldemort.Harry");
+            user.SetPassword("voldemo");
+            Assert.IsFalse(user.IsThePasswordValid());
+        }
+        [Test]
+        public void AccountUserEnable()
+        {
+            UserAccount user = new UserAccount("Avadakedavro@voldemort.Harry");
+            user.EnableAccount();
+            Assert.IsTrue(user.IsTheAccountEnableOrDisable());
+        }
+        [Test]
+        public void AccountUserDisable()
+        {
+            UserAccount user = new UserAccount("Avadakedavro@voldemort.Harry");
+            user.DisableAccount();
+            Assert.IsFalse(user.IsTheAccountEnableOrDisable());
+        }
+        [Test]
+        public void AccountWithValidEmail()
+        {
+            UserAccount user = new UserAccount("Avadakedavro@voldemort.Harry");
+            Assert.IsTrue(user.IsEmailValid());
+        }
+        [Test]
+        public void AccountWithInvalidEmail()
+        {
+            UserAccount user = new UserAccount("Avadakedavrovoldemort.Harry");
+            Assert.IsFalse(user.IsEmailValid());
         }
     }
 }
