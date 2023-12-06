@@ -8,22 +8,29 @@ namespace tdd_oop_abstraction.CSharp.Main
 {
     public class TodoItem {
         
-        public string title;
-        public string detail;
-        public string status;
+        private string _title;
+        private string _detail;
+        private string _status;
+        private DateTime _creation;
 
         public TodoItem(String title, String detail, String status) {
-            this.title = title;
-            this.detail = detail;
-            this.status = status;
+            this._title = title;
+            this._detail = detail;
+            this._status = status;
+            this._creation = DateTime.Now;
         }
 
         public void setStatus(String status) {
-            this.status = status;
+            this._status = status;
         }
 
         public String getStatus() {
-            return this.status;
+            return this._status;
         }
+
+        public string VisibleTitle { get { return _title; } set { _title = value; } }
+        public string VisibleDetail { get { return _detail; } set { _detail = value; } }
+        public string VisibleStatus { get { return _status; } set { _status = value; } }
+        public DateTime VisibleCreation { get { return _creation; } }
     }
 }
