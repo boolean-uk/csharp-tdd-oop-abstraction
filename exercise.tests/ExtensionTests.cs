@@ -1,18 +1,16 @@
-﻿using tdd_oop_abstraction.CSharp.Main;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NUnit.Framework;
 
-namespace tdd_oop_abstraction.CSharp.Test
+namespace exercise.tests
 {
     [TestFixture]
     public class ExtensionTests
     {
         [Test]
-        public void FirstTest()
+        public void Tests()
         {
             Assert.Pass();
         }

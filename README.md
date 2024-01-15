@@ -93,7 +93,7 @@ There is still one problem: the `colour` member is marked as `public`! This mean
 ## Core
 
 - Refactor the `TodoItem.cs` class to have good encapsulation and/or abstraction 
-- Use a test-driven development approach by writing your tests first in the `./tdd-oop-abstraction.CSharp.Test/CoreTests.cs` class
+- Use a test-driven development approach by writing your tests first in the `./exercise.tests/CoreTests.cs` class
 - Share your work with your morning teacher for feedback and discussion if required
 - Use the CoreDomainModel.md in the Solution Items folder for the domain model
 - Use the CoreClassDiagram.cd in the ClassDiagrams folder if required or add another diagram using another tool/photo.
@@ -107,10 +107,10 @@ I want to see a Date and Time the task was created but I do not want it changed.
 
 ## Extension
 
-- create implementation in the `./tdd-oop-abstraction.CSharp.Main` directory.
+- create implementation in the `./exercise.main` project.
 - Your solution should demonstrate good encapsulation and/or abstraction 
-- Use a test-driven development approach by writing your tests first in the `./tdd-oop-abstraction.CSharp.Test/ExtensionTests.cs` class
-- - Share your work with your morning teacher for feedback and discussion if required
+- Use a test-driven development approach by writing your tests first in the `./exercise.tests/ExtensionTests.cs` class
+- Share your work with your morning teacher for feedback and discussion if required
 - Use the ExtensionDomainModel.md in the Solution Items folder for the domain model
 - Use the ExtensionClassDiagram.cd in the ClassDiagrams folder if required or add another diagram using another tool/photo.
 
