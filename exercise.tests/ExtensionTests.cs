@@ -1,18 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using exercise.main;
 
 namespace exercise.tests
 {
     [TestFixture]
     public class ExtensionTests
     {
-        [Test]
-        public void Tests()
+        private User _user;
+
+        [SetUp]
+        public void SetUp()
         {
-            Assert.Pass();
+            _user = new();
+        }
+
+        [Test]
+        public void UserCanCreateAccount()
+        {
+            bool accountCreated = _user.CreateAccount("test@test.com", "totallySecurePassword");
+            Assert.That(_user.CreateAccount, Is.True);
         }
     }
 }
