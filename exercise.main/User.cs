@@ -7,6 +7,7 @@ namespace exercise.main
     {
         private string _email;
         private string _password;
+        private bool _isActive;
         public bool createAccount(string email, string password)
         {
             if (!email.Contains("@"))
@@ -21,6 +22,7 @@ namespace exercise.main
             }
             _email = email;
             _password = password;
+            _isActive = false;
             Console.WriteLine("Account created successfully");
             return true;
         }
@@ -32,12 +34,12 @@ namespace exercise.main
 
         public bool IsAccountActive()
         {
-            throw new NotImplementedException();
+            return _isActive;
         }
 
         public void SetActive()
         {
-            throw new NotImplementedException();
+            _isActive = true;
         }
     }
 }
