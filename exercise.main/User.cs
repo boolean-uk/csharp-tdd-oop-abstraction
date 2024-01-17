@@ -15,7 +15,7 @@ public class User
 
     public void activate()
     {
-        throw new NotImplementedException();
+        _status = "Activated";
     }
 
     public bool canLogin()

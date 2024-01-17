@@ -14,10 +14,14 @@ I want users to know if they are able to log in or not based on whether their
 account is enabled or disabled.
 ```
 
-| Classes     | Members           | Methods                                     | Scenario                                                        | Outputs |
-|-------------|-------------------|---------------------------------------------|-----------------------------------------------------------------|---------|
-| `Extension` | List<User> _users | `createUser(string email, string password)` | email contains @ and password is 8 or more characters           | true    |
-|             |                   |                                             | email does not contain @ and password is less than 8 characters | false   |
-| `User`      | string _status    | `canLogin()`                                | _status is "Activated"                                          | true    |
-|             |                   |                                             | _status is not "Activated"                                      | false   |
-|             | string _status    | `activate()`                                |                                                                 |         |
+| Classes     | Members           | Methods                                     | Scenario                                                      | Outputs |
+|-------------|-------------------|---------------------------------------------|---------------------------------------------------------------|---------|
+| `Extension` | List<User> _users | `createUser(string email, string password)` | both inputs were correct and a new user was created           | true    |
+|             |                   |                                             | one or both inputs were incorrect and no new user was created | false   |
+|             |                   | `validEmail(string email)`                  | email contained @                                             | true    |
+|             |                   |                                             | email did not contain                                         | false   |
+|             |                   | `validPassword(string password)`            | password were 8 or more characters long                       | true    |
+|             |                   |                                             | password were 8 less than characters long                     | false   |
+| `User`      | string _status    | `canLogin()`                                | _status is "Activated"                                        | true    |
+|             |                   |                                             | _status is not "Activated"                                    | false   |
+|             | string _status    | `activate()`                                |                                                               |         |
