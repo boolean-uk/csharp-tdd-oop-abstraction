@@ -19,7 +19,7 @@ I want new accounts to be disabled by default until I manually set them as enabl
 | Classes         | Methods                                       | Scenario                  | Outputs                               |
 |-----------------|-----------------------------------------------|---------------------------|---------------------------------------|
 | `User`	      | `createAccount(string email, string password)`| any                       | void, sets isActive to false          |
-| `User`	      | `setActive()`                                 | any                       | void, sets isActive to true           |
+| `User`	      | `ActivateAccount()`                           | any                       | void, sets isActive to true           |
 
 I want users to know if they are able to log in or not based on whether their
 account is enabled or disabled.

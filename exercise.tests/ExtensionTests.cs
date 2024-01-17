@@ -61,7 +61,7 @@ namespace exercise.tests
 
             //execute
             bool shouldNotBeActive = user.IsAccountActive();
-            user.SetActive();
+            user.ActivateAccount();
             bool shouldBeActive = user.IsAccountActive();
 
             //verify
@@ -78,7 +78,7 @@ namespace exercise.tests
 
             //execute
             bool shouldNotLogIn = user.CanLogin();
-            user.SetActive();
+            user.ActivateAccount();
             bool shouldLogIn = user.CanLogin();
 
             //verify

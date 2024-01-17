@@ -37,7 +37,7 @@ namespace exercise.main
             return _isActive;
         }
 
-        public void SetActive()
+        public void ActivateAccount()
         {
             _isActive = true;
         }

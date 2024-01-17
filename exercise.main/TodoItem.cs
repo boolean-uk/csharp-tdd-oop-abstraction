@@ -31,8 +31,13 @@ namespace exercise.main
             _title = title;
         }
 
-        public string GetTitle() { return _title; }
+        public void SetDetails(string detail)
+        {
+            _detail = detail;
+        }
 
+        public string GetTitle() { return _title; }
+        public string GetDetails() { return _detail; }
         public bool GetStatus()
         {
             return _isCompleted;
