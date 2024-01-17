@@ -1,33 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace exercise.main
 {
     public class TodoItem
     {
 
-        public string title;
-        public string detail;
-        public string status;
+        private string _title;
+        private string _detail;
+        private string _status;
 
-        public TodoItem(String title, String detail, String status)
+        public TodoItem(string title, string detail, string status)
         {
-            this.title = title;
-            this.detail = detail;
-            this.status = status;
+            this._title = title;
+            this._detail = detail;
+            this._status = status;
         }
 
-        public void setStatus(String status)
+        public void setStatus(string status)
         {
-            this.status = status;
+            this._status = status;
         }
 
-        public String getStatus()
+        public string getStatus()
         {
-            return this.status;
+            return this._status;
+        }
+
+        public DateTime GetCreationTime()
+        {
+            throw new NotImplementedException();
         }
     }
 }
