@@ -35,10 +35,5 @@
         {
             return IsEnabled && _email.Equals(email) && _password.Equals(password);
         }
-
-        public void EnableAccount()
-        {
-
-        }
     }
 }
