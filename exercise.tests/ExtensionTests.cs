@@ -71,11 +71,11 @@ namespace exercise.tests
         {
             User us1 = new User();
 
-            Assert.IsFalse(us1.CanUserLogin());
+            Assert.IsFalse(us1.getStatus());
 
             us1.setAccountEnabled();
 
-            Assert.IsTrue(us1.CanUserLogin());
+            Assert.IsTrue(us1.getStatus());
 
         }
     }
