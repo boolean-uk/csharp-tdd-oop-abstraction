@@ -9,16 +9,15 @@ namespace exercise.main
     public class TodoItem
     {
 
-        public string title;
-        public string detail;
-        public Status Status { get; set; }
+        private string _title { get; }
+        private string _detail { get; }
+        public bool Finished { get; set; } = false;
         public DateTime DateCreated { get; } = new();
 
-        public TodoItem(string title, string detail, Status status)
+        public TodoItem(string title, string detail)
         {
-            this.title = title;
-            this.detail = detail;
-            Status = status;
+            _title = title;
+            _detail = detail;
         }
     }
 }

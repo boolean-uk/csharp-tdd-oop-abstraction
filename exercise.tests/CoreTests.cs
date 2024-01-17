@@ -8,16 +8,17 @@ public class CoreTests
     [Test]
     public void CanChangeStatusOfTaskTest()
     {
-        TodoItem item = new("First Task", "Some task detail", Status.Unfinished);
+        TodoItem item = new("First Task", "Some task detail");
+        Assert.That(item.Finished, Is.False);
 
-        item.Status = Status.Finished;
-        Assert.That(item.Status, Is.EqualTo(Status.Finished));
+        item.Finished = true;
+        Assert.That(item.Finished, Is.True);
     }
 
     [Test]
     public void ViewDateTimeForTaskCreatedTest()
     {
-        TodoItem item = new("Second Task", "Some other task detail", Status.Unfinished);
+        TodoItem item = new("Second Task", "Some other task detail");
 
         Assert.That(item.DateCreated, Is.GreaterThanOrEqualTo(new DateTime()));
     }
