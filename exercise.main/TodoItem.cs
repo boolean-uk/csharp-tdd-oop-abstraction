@@ -11,23 +11,13 @@ namespace exercise.main
 
         public string title;
         public string detail;
-        public string status;
+        public Status Status { get; set; }
 
-        public TodoItem(String title, String detail, String status)
+        public TodoItem(string title, string detail, Status status)
         {
             this.title = title;
             this.detail = detail;
-            this.status = status;
-        }
-
-        public void setStatus(String status)
-        {
-            this.status = status;
-        }
-
-        public String getStatus()
-        {
-            return this.status;
+            Status = status;
         }
     }
 }
