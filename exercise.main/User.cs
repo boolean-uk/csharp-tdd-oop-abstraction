@@ -42,9 +42,18 @@ namespace exercise.main
             _isActive = true;
         }
 
-        public bool Login(string username, string password)
+        public bool CanLogin()
         {
-            throw new NotImplementedException();
+            if (_isActive)
+            {
+                Console.WriteLine("Can log in");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Cannot log in");
+                return false;
+            }
         }
     }
 }

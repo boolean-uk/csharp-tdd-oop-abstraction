@@ -74,14 +74,12 @@ namespace exercise.tests
         {
             //setup
             User user = new();
-            string un = "@3";
-            string pwd = "124u12894124eff";
-            user.createAccount(un, pwd);
+            user.createAccount("@3", "124u12894124eff");
 
             //execute
-            bool shouldNotLogIn = user.Login(un, pwd);
+            bool shouldNotLogIn = user.CanLogin();
             user.SetActive();
-            bool shouldLogIn = user.Login(un, pwd);
+            bool shouldLogIn = user.CanLogin();
 
             //verify
             Assert.That(shouldNotLogIn, Is.False);

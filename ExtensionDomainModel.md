@@ -26,5 +26,5 @@ account is enabled or disabled.
 
 | Classes         | Methods                                       | Scenario                  | Outputs                               |
 |-----------------|-----------------------------------------------|---------------------------|---------------------------------------|
-| `User`	      | `login(string email, string password)`        | isActive                  | true, also prints "Log in success"    |
-|                 |                                               | !isActive                 | false, also prints "Log in failed, account inactive" |
+| `User`	      | `canLogin()`                                  | isActive                  | true, also prints "Can log in"    |
+|                 |                                               | !isActive                 | false, also prints "Cannot log in" |
