@@ -20,7 +20,6 @@ namespace exercise.main
         }
         public bool canLogin()
         {
-            Console.WriteLine("Your account has been enabled!");
             return _enabled;
         }
     }

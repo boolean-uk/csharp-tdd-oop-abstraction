@@ -34,8 +34,10 @@ namespace exercise.tests
         public void canLoginTest()
         {
             User user = new User("password123", "me@domain.com");
+            User user2 = new User("TRACtoRman","tractor@yepp.pl");
             admin.enableUser(user);
             Assert.IsTrue(user.canLogin());
+            Assert.IsFalse(user2.canLogin());
         }
     }
 }
