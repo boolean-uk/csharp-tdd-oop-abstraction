@@ -10,9 +10,9 @@ I want them to receive an "invalid email" message if they provide an email
 address without an @ symbol in it.
 | Classes         | Methods                                       | Scenario                  | Outputs                               |
 |-----------------|-----------------------------------------------|---------------------------|---------------------------------------|
-| `User`	      | `createAccount(string email, string password)`| password.Length < 8       | "invalid password", also prints this  |
-|                 |                                               | email without @           | "invalid email", also prints this     |
-|                 |                                               | else                      | "user created", also prints this      |
+| `User`	      | `createAccount(string email, string password)`| password.Length < 8       | false, also prints "Invalid password" |
+|                 |                                               | email without @           | false, also prints "Invalid email"    |
+|                 |                                               | else                      | true, also prints "User created"      |
 
 
 I want new accounts to be disabled by default until I manually set them as enabled.
@@ -26,5 +26,5 @@ account is enabled or disabled.
 
 | Classes         | Methods                                       | Scenario                  | Outputs                               |
 |-----------------|-----------------------------------------------|---------------------------|---------------------------------------|
-| `User`	      | `login(string email, string password)`        | isActive                  | "Log in success", also prints this    |
-|                 |                                               | !isActive                 | "Log in failed, account inactive" also prints  |
+| `User`	      | `login(string email, string password)`        | isActive                  | true, also prints "Log in success"    |
+|                 |                                               | !isActive                 | false, also prints "Log in failed, account inactive" |

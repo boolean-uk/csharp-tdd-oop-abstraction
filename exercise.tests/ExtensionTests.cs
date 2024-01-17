@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace exercise.tests
+﻿namespace exercise.tests
 {
     [TestFixture]
     public class ExtensionTests
     {
         [Test]
-        public void Tests()
+        public void TestCreateUser()
         {
             Assert.Pass();
         }
