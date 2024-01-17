@@ -1,4 +1,6 @@
-﻿namespace exercise.main;
+﻿using System.Globalization;
+
+namespace exercise.main;
 
 public class User
 {
@@ -20,6 +22,7 @@ public class User
 
     public bool canLogin()
     {
-        throw new NotImplementedException();
+        if (_status == "Activated") return true;
+        return false;
     }
 }
