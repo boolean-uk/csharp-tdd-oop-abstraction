@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace exercise.main
 {
-    public class Administrator
+    public class Administrator : User
     {
         public void EnableAccount(Account account)
         {
-            throw new NotImplementedException();
+            account.IsEnabled = true;
         }
     }
 }

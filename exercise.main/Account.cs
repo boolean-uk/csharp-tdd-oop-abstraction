@@ -34,5 +34,10 @@
         {
             return IsEnabled && (_email == email) && (_password == password);
         }
+
+        public void EnableAccount()
+        {
+
+        }
     }
 }
