@@ -1,33 +1,51 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace exercise.main
 {
     public class TodoItem
     {
 
-        public string title;
-        public string detail;
-        public string status;
+        private string _title;
+        private string _detail;
+        private bool _isCompleted;
+        private readonly DateTime _createdAt;
 
-        public TodoItem(String title, String detail, String status)
+        public TodoItem(string title, string detail)
         {
-            this.title = title;
-            this.detail = detail;
-            this.status = status;
+            _title = title;
+            _detail = detail;
+            _isCompleted = false;
+            _createdAt = DateTime.Now;
         }
 
-        public void setStatus(String status)
+        public void SetComplete()
         {
-            this.status = status;
+            _isCompleted = true;
+        }
+        public void SetIncomplete()
+        {
+            _isCompleted = false;
         }
 
-        public String getStatus()
+        public void SetTitle(string title)
         {
-            return this.status;
+            _title = title;
+        }
+
+        public void SetDetails(string detail)
+        {
+            _detail = detail;
+        }
+
+        public string GetTitle() { return _title; }
+        public string GetDetails() { return _detail; }
+        public bool GetStatus()
+        {
+            return _isCompleted;
+        }
+
+        public DateTime GetCreationTime()
+        {
+            return _createdAt;
         }
     }
 }
