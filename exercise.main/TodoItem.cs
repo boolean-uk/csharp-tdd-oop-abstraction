@@ -6,28 +6,34 @@ namespace exercise.main
 
         private string _title;
         private string _detail;
-        private string _status;
+        private bool _isCompleted;
+        private readonly DateTime _createdAt;
 
-        public TodoItem(string title, string detail, string status)
+        public TodoItem(string title, string detail)
         {
-            this._title = title;
-            this._detail = detail;
-            this._status = status;
+            _title = title;
+            _detail = detail;
+            _isCompleted = false;
+            _createdAt = DateTime.Now;
         }
 
-        public void setStatus(string status)
+        public void setComplete()
         {
-            this._status = status;
+            _isCompleted = true;
+        }
+        public void setIncomplete()
+        {
+            _isCompleted = false;
         }
 
-        public string getStatus()
+        public bool getStatus()
         {
-            return this._status;
+            return _isCompleted;
         }
 
         public DateTime GetCreationTime()
         {
-            throw new NotImplementedException();
+            return _createdAt;
         }
     }
 }
