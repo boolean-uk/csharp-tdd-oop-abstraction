@@ -32,7 +32,7 @@
 
         public bool LogIn(string email, string password)
         {
-            return IsEnabled && (_email == email) && (_password == password);
+            return IsEnabled && (_email.Equals(email)) && (_password.Equals(password));
         }
 
         public void EnableAccount()
