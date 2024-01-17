@@ -13,7 +13,7 @@ public class CoreTests
     [SetUp]
     public void SetUp()
     {
-        _tditem = new TodoItem("A", "B", "D");
+        _tditem = new TodoItem("A", "B", "incomplete");
     }
 
 
@@ -28,5 +28,22 @@ public class CoreTests
 
     }
 
+    [Test]
+    public void StatusChanging()
+    {
+        string st1 = _tditem.getStatus();
+
+        Assert.AreEqual(st1, "incomplete");
+
+        _tditem.setTaskComplete();
+
+        Assert.AreEqual(_tditem.getStatus(), "complete");
+
+
+        _tditem.setTaskIncomplete();
+
+        Assert.AreEqual(_tditem.getStatus(), "incomplete");
+
+    }
 
 }
