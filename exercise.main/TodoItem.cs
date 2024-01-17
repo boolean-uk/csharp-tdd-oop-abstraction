@@ -47,31 +47,57 @@ namespace exercise.main
     public class User
     {
 
-        private string name;
-        private string email;
-        private string password;
-        private bool enabled = false;
+        private string _name;
+        public string Name { get { return _name; } }
+        private string _email;
+        public string Email { get { return _email; } }
 
-        User(string name, string email, string password)
+        private string _password;
+
+        private bool _enabled = false;
+        public bool Enabled { get { return _enabled; } }
+
+        public User(string name, string email, string password)
         {
-            this.name = name;
-            this.email = SetEmail(email);
-            password = SetPassword(password);
+            this._name = name;
+            this._email = SetEmail(email);
+            _password = SetPassword(password);
         }
 
         public string SetPassword(String newPassword)
         {
-            if(newPassword.Length < 8) { return "Invalid Password"; }
-            
-            return password;
+            if (newPassword.Length < 8) { return ""; }
+
+            _password = newPassword;
+
+            return _password;
+        }
+
+        public string GetPasswordStatus()
+        {
+            if(_password.Length < 8) { return "Invalid password"; }
+            return "Password is OK.";
+
         }
 
         public string SetEmail(string email)
         {
-            if(!email.Contains("@") { return "Invalid email"; }
+            if (!email.Contains("@") ){ return "Invalid email"; }
 
 
             return email;
         }
+
+        public bool ToggleEnabled() { _enabled = !_enabled; return _enabled; }
+        public string Login(string psw)
+        {
+            if (!_enabled) { return "Account is disabled."; }
+            if (psw != this._password) { return "Wrong Password"; }
+            return "Success!";
+
+
+        }
+
+
     }
 }

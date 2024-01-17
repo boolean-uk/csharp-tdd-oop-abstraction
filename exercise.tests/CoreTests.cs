@@ -21,4 +21,18 @@ public class CoreTests
        
 
     }
+
+    [Test]
+    public void CreateUser() {
+        User user = new User("test", "Valid@Email", "123456789");
+
+        Assert.That(user.Name, Is.EqualTo("test"));
+        Assert.That(user.Email, Is.EqualTo("Valid@Email"));
+        Assert.IsFalse(user.Enabled);
+        
+
+    }
+
 }
+
+
