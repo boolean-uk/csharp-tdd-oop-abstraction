@@ -8,8 +8,8 @@ private string detail
 private string status
 public readonly DateTime dateTime;
 
-public void changeStatus(string status)
-changes string status to inserted status
+public void changeStatus()
+changes status to other state (complete/incomplete)
 
 public string getStatus()
 return: status of this instance

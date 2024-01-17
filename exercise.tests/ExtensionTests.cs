@@ -1,4 +1,5 @@
-﻿using System;
+﻿using exercise.main;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,9 +11,10 @@ namespace exercise.tests
     public class ExtensionTests
     {
         [Test]
-        public void Tests()
+        public void enableUserTest()
         {
-            Assert.Pass();
+            User user = new User("password123", "me@domain.com");
+            Assert.IsFalse(user.canLogin());
         }
     }
 }

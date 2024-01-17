@@ -14,17 +14,24 @@ namespace exercise.main
         private string _detail;
         private string _status;
         public readonly string _dateTime;
-        public TodoItem(String title, String detail, String status)
+        public TodoItem(String title, String detail)
         {
             _title = title;
             _detail = detail;
-            _status = status;
+            _status = "incomplete";
             _dateTime = DateTime.Now.ToString();
         }
 
-        public void changeStatus(String status)
+        public void changeStatus()
         {
-            _status = status;
+            if(_status == "incomplete" )
+            {
+                _status = "complete";
+            }
+            else if (_status == "complete" )
+            {
+                _status = "incomplete";
+            }
         }
 
         public String getStatus()
