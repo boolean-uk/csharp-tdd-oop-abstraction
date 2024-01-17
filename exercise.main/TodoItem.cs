@@ -3,24 +3,36 @@
 public class TodoItem
 {
 
-    public string title;
-    public string detail;
-    public string status;
+    private string _title;
+    private string _detail;
+    private string _status;
+    private DateTime _created;
 
-    public TodoItem(String title, String detail, String status)
+    public TodoItem(String title, String detail)
     {
-        this.title = title;
-        this.detail = detail;
-        this.status = status;
+        _title = title;
+        _detail = detail;
+        _status = "Incomplete";
+        _created = DateTime.Now;
     }
 
-    public void setStatus(String status)
+    public DateTime getCreationTime()
     {
-        this.status = status;
+        throw new NotImplementedException();
     }
 
-    public String getStatus()
+    public void Complete()
     {
-        return this.status;
+        throw new NotImplementedException();
+    }
+
+    public bool isComplete()
+    {
+        throw new NotImplementedException();
+    }
+
+    public string getTask()
+    {
+        throw new NotImplementedException(); 
     }
 }
