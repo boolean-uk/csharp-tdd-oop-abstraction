@@ -9,25 +9,47 @@ namespace exercise.main
     public class TodoItem
     {
 
-        public string title;
-        public string detail;
-        public string status;
+        private string _taskTitle;
+        private string _taskDetails;
+        private string _taskStatus;
+        private string _dateAndTime;
 
         public TodoItem(String title, String detail, String status)
         {
-            this.title = title;
-            this.detail = detail;
-            this.status = status;
+            _taskTitle = title;
+            _taskDetails = detail;
+            _taskStatus = status;
+            _dateAndTime = DateTime.Now.ToString();
         }
 
-        public void setStatus(String status)
+        public string taskTitle { get { return _taskTitle; } }
+        public string taskDetails { get { return _taskDetails; } }
+        public string taskStatus { get { return _taskStatus; } }
+
+
+        public bool SetStatusDone()
         {
-            this.status = status;
+            if(_taskStatus != "Done") 
+            {
+                _taskStatus = "Done";
+                return true;
+            }
+            else { return false; }
         }
 
-        public String getStatus()
+        public bool SetStatusNotDone()
         {
-            return this.status;
+            if (_taskStatus != "Not Done")
+            {
+                _taskStatus = "Not Done";
+                return true;
+            }
+            else { return false; }
+        }
+
+        public string GetDateAndTime() 
+        { 
+            return _dateAndTime; 
         }
     }
 }
