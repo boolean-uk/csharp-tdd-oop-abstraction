@@ -3,9 +3,24 @@ namespace exercise.main
 {
     public class User
     {
-        public bool createAccount(string v1, string v2)
+        private string _email;
+        private string _password;
+        public bool createAccount(string email, string password)
         {
-            throw new NotImplementedException();
+            if (!email.Contains("@"))
+            {
+                Console.WriteLine("Invalid email");
+                return false;
+            }
+            else if (password.Length < 8)
+            {
+                Console.WriteLine("Invalid password");
+                return false;
+            }
+            _email = email;
+            _password = password;
+            Console.WriteLine("Account created successfully");
+            return true;
         }
     }
 }

@@ -12,7 +12,7 @@ address without an @ symbol in it.
 |-----------------|-----------------------------------------------|---------------------------|---------------------------------------|
 | `User`	      | `createAccount(string email, string password)`| password.Length < 8       | false, also prints "Invalid password" |
 |                 |                                               | email without @           | false, also prints "Invalid email"    |
-|                 |                                               | else                      | true, also prints "User created"      |
+|                 |                                               | else                      | true, also prints "User created successfully"|
 
 
 I want new accounts to be disabled by default until I manually set them as enabled.
