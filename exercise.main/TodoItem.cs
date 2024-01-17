@@ -9,25 +9,35 @@ namespace exercise.main
     public class TodoItem
     {
 
-        public string title;
-        public string detail;
-        public string status;
+        private string _title;
+        private string _detail;
+        private string _status;
+        private DateTime _time;
+
+        public string Title { get { return _title;  } }
+        public string Detail { get { return _detail; } }
+        public string Status { get { return _status; } }
+        public DateTime Time { get { return _time; } }
 
         public TodoItem(String title, String detail, String status)
         {
-            this.title = title;
-            this.detail = detail;
-            this.status = status;
+            this._title = title;
+            this._detail = detail;
+            this._status = status;
+            this._time = DateTime.Now;
         }
 
-        public void setStatus(String status)
+        public void setStatusComplete(String status)
         {
-            this.status = status;
+            this._status = status;
         }
-
-        public String getStatus()
+        public void setStatusIncomplete(String status)
         {
-            return this.status;
+            this._status = status;
+        }
+        public void setDetail(String detail)
+        {
+            this._detail = detail;
         }
     }
 }
