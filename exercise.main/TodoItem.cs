@@ -17,16 +17,23 @@ namespace exercise.main
             _createdAt = DateTime.Now;
         }
 
-        public void setComplete()
+        public void SetComplete()
         {
             _isCompleted = true;
         }
-        public void setIncomplete()
+        public void SetIncomplete()
         {
             _isCompleted = false;
         }
 
-        public bool getStatus()
+        public void SetTitle(string title)
+        {
+            _title = title;
+        }
+
+        public string GetTitle() { return _title; }
+
+        public bool GetStatus()
         {
             return _isCompleted;
         }
