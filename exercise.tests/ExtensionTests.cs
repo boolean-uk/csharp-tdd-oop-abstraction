@@ -15,8 +15,8 @@ namespace exercise.tests
 
             //execute
             bool shouldWork = user.createAccount("some@email.com", "somePasswordOfLengthGreaterThan8");
-            bool shouldNotWorkTooShortPassword = user.createAccount("some@email.com", "somePwd");
-            bool shouldNotWorkNoAt = user.createAccount("noemail.com", "somePasswordOfLengthGreaterThan8");
+            bool shouldNotWorkTooShortPassword = user2.createAccount("some@email.com", "somePwd");
+            bool shouldNotWorkNoAt = user3.createAccount("noemail.com", "somePasswordOfLengthGreaterThan8");
 
             //verify
             Assert.That(shouldWork, Is.True);
