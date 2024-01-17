@@ -11,18 +11,17 @@ namespace exercise.tests
     public class ExtensionTests
     {
         Extension system;
-        User user;
         Admin admin;
         [SetUp] 
         public void setupTest()
         {
             system = new Extension();
-            user = new User("password123", "me@domain.com");
             admin = new Admin();
         }
         [Test]
         public void enableUserTest()
         {
+            User user = new User("password123", "me@domain.com");
             admin.enableUser(user);
             Assert.IsTrue(user.canLogin());
         }

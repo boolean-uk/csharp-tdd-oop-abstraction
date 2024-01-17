@@ -67,10 +67,18 @@ namespace exercise.main
         }
         private bool checkPassword(string password)
         {
+            if(password.Count() >= 8)
+            {
+                return true;
+            }
             return false;
         }
         private bool checkEmail(string email)
         {
+            if (email.Contains('@'))
+            {
+                return true;
+            }
             return false;
         }
     }
