@@ -23,5 +23,19 @@ namespace exercise.tests
             Assert.That(shouldNotWorkTooShortPassword, Is.False);
             Assert.That(shouldNotWorkNoAt, Is.False);
         }
+
+        [Test]
+        public void TestGetEmail()
+        {
+            //setup
+            User user = new();
+            user.createAccount("@3", "124u12894124eff");
+
+            //execute
+            string email = user.GetEmail();
+
+            //verify
+            Assert.That(email, Is.EqualTo("@3"));
+        }
     }
 }

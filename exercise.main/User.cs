@@ -1,4 +1,5 @@
 ﻿
+
 namespace exercise.main
 {
     public class User
@@ -21,6 +22,11 @@ namespace exercise.main
             _password = password;
             Console.WriteLine("Account created successfully");
             return true;
+        }
+
+        public string GetEmail()
+        {
+            throw new NotImplementedException();
         }
     }
 }
