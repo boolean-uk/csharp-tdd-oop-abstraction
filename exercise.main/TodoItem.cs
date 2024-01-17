@@ -13,26 +13,32 @@ namespace exercise.main
         private string detail;
         private string status;
 
-        public TodoItem(String title, String detail, String status)
+        private int date;
+        private int time;
+
+        public TodoItem(String title, String detail, String status, int date, int time)
         {
             this.title = title;
             this.detail = detail;
             this.status = status;
+
+            this.date = date;
+            this.time = time;
         }
 
-        public void CompleteTask()
+        public void SetTaskComplete()
         {
             status = "Complete";
         }
 
-        public void IncompleteTask()
+        public void SetTaskIncomplete()
         {
             status = "Incomplete";
         }
 
-        public void SeeDetails()
+        public void PrintDataAndTime()
         {
-            Console.WriteLine(detail);
+            Console.WriteLine("Day " + date.ToString() + "\nTime " + time.ToString());
         }
     }
 }

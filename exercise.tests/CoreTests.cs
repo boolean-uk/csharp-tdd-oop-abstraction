@@ -9,13 +9,13 @@ public class CoreTests
     [SetUp]
     public void SetUp()
     {
-        task = new TodoItem("Clean", "23/1 14:55", "Incomplete");
+        task = new TodoItem("Clean", "Clean the house", "Incomplete", 23, 14);
     }
 
     [Test]
     public void Test()
     {
-        task.SeeDetails();
+        task.PrintDataAndTime();
         Assert.Pass();
     }
 }

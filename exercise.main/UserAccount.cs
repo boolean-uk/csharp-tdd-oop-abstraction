@@ -19,27 +19,41 @@ namespace exercise.main
 
         public string SetEmail(string email)
         {
-            return "";
+            string message = "";
+
+            if (!email.Contains("@"))
+                message = "Invalid email";
+            else
+                message = "Valid email";
+
+            return message;
         }
 
         public string SetPassword(string password)
         {
-            return "";
+            string message = "";
+
+            if (password.Length < 8)
+                message = "Invalid password";
+            else
+                message = "Valid password";
+
+            return message;
         }
 
-        public void DisableAccount(UserAccount account)
+        public void DisableAccount()
         {
-
+            this.enabled = false;
         }
 
-        public void EnableAccound(UserAccount account)
+        public void EnableAccount()
         {
-
+            this.enabled = true;
         }
 
-        public bool CanLogin(UserAccount account)
+        public bool CanLogin()
         {
-            return false;
+            return this.enabled;
         }
     }
 }

@@ -3,9 +3,9 @@ User Story
 I want to see a Date and Time the task was created but I do not want it changed.
 
 Class			Methods
-TodoItem		void SeeDetails()
-			void CompleteTask()
-			void IncompleteTask()
+TodoItem		void PrintDateAndTime()
+			void SetTaskComplete()
+			void SetTaskIncomplete()
 
 Scenario				Output
 Returns the date and time		An output to the terminal

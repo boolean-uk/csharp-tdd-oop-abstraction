@@ -15,9 +15,9 @@ I want users to know if they are able to log in or not based on whether their
 account is enabled or disabled.
 
 Classs			Properties			Methods
-UserAccount		private string email		string SetEmail(string email) 				private string password		string SetPassword(string password)			private bool status		void DisableAccount(UserAccount 							account)
-							void EnableAccount(UserAccount 							account)
-							bool CanLogIn(UserAccount 								account)
+UserAccount		private string email		string SetEmail(string email) 				private string password		string SetPassword(string password)			private bool status		void DisableAccount()
+							void EnableAccount()
+							bool CanLogIn()
 
 			
 
