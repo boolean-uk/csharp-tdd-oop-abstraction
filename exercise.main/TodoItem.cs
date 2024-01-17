@@ -9,15 +9,15 @@ namespace exercise.main
     public class TodoItem
     {
 
-        private string _title { get; }
-        private string _detail { get; }
+        public string Title { get; }
+        public string Detail { get; }
         public bool Finished { get; set; } = false;
         public DateTime DateCreated { get; } = new();
 
         public TodoItem(string title, string detail)
         {
-            _title = title;
-            _detail = detail;
+            Title = title;
+            Detail = detail;
         }
     }
 }
