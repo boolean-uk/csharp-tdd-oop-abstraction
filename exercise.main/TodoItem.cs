@@ -13,16 +13,19 @@ namespace exercise.main
         private string detail;
         private string status;
 
-        public TodoItem(String title, String detail, String status)
+        public TodoItem(String title, String detail)
         {
             this.title = title;
             this.detail = detail;
-            this.status = status;
+            this.status = "incomplete";
         }
 
         public void changeStatus()
         {
-            this.status = status;
+            if (this.status == "complete")
+                this.status = "incomplete";
+            else if (this.status == "incomplete")
+                this.status = "complete";
         }
 
         public String getStatus()
