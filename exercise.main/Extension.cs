@@ -18,21 +18,14 @@ namespace exercise.main
             _enabled = false;
             
         }
-        public void createUser()
-        {
-
-        }
         public bool canLogin()
         {
+            Console.WriteLine("Your account has been enabled!");
             return _enabled;
         }
     }
     public class Admin
     {
-        public Admin() 
-        {
-            
-        }
         public bool enableUser(User user)
         {
             user._enabled = true;

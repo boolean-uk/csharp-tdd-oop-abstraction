@@ -30,5 +30,12 @@ namespace exercise.tests
         {
             Assert.True(system.addUser("1password2", "you@domain.comn"));
         }
+        [Test]
+        public void canLoginTest()
+        {
+            User user = new User("password123", "me@domain.com");
+            admin.enableUser(user);
+            Assert.IsTrue(user.canLogin());
+        }
     }
 }
