@@ -16,6 +16,7 @@ namespace exercise.main
             _password = password;
             _email = email;
             _enabled = false;
+            
         }
         public void createUser()
         {
@@ -25,7 +26,6 @@ namespace exercise.main
         {
             return _enabled;
         }
-        
     }
     public class Admin
     {
@@ -33,14 +33,45 @@ namespace exercise.main
         {
             
         }
-        public bool checkUser(string password, string email)
-        {
-            return false;
-        }
         public bool enableUser(User user)
         {
             user._enabled = true;
             return true;
+        }
+    }
+    public class Extension
+    {
+        private List<User> users = new List<User>();
+        public bool addUser(string password, string email)
+        {
+            bool checkPass = checkPassword(password);
+            bool checkEm = checkEmail(email);
+            if (checkPass == true)
+            {
+                if (checkEm == true)
+                {
+                    users.Add(new User(password, email));
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid email!");
+                    return false;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid password!");
+                return false;
+            }           
+        }
+        private bool checkPassword(string password)
+        {
+            return false;
+        }
+        private bool checkEmail(string email)
+        {
+            return false;
         }
     }
 }

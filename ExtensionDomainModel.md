@@ -20,21 +20,25 @@ Methods:
 bool enableAccount(User user) // sets provided user to enabled 
 return: true when enabled
 
-bool checkUser(string _userPassword, string _userEmail)
-return: true if password && email are "good" (see stories 2 & 3)
-
 Class: User
 Properties:
 private string password
 private string email
-private bool enabled
+public bool enabled
 
 Methods:
 bool canLogin()
 
-?????????????
 Class: System
 Properties:
 
 Methods:
-void createUser()
+bool createUser(string password, string email)
+runs checkPassword & checkEmail
+return: true if user created
+
+bool checkPassword(string password)
+return: true if password is "good"
+
+bool checkPassword(string email)
+return: true of email is "good"
