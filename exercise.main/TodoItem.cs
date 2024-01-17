@@ -1,33 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace exercise.main;
 
-namespace exercise.main
+public class TodoItem
 {
-    public class TodoItem
+
+    public string title;
+    public string detail;
+    public string status;
+
+    public TodoItem(String title, String detail, String status)
     {
+        this.title = title;
+        this.detail = detail;
+        this.status = status;
+    }
 
-        public string title;
-        public string detail;
-        public string status;
+    public void setStatus(String status)
+    {
+        this.status = status;
+    }
 
-        public TodoItem(String title, String detail, String status)
-        {
-            this.title = title;
-            this.detail = detail;
-            this.status = status;
-        }
-
-        public void setStatus(String status)
-        {
-            this.status = status;
-        }
-
-        public String getStatus()
-        {
-            return this.status;
-        }
+    public String getStatus()
+    {
+        return this.status;
     }
 }
