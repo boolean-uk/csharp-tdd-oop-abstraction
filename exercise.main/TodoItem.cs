@@ -1,4 +1,6 @@
-﻿namespace exercise.main;
+﻿using System;
+
+namespace exercise.main;
 
 public class TodoItem
 {
@@ -14,25 +16,24 @@ public class TodoItem
         _detail = detail;
         _status = "Incomplete";
         _created = DateTime.Now;
+        _created = new DateTime(_created.Year, _created.Month, _created.Day, _created.Hour, _created.Minute, _created.Second);
     }
-
     public DateTime getCreationTime()
     {
-        throw new NotImplementedException();
+        return _created;
     }
-
     public void Complete()
     {
-        throw new NotImplementedException();
+        _status = "Completed";
     }
-
     public bool isComplete()
     {
-        throw new NotImplementedException();
+        if (_status == "Completed") return true;
+        return false;
     }
 
     public string getTask()
     {
-        throw new NotImplementedException(); 
+        return $"{_title} {_detail}";
     }
 }

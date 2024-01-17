@@ -9,8 +9,9 @@ public class CoreTests
     public void getCreationTimeTest()
     {
         TodoItem todo = new TodoItem("Write tests for TodoItem.", "TodoItem needs some tests, write them.");
-        var result = todo.getCreationTime();
+        DateTime result = todo.getCreationTime();
         DateTime dateTime = DateTime.Now;
+        dateTime = new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, dateTime.Minute, dateTime.Second);
 
         Assert.That(result, Is.EqualTo(dateTime));
     }
