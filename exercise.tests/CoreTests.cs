@@ -33,7 +33,6 @@ public class CoreTests
     {
         TodoItem todoItem = new TodoItem(title, detail, status);
         todoItem.setStatus(newStatus);
-        Assert.That(todoItem.getStatus(),Is.EqualTo(newStatus));
-        
+        Assert.That(todoItem.getStatus(), Is.EqualTo(newStatus));
     }
 }

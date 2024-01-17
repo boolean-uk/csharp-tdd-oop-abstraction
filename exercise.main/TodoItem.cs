@@ -15,7 +15,7 @@ namespace exercise.main
 
         public User(string email, string password)
         {
-            CreatePassword(email);
+            CreatePassword(password);
             SetEmail(email);
             _accountStatus = false;
         }
@@ -45,13 +45,15 @@ namespace exercise.main
         }
         public void EnableAccount()
         {
-            _accountStatus = true;
+            if(_email != null && _password != null)
+            {
+                _accountStatus = true;
+            }
         }
         public void DisableAccount()
         {
             _accountStatus = false;
         }
-
     }
 
     public class TodoItem
