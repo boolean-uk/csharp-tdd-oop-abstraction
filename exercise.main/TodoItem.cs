@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,28 +10,30 @@ namespace exercise.main
     public class TodoItem
     {
 
-        private string title;
-        private string detail;
-        private string status;
-
-        public TodoItem(String title, String detail)
+        private string _title;
+        private string _detail;
+        private string _status;
+        public readonly string _dateTime;
+        public TodoItem(String title, String detail, String status)
         {
-            this.title = title;
-            this.detail = detail;
-            this.status = "incomplete";
+            _title = title;
+            _detail = detail;
+            _status = status;
+            _dateTime = DateTime.Now.ToString();
         }
 
-        public void changeStatus()
+        public void changeStatus(String status)
         {
-            if (this.status == "complete")
-                this.status = "incomplete";
-            else if (this.status == "incomplete")
-                this.status = "complete";
+            _status = status;
         }
 
         public String getStatus()
         {
-            return this.status;
+            return _status;
+        }
+        public string getTime()
+        {
+            return _dateTime;
         }
     }
 }
