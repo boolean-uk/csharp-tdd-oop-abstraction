@@ -26,7 +26,7 @@ namespace exercise.main
 
         public string GetEmail()
         {
-            throw new NotImplementedException();
+            return _email;
         }
     }
 }
