@@ -1,33 +1,44 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace exercise.main
 {
     public class TodoItem
     {
+        // Private fields
+        private string title;
+        private string detail;
+        private string status;
+        private readonly DateTime creationDateTime;
 
-        public string title;
-        public string detail;
-        public string status;
-
-        public TodoItem(String title, String detail, String status)
+        // Public properties
+        public string Title
         {
-            this.title = title;
-            this.detail = detail;
-            this.status = status;
+            get { return title; }
+            set { title = value; }
         }
 
-        public void setStatus(String status)
+        public string Detail
         {
-            this.status = status;
+            get { return detail; }
+            set { detail = value; }
         }
 
-        public String getStatus()
+        public string Status
         {
-            return this.status;
+            get { return status; }
+            set { status = value; }
+        }
+
+        // Read-only property for creation date and time
+        public DateTime CreationDateTime => creationDateTime;
+
+        // Constructor
+        public TodoItem(string title, string detail, string status)
+        {
+            Title = title;
+            Detail = detail;
+            Status = status;
+            creationDateTime = DateTime.Now;
         }
     }
 }
