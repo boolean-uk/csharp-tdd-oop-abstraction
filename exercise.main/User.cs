@@ -8,9 +8,19 @@ namespace exercise.main
 {
     public class User
     {
-        public bool CreateAccount(string v1, string v2)
+        private Account _account;
+        public bool CreateAccount(string email, string password)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Account account = new(email, password);
+                _account = account;
+                return true;
+            } catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return false;
         }
     }
 }

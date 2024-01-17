@@ -17,7 +17,7 @@ namespace exercise.tests
         public void UserCanCreateAccount()
         {
             bool accountCreated = _user.CreateAccount("test@test.com", "totallySecurePassword");
-            Assert.That(_user.CreateAccount, Is.True);
+            Assert.That(accountCreated, Is.True);
         }
     }
 }
