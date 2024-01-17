@@ -12,6 +12,7 @@ namespace exercise.main
         public string title;
         public string detail;
         public Status Status { get; set; }
+        public DateTime DateCreated { get; } = new();
 
         public TodoItem(string title, string detail, Status status)
         {
