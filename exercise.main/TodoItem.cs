@@ -9,9 +9,9 @@ namespace exercise.main
     public class TodoItem
     {
 
-        public string title;
-        public string detail;
-        public string status;
+        private string title;
+        private string detail;
+        private string status;
 
         public TodoItem(String title, String detail, String status)
         {
@@ -20,14 +20,19 @@ namespace exercise.main
             this.status = status;
         }
 
-        public void setStatus(String status)
+        public void CompleteTask()
         {
-            this.status = status;
+            status = "Complete";
         }
 
-        public String getStatus()
+        public void IncompleteTask()
         {
-            return this.status;
+            status = "Incomplete";
+        }
+
+        public void SeeDetails()
+        {
+            Console.WriteLine(detail);
         }
     }
 }
