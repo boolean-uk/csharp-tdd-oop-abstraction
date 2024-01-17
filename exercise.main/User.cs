@@ -1,5 +1,6 @@
 ﻿
 
+
 namespace exercise.main
 {
     public class User
@@ -27,6 +28,16 @@ namespace exercise.main
         public string GetEmail()
         {
             return _email;
+        }
+
+        public bool IsAccountActive()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetActive()
+        {
+            throw new NotImplementedException();
         }
     }
 }

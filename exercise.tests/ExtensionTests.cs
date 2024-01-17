@@ -37,5 +37,36 @@ namespace exercise.tests
             //verify
             Assert.That(email, Is.EqualTo("@3"));
         }
+
+        [Test]
+        public void TestIsDisabledByDefault()
+        {
+            //setup
+            User user = new();
+            user.createAccount("@3", "124u12894124eff");
+
+            //execute
+            bool isAccountActive = user.IsAccountActive();
+
+            //verify
+            Assert.That(isAccountActive, Is.False);
+        }
+
+        [Test]
+        public void TestCanEnableAccount()
+        {
+            //setup
+            User user = new();
+            user.createAccount("@3", "124u12894124eff");
+
+            //execute
+            bool shouldNotBeActive = user.IsAccountActive();
+            user.SetActive();
+            bool shouldBeActive = user.IsAccountActive();
+
+            //verify
+            Assert.That(shouldNotBeActive, Is.False);
+            Assert.That(shouldBeActive, Is.True);
+        }
     }
 }
