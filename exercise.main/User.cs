@@ -22,5 +22,10 @@ namespace exercise.main
             }
             return false;
         }
+
+        public bool LogIn(string email, string password)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

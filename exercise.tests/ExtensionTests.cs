@@ -19,5 +19,14 @@ namespace exercise.tests
             bool accountCreated = _user.CreateAccount("test@test.com", "totallySecurePassword");
             Assert.That(accountCreated, Is.True);
         }
+
+        [Test]
+        public void UserCantLoginNotEnabledTest()
+        {
+            string email = "test@test.com";
+            string password = "totallySecurePassword";
+            _user.CreateAccount(email, password);
+            Assert.That(_user.LogIn(email, password), Is.False);
+        }
     }
 }
