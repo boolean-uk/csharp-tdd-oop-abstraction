@@ -14,7 +14,9 @@ namespace exercise.tests
         public void enableUserTest()
         {
             User user = new User("password123", "me@domain.com");
-            Assert.IsFalse(user.canLogin());
+            Admin admin = new Admin();
+            admin.enableUser(user);
+            Assert.IsTrue(user.canLogin());
         }
     }
 }
