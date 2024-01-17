@@ -25,7 +25,7 @@ namespace exercise.main
 
         public bool LogIn(string email, string password)
         {
-            throw new NotImplementedException();
+            return _account.LogIn(email, password);
         }
     }
 }

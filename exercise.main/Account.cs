@@ -29,5 +29,10 @@
         {
             return email.Contains('@');
         }
+
+        public bool LogIn(string email, string password)
+        {
+            return IsEnabled && (_email == email) && (_password == password);
+        }
     }
 }
