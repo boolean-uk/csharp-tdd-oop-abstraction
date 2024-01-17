@@ -12,12 +12,14 @@ namespace exercise.main
         private string title;
         private string detail;
         private bool status;
+        private DateTime dateTime;
 
         public TodoItem(string title, string detail, bool status)
         {
             this.title = title;
             this.detail = detail;
             this.status = status;
+            this.dateTime = DateTime.Now;
         }
 
         public void changeStatus()
@@ -28,6 +30,7 @@ namespace exercise.main
             }
             this.status = true;
         }
+        public DateTime getDateTime() { return dateTime; }
 
         public bool getStatus()
         {
