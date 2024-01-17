@@ -13,4 +13,11 @@ public class CoreTests
         item.Status = Status.Finished;
         Assert.That(item.Status, Is.EqualTo(Status.Finished));
     }
+
+    public void ViewDateTimeForTaskCreatedTest()
+    {
+        TodoItem item = new("Second Task", "Some other task detail", Status.Unfinished);
+
+        Assert.That(item.Date, Is.Not.Null);
+    }
 }
