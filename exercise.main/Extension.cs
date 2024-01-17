@@ -10,7 +10,7 @@ namespace exercise.main
     {
         private string _password;
         private string _email;
-        private bool _enabled;
+        public bool _enabled;
         public User(string password, string email)
         {
             _password = password;
@@ -39,7 +39,8 @@ namespace exercise.main
         }
         public bool enableUser(User user)
         {
-            return false;
+            user._enabled = true;
+            return true;
         }
     }
 }
