@@ -40,7 +40,7 @@ account is enabled or disabled.
 		<td>bool</td>
 	</tbody>
 	<tbody>
-		<td><code>User</code></td>
+		<td><code>IUser</code></td>
 		<td><code>CreateAccount(string email, string password)</code></td>
 		<td>Lets the user create an account</td>
 		<td>Account</td>
@@ -49,6 +49,18 @@ account is enabled or disabled.
 		<td></td>
 		<td><code>LogIn(string email, string password)</code></td>
 		<td>Lets the user log in as long as the email and password is correct, and the account is enabled</td>
+		<td></td>
+	</tbody>
+	<tbody>
+		<td><code>Administrator : IUser</code></td>
+		<td><code>EnableAccount(Account account)</code></td>
+		<td>Lets the administrator enable an account</td>
+		<td>void</td>
+	</tbody>
+		<tbody>
+		<td><code>User : IUser</code></td>
+		<td></td>
+		<td></td>
 		<td></td>
 	</tbody>
 </table>

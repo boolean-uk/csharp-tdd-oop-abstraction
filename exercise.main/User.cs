@@ -27,5 +27,7 @@ namespace exercise.main
         {
             return _account.LogIn(email, password);
         }
+
+        public Account Account { get { return _account; } }
     }
 }
