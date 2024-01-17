@@ -1,16 +1,27 @@
 ```C#
-class UserAccountManagement {
+Extension
+public class User {
     private string userName;
     private string email;
     private string password;
     private bool state;
+}
+
+class UserAccountManagement {
+    
+    private List<User> users;
+
+    public UserAccountManagement() {
+        users = new List<User>();
+    }
 
     public void CreateAccount(stirng userName, stirng email, string password) {
-        //set
+        // create a new User
     }
 
     private bool isValidEmail(string email); // is called in CreateAccount returns true if valid, throw new exeption if not
     private bool isValidPassword(string password); // is called in CreateAccount returns true if valid, throw new exeption if not
     public bool isAccountActive(string userName); // return true if the users account is activated, false if not, userName works as _id  
+    public void ChangeAccountState(string userName, bool state); //  changes the state on a given users acocunt based on state
 }
 ```
