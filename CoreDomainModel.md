@@ -13,5 +13,9 @@ class TodoItem {
     public string getDate(); // get the date the TodoItem was created
     public string getStatus(); // return the private status 
 
+    public string getDate(); // return date in string
+    public string getStatus(); // return status
+    public string getDetail(); // return details
+    public string getTitle(); // return title
 }
 ```

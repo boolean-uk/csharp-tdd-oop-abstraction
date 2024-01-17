@@ -1,5 +1,5 @@
-using NUnit.Framework;
 using exercise.main;
+using System.Reflection;
 
 namespace exercise.tests;
 
@@ -63,3 +63,4 @@ public class CoreTests
         Assert.AreEqual(newStatus, todoItem.getStatus());
     }
 }
+
