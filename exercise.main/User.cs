@@ -8,7 +8,7 @@ namespace exercise.main
         private string _email;
         private string _password;
         private bool _isActive;
-        public bool createAccount(string email, string password)
+        public bool CreateAccount(string email, string password)
         {
             if (!email.Contains("@"))
             {

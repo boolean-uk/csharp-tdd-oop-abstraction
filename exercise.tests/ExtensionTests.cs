@@ -14,9 +14,9 @@ namespace exercise.tests
             User user3 = new();
 
             //execute
-            bool shouldWork = user.createAccount("some@email.com", "somePasswordOfLengthGreaterThan8");
-            bool shouldNotWorkTooShortPassword = user2.createAccount("some@email.com", "somePwd");
-            bool shouldNotWorkNoAt = user3.createAccount("noemail.com", "somePasswordOfLengthGreaterThan8");
+            bool shouldWork = user.CreateAccount("some@email.com", "somePasswordOfLengthGreaterThan8");
+            bool shouldNotWorkTooShortPassword = user2.CreateAccount("some@email.com", "somePwd");
+            bool shouldNotWorkNoAt = user3.CreateAccount("noemail.com", "somePasswordOfLengthGreaterThan8");
 
             //verify
             Assert.That(shouldWork, Is.True);
@@ -29,7 +29,7 @@ namespace exercise.tests
         {
             //setup
             User user = new();
-            user.createAccount("@3", "124u12894124eff");
+            user.CreateAccount("@3", "124u12894124eff");
 
             //execute
             string email = user.GetEmail();
@@ -43,7 +43,7 @@ namespace exercise.tests
         {
             //setup
             User user = new();
-            user.createAccount("@3", "124u12894124eff");
+            user.CreateAccount("@3", "124u12894124eff");
 
             //execute
             bool isAccountActive = user.IsAccountActive();
@@ -57,7 +57,7 @@ namespace exercise.tests
         {
             //setup
             User user = new();
-            user.createAccount("@3", "124u12894124eff");
+            user.CreateAccount("@3", "124u12894124eff");
 
             //execute
             bool shouldNotBeActive = user.IsAccountActive();
@@ -74,7 +74,7 @@ namespace exercise.tests
         {
             //setup
             User user = new();
-            user.createAccount("@3", "124u12894124eff");
+            user.CreateAccount("@3", "124u12894124eff");
 
             //execute
             bool shouldNotLogIn = user.CanLogin();
