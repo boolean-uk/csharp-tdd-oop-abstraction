@@ -41,5 +41,10 @@ namespace exercise.main
         {
             _isActive = true;
         }
+
+        public bool Login(string username, string password)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

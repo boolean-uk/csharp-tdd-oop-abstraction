@@ -68,5 +68,24 @@ namespace exercise.tests
             Assert.That(shouldNotBeActive, Is.False);
             Assert.That(shouldBeActive, Is.True);
         }
+
+        [Test]
+        public void TestLogin()
+        {
+            //setup
+            User user = new();
+            string un = "@3";
+            string pwd = "124u12894124eff";
+            user.createAccount(un, pwd);
+
+            //execute
+            bool shouldNotLogIn = user.Login(un, pwd);
+            user.SetActive();
+            bool shouldLogIn = user.Login(un, pwd);
+
+            //verify
+            Assert.That(shouldNotLogIn, Is.False);
+            Assert.That(shouldLogIn, Is.True);
+        }
     }
 }
