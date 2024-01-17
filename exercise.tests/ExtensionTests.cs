@@ -1,18 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using exercise.main;
 
-namespace exercise.tests
+namespace exercise.tests;
+
+[TestFixture]
+public class ExtensionTests
 {
-    [TestFixture]
-    public class ExtensionTests
+    [TestCase("123@123", "12345678", true)]
+    [TestCase("123@123", "1234567", true)]
+    [TestCase("123123", "12345678", true)]
+    [TestCase("123123", "1234567", true)]
+    public void createUserTest(string email, string password, bool isValid)
     {
-        [Test]
-        public void Tests()
-        {
-            Assert.Pass();
-        }
+        Extension extension = new Extension();
+        bool result = extension.createUser(email, password);
+
+        Assert.That(result, Is.EqualTo(isValid));
+    }
+
+    [Test]
+    public void canLoginTest()
+    {
+        User user = new User("123@123", "12345678");
+        bool result = user.canLogin();
+        user.activate();
+        bool result1 = user.canLogin();
+
+        Assert.That(result, Is.EqualTo(false));
+        Assert.That(result1, Is.EqualTo(true));
     }
 }
