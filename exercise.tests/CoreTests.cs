@@ -10,7 +10,7 @@ public class CoreTests
     {
         //setup
         DateTime before = DateTime.Now;
-        TodoItem item = new("SomeTitle", "Dont forget to do this", "What");
+        TodoItem item = new("SomeTitle", "Dont forget to do this");
 
         //execute
         DateTime created = item.GetCreationTime();
