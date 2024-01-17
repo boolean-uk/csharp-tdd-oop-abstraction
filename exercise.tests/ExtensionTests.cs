@@ -6,9 +6,9 @@ namespace exercise.tests;
 public class ExtensionTests
 {
     [TestCase("123@123", "12345678", true)]
-    [TestCase("123@123", "1234567", true)]
-    [TestCase("123123", "12345678", true)]
-    [TestCase("123123", "1234567", true)]
+    [TestCase("123@123", "1234567", false)]
+    [TestCase("123123", "12345678", false)]
+    [TestCase("123123", "1234567", false)]
     public void createUserTest(string email, string password, bool isValid)
     {
         Extension extension = new Extension();

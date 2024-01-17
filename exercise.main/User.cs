@@ -8,8 +8,8 @@ public class User
 
     public User(string email, string password)
     {
-        _email = email;
-        _password = password;
+        _email = email.Trim();
+        _password = password.Trim();
         _status = "Deactivated";
     }
 
