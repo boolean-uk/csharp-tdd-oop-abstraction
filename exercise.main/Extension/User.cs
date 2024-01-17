@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace exercise.main
+namespace exercise.main.Extension
 {
     public class User
     {
@@ -16,7 +16,8 @@ namespace exercise.main
                 Account account = new(email, password);
                 _account = account;
                 return true;
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }

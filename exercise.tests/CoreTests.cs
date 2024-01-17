@@ -1,4 +1,4 @@
-using exercise.main;
+using exercise.main.Core;
 
 namespace exercise.tests;
 

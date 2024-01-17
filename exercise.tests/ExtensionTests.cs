@@ -1,4 +1,4 @@
-﻿using exercise.main;
+﻿using exercise.main.Extension;
 
 namespace exercise.tests
 {

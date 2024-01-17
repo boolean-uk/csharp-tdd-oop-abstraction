@@ -1,4 +1,4 @@
-﻿namespace exercise.main
+﻿namespace exercise.main.Extension
 {
     public class Account
     {
@@ -14,7 +14,8 @@
                 Console.WriteLine("Account succesfully created!");
                 _email = email;
                 _password = password;
-            } else
+            }
+            else
             {
                 throw new Exception("Email or password is invalid. Please try again.");
             }
@@ -32,7 +33,7 @@
 
         public bool LogIn(string email, string password)
         {
-            return IsEnabled && (_email.Equals(email)) && (_password.Equals(password));
+            return IsEnabled && _email.Equals(email) && _password.Equals(password);
         }
 
         public void EnableAccount()
