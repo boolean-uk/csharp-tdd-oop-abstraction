@@ -20,6 +20,14 @@ namespace exercise.main
         }
         public bool canLogin()
         {
+            if (_enabled == true)
+            {
+                Console.WriteLine("Your account has been enabled!");
+            }
+            else if (_enabled == false)
+            {
+                Console.WriteLine("Your accound has not been enabled, please wait for admin!");
+            }
             return _enabled;
         }
     }
