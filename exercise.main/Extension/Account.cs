@@ -3,7 +3,7 @@ namespace exercise.main.Extension
 {
     public class Account
     {   // List of users
-        protected Dictionary<string, bool> _Users = new Dictionary<string, bool>();
+        protected static Dictionary<string, bool> _Users = new Dictionary<string, bool>();
 
 
 
