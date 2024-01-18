@@ -9,15 +9,17 @@ namespace exercise.main
     public class TodoItem
     {
 
-        public string title;
-        public string detail;
-        public string status;
+        private string title;
+        private string detail;
+        private string status;
+        private readonly DateTime dateTime; 
 
         public TodoItem(String title, String detail, String status)
         {
             this.title = title;
             this.detail = detail;
             this.status = status;
+            this.dateTime = DateTime.Now;
         }
 
         public void setStatus(String status)
@@ -28,6 +30,11 @@ namespace exercise.main
         public String getStatus()
         {
             return this.status;
+        }
+
+        public DateTime getDateTime()
+        {
+            return this.dateTime;
         }
     }
 }
