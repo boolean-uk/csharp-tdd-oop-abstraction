@@ -21,7 +21,6 @@ namespace exercise.main
             _detail = detail;
             _status = "Not completed";
             _timeStamp = SetDateTime();
-
         }
 
         private string SetDateTime()

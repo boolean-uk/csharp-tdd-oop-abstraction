@@ -8,19 +8,11 @@ using System.Threading.Tasks;
 namespace exercise.main.UserAccounts
 {
     public class AdminUser: Account
-    { 
-        public AdminUser() { 
+    {
         
-        
-        
+        public AdminUser() {
+            setAdmin(true);
         }
-        public override bool enableAccount()
-        {
-            
-            return base.enableAccount();
-        }
-
-
-
+        
     }
 }

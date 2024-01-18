@@ -8,6 +8,13 @@ namespace exercise.main.UserAccounts
 {
     public class User:Account
     {
-        public User(string name, string password) { throw new NotImplementedException(); }
+              
+        public User() {
+            setAdmin(false);
+        }
+
+       
+       
+
     }
 }
