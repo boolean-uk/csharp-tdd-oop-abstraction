@@ -37,7 +37,7 @@ namespace exercise.main
 
         public bool CheckStatus()
         {
-            throw new NotImplementedException();
+            return _enabled;
         }
     }
 }
