@@ -16,7 +16,7 @@ namespace exercise.tests
 
             // Arrange
             string userName = "1234@hotmail.com";
-            string passWord = "12345";
+            string passWord = "1234512314";
             
             Account accounts = new Account();
 
@@ -43,8 +43,8 @@ namespace exercise.tests
             bool status2 = accounts.checkPassword(passWord2);
 
             // Assert
-            Assert.IsTrue(status1 == true);  //Should returns true 
-            Assert.IsTrue(status2 == false);  //Should returns false
+            Assert.IsTrue(status1 == false);  //Should returns true 
+            Assert.IsTrue(status2 == true);  //Should returns false
         }
 
         [Test]

@@ -1,5 +1,6 @@
 ﻿
 
+
 namespace exercise.main
 {
     public class Account 
@@ -10,8 +11,8 @@ namespace exercise.main
 
         public bool makeAccount(string userName, string passWord)
         {
-            //Perform the check for valid password:
-            if (checkPassword(passWord))
+            //Perform the check for valid password and userName:
+            if (checkPassword(passWord) && checkUser(userName))
             {
                 _Users.Add(userName, false);
                 return true;
@@ -25,9 +26,18 @@ namespace exercise.main
         {
             if (passWord.Length > 8)
             {  //If the condition is not met -> false
-                return false;
+                return true;
             }
-            return true;
+            return false;
+        }
+
+        public bool checkUser(string userName)
+        {
+            if (userName.Contains('@')) { 
+                return true;
+            }
+            return false;
+
         }
     }
 }
