@@ -52,14 +52,14 @@ namespace exercise.tests
         [Test]
         public void UserDisabled()
         {
-            Assert.That(user._enabled, Is.EqualTo(false));
+            Assert.That(user.CheckStatus(), Is.EqualTo(false));
         }
 
         [Test]
         public void UserEnabled()
         {
             admin.toggleUser(user);
-            Assert.That(user._enabled, Is.EqualTo(true));
+            Assert.That(user.CheckStatus(), Is.EqualTo(true));
         }
 
 
