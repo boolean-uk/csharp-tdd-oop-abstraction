@@ -29,13 +29,22 @@ namespace exercise.tests
         public void IsAccountEnabled()
         {
             UserAccount testUser = new UserAccount("a", "b");
-            AdminAccount testAdmin = new AdminAccount();
 
             bool notEnabeld = testUser.canLogIn();
-            bool shouldEnable = testAdmin.EnableAccount(testUser);
 
             Assert.That(notEnabeld, Is.EqualTo(false));
-            Assert.That(shouldEnable, Is.EqualTo(true));
+        }
+
+        [Test]
+        public void EanbleAccount()
+        {
+            UserAccount testUser = new UserAccount("a", "b");
+            AdminAccount testAdmin = new AdminAccount();
+
+            testAdmin.EnableAccount(testUser);
+            bool shouldBeEnabled = testUser.canLogIn();
+
+            Assert.That(shouldBeEnabled, Is.EqualTo(true));
         }
     }
 }
