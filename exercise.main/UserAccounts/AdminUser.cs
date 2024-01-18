@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace exercise.main.UserAccounts
+{
+    public class AdminUser: Account
+    { 
+        public AdminUser() { 
+        
+        
+        
+        }
+        public override bool enableAccount()
+        {
+            
+            return base.enableAccount();
+        }
+
+
+
+    }
+}

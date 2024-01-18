@@ -1,4 +1,5 @@
-﻿using System;
+﻿using exercise.main.UserAccounts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,10 +10,17 @@ namespace exercise.tests
     [TestFixture]
     public class ExtensionTests
     {
-        [Test]
-        public void Tests()
+        [TestCase("name","qwertyu")]
+        [TestCase("name@", "qwertyu")]
+        [TestCase("name@", "qwededewdedwrtyu")]
+        public void createUser(string username,string password)
         {
-            Assert.Pass();
+            User user = new User(username,password);
+            
+
+            Assert.That(user, Is.Not.Null);
+            Assert.That(user.Username, Is.EqualTo(username));
+            
         }
     }
 }
