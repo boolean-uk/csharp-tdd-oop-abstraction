@@ -11,12 +11,14 @@ namespace exercise.main
         private string _title;
         private string _detail;
         private string _status;
+        private DateTime _creation;
 
         public TodoItem(string title, string detail, string status)
         {
             _title = title;
             _detail = detail;
             _status = status;
+            _creation = DateTime.Now;
         }
 
         public void Complete()
@@ -44,6 +46,11 @@ namespace exercise.main
         public string GetDetail()
         {
             return _detail;
+        }
+
+        public DateTime GetDateCreated()
+        {
+            throw new NotImplementedException();
         }
     }
 }
