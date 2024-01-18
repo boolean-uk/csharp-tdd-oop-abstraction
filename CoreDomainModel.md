@@ -3,6 +3,6 @@
 | `TodoItem`| `string title`					| `setComplete()`					|						|			|
 |			| `string detail`					| `setIncomplete()`					|						|			|
 |			| `bool status`						| `isComplete()`					|						| bool		|
-|			| `DateTime created`				| `createTime()`					|						| string	|
+|			| `DateTime created`				| `createTime()`					|						| DateTime	|
 |			|									|									|						|			|
 |			|									|									|						|			|

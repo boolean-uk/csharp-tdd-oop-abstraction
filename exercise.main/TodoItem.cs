@@ -12,12 +12,14 @@ namespace exercise.main
         private string title;
         private string detail;
         private bool status;
+        DateTime created;
 
-        public TodoItem(string title, string detail, bool status)
+        public TodoItem(string title, string detail, bool status = false)
         {
             this.title = title;
             this.detail = detail;
             this.status = status;
+            this.created = DateTime.Now;
         }
 
         public void setComplete()
@@ -33,6 +35,11 @@ namespace exercise.main
         public bool isComplete() 
         {
             return this.status;
+        }
+
+        public DateTime createTime() 
+        {
+            throw new NotImplementedException();
         }
     }
 }
