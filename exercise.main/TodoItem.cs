@@ -19,6 +19,7 @@ namespace exercise.main
             this._title = title;
             this._detail = detail;
             this._status = status;
+            this._created = DateTime.Now;
         }
 
         public void setStatus(String status)
@@ -33,7 +34,7 @@ namespace exercise.main
 
         public DateTime getCreation() 
         {
-            throw new NotImplementedException();
+            return _created;
         }
     }
 }
