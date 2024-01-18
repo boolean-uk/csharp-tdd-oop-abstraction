@@ -42,12 +42,14 @@ namespace exercise.main
 
         public bool CheckPassword(string password)
         {
-            throw new NotImplementedException();
+            if (_password == password) return true;
+            return false;
         }
 
         public bool CheckEmail(string email)
         {
-            throw new NotImplementedException();
+            if (_email == email) return true;
+            return false;
         }
     }
 }
