@@ -10,18 +10,29 @@ namespace exercise.main
     {
         public string _email { get; protected set; }
         public string _password { get; protected set; }
-        public bool _enabled { get; protected set; }
+        protected bool _enabled { get; set; }
 
-        protected internal abstract void Enable();
+        protected internal abstract bool Enable();
+
 
         public string SetPassword(string password)
         {
-            throw new NotImplementedException();
+            if(password.Length >= 8)
+            {
+                _password = password;
+                return String.Empty;
+            }
+            return "invalid password";
         }
 
         public string SetEmail(string email)
         {
-            throw new NotImplementedException();
+            if(email.Contains("@"))
+            {
+                _email = email;
+                return String.Empty;
+            }
+            return "invalid email";
         }
 
         public bool CheckStatus()

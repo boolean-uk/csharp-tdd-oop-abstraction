@@ -10,17 +10,18 @@ namespace exercise.main
     {
         public AdminUser(string email = "admin", string password = "admin") 
         {
-            
+            _enabled = true;
         }
 
         public string toggleUser(User user)
         {
-            throw new NotImplementedException();
+            user.Enable();
+            return $"user enabled: {user.CheckStatus}";
         }
 
-        protected internal override void Enable()
+        protected internal override bool Enable()
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }

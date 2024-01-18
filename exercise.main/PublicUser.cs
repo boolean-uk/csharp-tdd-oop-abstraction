@@ -10,11 +10,21 @@ namespace exercise.main
     {
         public PublicUser() 
         { 
+            _email = string.Empty;
+            _password = string.Empty;
         }
 
-        protected internal override void Enable()
+        protected internal override bool Enable()
         {
-            throw new NotImplementedException();
+            if (_enabled)
+            {
+                _enabled = false;
+            }
+            else 
+            { 
+                _enabled = true; 
+            }
+            return _enabled;
         }
     }
 }
