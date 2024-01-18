@@ -16,30 +16,37 @@ namespace exercise.main
 
             public UserAccount(string email, string password)
             {
+                if (!IsValidEmail(email))
+                    throw new ArgumentException("Invalid email");
+
+                if (!IsValidPassword(password))
+                    throw new ArgumentException("Invalid password");
+
                 _email = email;
                 _password = password;
-                _isEnabled = false; 
+                _isEnabled = false;
             }
 
             private bool IsValidEmail(string email)
             {
-                throw new NotImplementedException();
+                return email != null && email.Contains("@");
             }
 
             private bool IsValidPassword(string password)
             {
-                throw new NotImplementedException();
+                return password != null && password.Length >= 8;
             }
 
             public void EnableAccount()
             {
-                throw new NotImplementedException();
+                _isEnabled = true;
             }
 
             public bool CanLogin()
             {
-                throw new NotImplementedException();
+                return _isEnabled;
             }
         }
+
     }
 }
