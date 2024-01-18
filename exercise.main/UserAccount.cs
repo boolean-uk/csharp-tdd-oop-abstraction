@@ -21,7 +21,6 @@ namespace exercise.main
 
         protected internal bool enable()
         {
-            throw new NotImplementedException();
             _enabled = true;
             return _enabled;
         }
