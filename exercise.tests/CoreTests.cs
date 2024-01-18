@@ -1,11 +1,20 @@
+using exercise.main;
+
 namespace exercise.tests;
 
 [TestFixture]
 public class CoreTests
 {
-    [Test]
-    public void Test()
+    TodoItem todo = new("a", "b", "c");
+    [SetUp]
+    public void SetUp()
     {
-        Assert.Pass();
+
+    }
+
+    [Test]
+    public void CreationTimeTest()
+    {
+        Assert.That(todo.getCreation().Date, Is.EqualTo(DateTime.Now.Date));
     }
 }
