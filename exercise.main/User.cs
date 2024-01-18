@@ -8,8 +8,8 @@ namespace exercise.main
 {
     public abstract class User
     {
-        public string _email { get; protected set; }
-        public string _password { get; protected set; }
+        protected string _email { get;  set; }
+        protected string _password { get; set; }
         protected bool _enabled { get; set; }
 
         protected internal abstract bool Enable();
@@ -38,6 +38,16 @@ namespace exercise.main
         public bool CheckStatus()
         {
             return _enabled;
+        }
+
+        public bool CheckPassword(string password)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool CheckEmail(string email)
+        {
+            throw new NotImplementedException();
         }
     }
 }

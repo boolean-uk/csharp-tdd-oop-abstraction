@@ -25,28 +25,28 @@ namespace exercise.tests
         public void UserSetEmail()
         {
             Assert.That(user.SetEmail("xrectyv@cfgvhb"), Is.EqualTo(String.Empty));
-            Assert.That(user._email, Is.EqualTo("xrectyv@cfgvhb"));
+            Assert.That(user.CheckEmail("xrectyv@cfgvhb"), Is.EqualTo(true));
         }
 
         [Test]
         public void UserSetEmailNoAt()
         {
             Assert.That(user.SetEmail("sxdrcftvgyhuj"), Is.EqualTo("invalid email"));
-            Assert.That(user._email, Is.EqualTo(String.Empty));
+            Assert.That(user.CheckEmail("sxdrcftvgyhuj"), Is.EqualTo(false));
         }
 
         [Test]
         public void UserSetPassword()
         {
             Assert.That(user.SetPassword("rctvybunim"), Is.EqualTo(String.Empty));
-            Assert.That(user._password, Is.EqualTo("rctvybunim"));
+            Assert.That(user.CheckPassword("rctvybunim"), Is.EqualTo(true));
         }
 
         [Test]
         public void UserSetPasswordShort()
         {
             Assert.That(user.SetPassword("rctvybm"), Is.EqualTo("invalid password"));
-            Assert.That(user._password, Is.EqualTo(String.Empty));
+            Assert.That(user.CheckPassword("rctvybm"), Is.EqualTo(false));
         }
 
         [Test]
