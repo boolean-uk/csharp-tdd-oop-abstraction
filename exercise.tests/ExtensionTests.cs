@@ -67,5 +67,31 @@ namespace exercise.tests
             Assert.IsTrue(status1 == true);  //Should returns true 
             Assert.IsTrue(status2 == false);  //Should returns false
         }
+
+        [Test]
+        public void testEnableAccount()
+        {
+
+            // Arrange
+            string userName1 = "1234@hotmail.com";
+            string userName2 = "657@hotmail.com";
+            string passWord1 = "12345112415";
+            string passWord2 = "123456789";
+
+            Account accounts = new Account();
+            accounts.makeAccount(userName1, passWord1);
+            accounts.makeAccount(userName2, passWord2);
+
+
+            // Act
+            Admin admin = new Admin();
+            admin.enableAccount(userName1,true);
+            bool status1 = accounts.getAccountStatus(userName1);
+            bool status2 = accounts.getAccountStatus(userName2);
+
+            // Assert
+            Assert.IsTrue(status1 == true);  //Should returns true, since admin changed the status
+            Assert.IsTrue(status2 == false);  //Should returns falsem, since false by default
+        }
     }
 }
