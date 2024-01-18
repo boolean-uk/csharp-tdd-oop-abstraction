@@ -33,6 +33,6 @@ namespace exercise.main
         public string Status { get => _status; set => _status = value; }
         public string Title { get => _title;}
         public string Detail { get => _detail; }
-        public string TimeStamp { get => throw new NotImplementedException(); }
+        public string TimeStamp { get => _timeStamp; }
     }
 }
