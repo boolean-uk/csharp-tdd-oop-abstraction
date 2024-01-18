@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,25 +10,29 @@ namespace exercise.main
     public class TodoItem
     {
 
-        public string title;
-        public string detail;
-        public string status;
+        private string _title;
+        private string _detail;
+        private string _status;
+        private string _timeStamp;
 
-        public TodoItem(String title, String detail, String status)
+        public TodoItem(String title, String detail)
         {
-            this.title = title;
-            this.detail = detail;
-            this.status = status;
+            _title = title;
+            _detail = detail;
+            _status = "Not completed";
+            _timeStamp = SetDateTime();
+
         }
 
-        public void setStatus(String status)
+        private string SetDateTime()
         {
-            this.status = status;
+            DateTime current = DateTime.Now.ToLocalTime();
+            return current.ToString();
         }
 
-        public String getStatus()
-        {
-            return this.status;
-        }
+        public string Status { get => _status; set => _status = value; }
+        public string Title { get => _title;}
+        public string Detail { get => _detail; }
+        public string TimeStamp { get => throw new NotImplementedException(); }
     }
 }
