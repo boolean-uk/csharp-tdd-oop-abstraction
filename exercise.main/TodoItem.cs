@@ -9,15 +9,17 @@ namespace exercise.main
     public class TodoItem
     {
 
-        public string title;
-        public string detail;
-        public string status;
+        public string title { get; }
+        public string detail { get; }
+        private string status;
+        public string dateAndTime { get; }
 
         public TodoItem(String title, String detail, String status)
         {
             this.title = title;
             this.detail = detail;
             this.status = status;
+            dateAndTime = DateTime.Now.ToString("yyyy - mm - dd HH:mm:ss");
         }
 
         public void setStatus(String status)
