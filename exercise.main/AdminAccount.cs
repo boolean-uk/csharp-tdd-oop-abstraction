@@ -14,6 +14,7 @@ namespace exercise.main
         public bool EnableAccount(UserAccount account)
         {
             throw new NotImplementedException();
+            return account.enable();
         }
     }
 }

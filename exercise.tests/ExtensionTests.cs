@@ -24,5 +24,18 @@ namespace exercise.tests
         {
             Assert.That(_system.createUser(e,p), Is.EqualTo(expected));
         }
+
+        [Test]
+        public void IsAccountEnabled()
+        {
+            UserAccount testUser = new UserAccount("a", "b");
+            AdminAccount testAdmin = new AdminAccount();
+
+            bool notEnabeld = testUser.canLogIn();
+            bool shouldEnable = testAdmin.EnableAccount(testUser);
+
+            Assert.That(notEnabeld, Is.EqualTo(false));
+            Assert.That(shouldEnable, Is.EqualTo(true));
+        }
     }
 }
