@@ -87,6 +87,7 @@ namespace exercise.tests
             // Act
             Admin admin = new Admin();
             admin.enableAccount(userName1,true);
+
             bool status1 = accounts.getAccountStatus(userName1);
             bool status2 = accounts.getAccountStatus(userName2);
 
