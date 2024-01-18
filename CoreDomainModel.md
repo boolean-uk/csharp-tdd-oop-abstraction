@@ -11,3 +11,5 @@ TodoItem |private DateTime _TimeStamp    |
 		 |public string TimeStamp{get;}  | get _TimeStamp       | string
          |public string Status {get; set}| get; set; _status    | string
 		 | setDateTime()				 | gets DateTime Local	| string
+
+
