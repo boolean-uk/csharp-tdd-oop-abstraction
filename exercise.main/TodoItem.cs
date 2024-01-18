@@ -16,20 +16,22 @@ namespace exercise.main
 
         public TodoItem(String title, String detail, bool status)
         {
-            this._time = DateTime.Now;  
+            this._time = DateTime.Now;
             this._title = title;
             this._detail = detail;
             this._status = status;
         }
 
         public DateTime Time { get; }
-        
 
-        /*       public void setStatus(String status)    // f.eks. setCompleted / setIncompleted
-               {
-                   this._status = status;
-               }*/
 
+        //Setting status:
+        public void setStatus(bool status)    // f.eks. setCompleted / setIncompleted
+        {
+            this._status = status;
+        }
+
+        //Getting statis
         public bool getStatus()
         {
             return this._status;
