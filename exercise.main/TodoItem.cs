@@ -50,7 +50,7 @@ namespace exercise.main
 
         public DateTime GetDateCreated()
         {
-            throw new NotImplementedException();
+            return DateTime.Now;
         }
     }
 }
