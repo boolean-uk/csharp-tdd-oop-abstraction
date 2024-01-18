@@ -16,7 +16,7 @@ namespace exercise.main
         
         public bool canLogIn()
         {
-            throw new NotImplementedException();
+            return _enabled;
         }
 
         protected internal bool enable()
