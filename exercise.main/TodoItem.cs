@@ -9,25 +9,51 @@ namespace exercise.main
     public class TodoItem
     {
 
-        public string title;
-        public string detail;
-        public string status;
+        private string _title;
+        private string _detail;
+        private string _status;
+        private DateTime _created;
 
         public TodoItem(String title, String detail, String status)
         {
-            this.title = title;
-            this.detail = detail;
-            this.status = status;
+            _title = title;
+            _detail = detail;
+            _status = status;
+            _created = DateTime.Now;
+        }
+        public DateTime Created
+        {
+            get { return _created; }
         }
 
-        public void setStatus(String status)
+        public string Detail
         {
-            this.status = status;
+            get=> _detail;
         }
 
-        public String getStatus()
+        public string Status
         {
-            return this.status;
+            get => _status; 
+        }
+
+        public string Title
+        {
+            get => _title;
+        }
+
+        public String Details
+        {
+            get => _detail;
+        }
+
+        public void StatusDeriving()
+        {
+            _status = "Deriving";
+        }
+
+        public void StatusParked()
+        {
+            _status = "Parked";
         }
     }
 }
