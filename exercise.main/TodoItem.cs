@@ -14,8 +14,6 @@ namespace exercise.main
         private string _status;
         private string _dateAndTime;
 
-        public string Title { get { return _title; } }
-        public string Detail { get { return _detail; } }
         public string Status { get { return _status; } set { _status = value; } }
         public string DateAndTime { get { return _dateAndTime; } }
 
