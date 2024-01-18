@@ -1,18 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NUnit.Framework;
+using static exercise.main.Extension;
 
 namespace exercise.tests
 {
     [TestFixture]
-    public class ExtensionTests
+    public class UserAccountTests
     {
         [Test]
-        public void Tests()
+        public void AccountCreationValidCredentials()
         {
-            Assert.Pass();
+            Assert.DoesNotThrow(() => new UserAccount("user@example.com", "password123"));
+        }
+
+        [Test]
+        public void AccountCreationInvalidEmail()
+        {
+            Assert.Throws<ArgumentException>(() => new UserAccount("userexample.com", "password123"));
+        }
+
+        [Test]
+        public void AccountCreationInvalidPassword()
+        {
+            Assert.Throws<ArgumentException>(() => new UserAccount("user@example.com", "pass"));
+        }
+
+        [Test]
+        public void NewAccountShouldBeDisabled()
+        {
+            var account = new UserAccount("user@example.com", "password123");
+            Assert.IsFalse(account.CanLogin());
+        }
+
+        [Test]
+        public void EnablingAccountShouldAllowLogin()
+        {
+            var account = new UserAccount("user@example.com", "password123");
+            account.EnableAccount();
+            Assert.IsTrue(account.CanLogin());
+        }
+
+        [Test]
+        public void DisabledAccountShouldNotAllowLogin()
+        {
+            var account = new UserAccount("user@example.com", "password123");
+            Assert.IsFalse(account.CanLogin());
         }
     }
 }
