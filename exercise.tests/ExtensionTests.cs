@@ -46,5 +46,26 @@ namespace exercise.tests
             Assert.IsTrue(status1 == true);  //Should returns true 
             Assert.IsTrue(status2 == false);  //Should returns false
         }
+
+        [Test]
+        public void testCheckUser()
+        {
+
+            // Arrange
+            string userName1 = "1234@hotmail.com";
+            string userName2 = "1234hotmail.com";
+            //string passWord1 = "12345";
+            string passWord2 = "123456789";
+
+            Account accounts = new Account();
+
+            // Act
+            bool status1 = accounts.checkUser(userName1);
+            bool status2 = accounts.checkUser(userName2);
+
+            // Assert
+            Assert.IsTrue(status1 == true);  //Should returns true 
+            Assert.IsTrue(status2 == false);  //Should returns false
+        }
     }
 }
