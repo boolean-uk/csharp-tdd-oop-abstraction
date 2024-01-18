@@ -1,4 +1,5 @@
 ﻿
+
 namespace exercise.main.Extension
 {
     public class Account
@@ -43,6 +44,17 @@ namespace exercise.main.Extension
         public bool getAccountStatus(string userName)
         {
             return _Users[userName];
+        }
+
+        public bool LogIn(string userName, string passWord)
+        {
+            if (_Users[userName] == true)
+            {
+                return true;
+            }
+            else {
+                return false;
+            }
         }
     }
 }
