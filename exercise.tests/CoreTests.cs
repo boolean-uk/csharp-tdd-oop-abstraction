@@ -1,11 +1,14 @@
+using exercise.main;
+
 namespace exercise.tests;
 
 [TestFixture]
 public class CoreTests
 {
     [Test]
-    public void Test()
+    public void TestPrivateFields()
     {
-        Assert.Pass();
+        TodoItem todoItem = new TodoItem("Workout", "Grindset", "Done");
+
     }
 }
