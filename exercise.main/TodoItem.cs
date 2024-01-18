@@ -39,7 +39,7 @@ namespace exercise.main
 
         public DateTime createTime() 
         {
-            throw new NotImplementedException();
+            return created;
         }
     }
 }
