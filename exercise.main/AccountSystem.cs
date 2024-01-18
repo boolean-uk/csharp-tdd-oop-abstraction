@@ -19,7 +19,16 @@ namespace exercise.main
 
         public string createUser(string email, string password)
         {
-            throw new NotImplementedException();
+            if (!email.Contains("@")) 
+            {
+                return "invalid email";
+            }
+            else if (password.Length < 8) 
+            {
+                return "invalid password";
+            }
+            _users.Add(new UserAccount(email, password));
+            return "new user created";
         }
     }
 }
