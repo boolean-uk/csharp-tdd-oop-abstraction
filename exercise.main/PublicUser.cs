@@ -8,24 +8,11 @@ namespace exercise.main
 {
     public class PublicUser : User
     {
-        
-
         public PublicUser() 
         { 
-                
         }
 
-        protected string SetPassword()
-        {
-            throw new NotImplementedException();
-        }
-
-        protected string SetEmail()
-        {
-            throw new NotImplementedException();
-        }
-
-        protected internal override void enable()
+        protected internal override void Enable()
         {
             throw new NotImplementedException();
         }

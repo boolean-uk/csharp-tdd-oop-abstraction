@@ -12,12 +12,13 @@ namespace exercise.main
         {
             
         }
+
         public string toggleUser(User user)
         {
             throw new NotImplementedException();
         }
 
-        protected internal override void enable()
+        protected internal override void Enable()
         {
             throw new NotImplementedException();
         }
