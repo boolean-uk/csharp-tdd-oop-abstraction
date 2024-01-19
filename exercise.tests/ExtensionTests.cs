@@ -57,8 +57,20 @@ namespace exercise.tests
         }
 
         [Test]
-        public void DisallowDisabledUserLoginTest()
+        public void ValidLoginTest()
         {
+            AdminAccount admin = (AdminAccount)accounts.Get(adminEmail);
+            Login login;
+            Assert.DoesNotThrow(() => login = new Login(admin, highlySecurePassword));
+        }
+
+        [Test]
+        public void InvalidLoginTest()
+        {
+            AdminAccount admin = (AdminAccount)accounts.Get(adminEmail);
+            string wrongPassword = "ILikeBaloons";
+            Login adminLogin;
+            Assert.Throws<InvalidOperationException>(() => adminLogin = new Login(admin, wrongPassword));
             UserAccount user = (UserAccount)accounts.Get(userEmail);
             Assert.That(user.IsEnabled == false);
             Login userLogin;

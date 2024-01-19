@@ -13,7 +13,7 @@ namespace exercise.main.Extension
 
         public Account(string email, string password)
         {
-            throw new NotImplementedException();
+            Register(email, password);
         }
 
         public void Register(string email, string password)
@@ -27,22 +27,22 @@ namespace exercise.main.Extension
                 }
                 else throw new InvalidOperationException("Invalid password.");
             }
-            else throw new InvalidOperationException("Invalid email adress");
+            else throw new InvalidOperationException("Invalid email address");
         }
 
         public bool IsCorrectPassword(string password)
         {
-            throw new NotImplementedException();
+            return password == this.password;
         }
 
         public bool MeetsEmailPolicy(string email)
         {
-            throw new NotImplementedException();
+            return email.Contains('@');
         }
 
         public bool MeetsPasswordPolicy(string password)
-        {  
-            throw new NotImplementedException();
+        {
+            return password.Length >= 8;
         }
 
         public string Email { get => email; }
