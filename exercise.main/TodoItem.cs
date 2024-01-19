@@ -12,29 +12,24 @@ namespace exercise.main
 
         private string _title;
         private string _detail;
-        private string _status;
+        private bool _status;
         public readonly string _dateTime;
+        
+        public string Title { get { return _title; } }
         public TodoItem(String title, String detail)
         {
             _title = title;
             _detail = detail;
-            _status = "incomplete";
+            _status = false;
             _dateTime = DateTime.Now.ToString();
         }
 
         public void changeStatus()
         {
-            if(_status == "incomplete" )
-            {
-                _status = "complete";
-            }
-            else if (_status == "complete" )
-            {
-                _status = "incomplete";
-            }
+            _status = !_status;
         }
 
-        public String getStatus()
+        public bool getStatus()
         {
             return _status;
         }
