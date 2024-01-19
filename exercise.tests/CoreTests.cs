@@ -7,15 +7,34 @@ namespace exercise.tests;
 public class CoreTests
 {
     [Test]
-    public void Test()
+    public void FetchDataTest()
     {
-        TodoItem todoItem = new TodoItem("Task1","Cleaning","Incomplete","July 07","13:00");
-        string dateTest = todoItem.getDate();
-        string timeTest = todoItem.getTime();
+        TodoItem todoItem = new TodoItem("Task1","Cleaning",Status.Done,"July 07","13:00");
 
 
-        Assert.IsTrue(dateTest == "July 07");
-        Assert.IsTrue(timeTest == "13:00");
+        Assert.IsTrue(todoItem.getDate() == "July 07");
+        Assert.IsTrue(todoItem.getTime() == "13:00");
+        Assert.IsTrue(todoItem.getTitle() == "Task1");
+        Assert.IsTrue(todoItem.getDetail() == "Cleaning");
 
     }
+
+    [Test]
+    public void StatusTest()
+    {
+        TodoItem todoItem = new TodoItem("Task1", "Cleaning", Status.Done, "July 07", "13:00");
+        todoItem.isCompleted();
+
+        Assert.IsTrue(todoItem.getStatus() == Status.Done);
+        
+        todoItem.isNotCompleted();
+
+        Assert.IsTrue(todoItem.getStatus() == Status.Not_Done);
+
+        todoItem.isNotCompleted();
+
+        Assert.IsTrue(todoItem.getStatus() == Status.Not_Done);
+    }
+
+
 }

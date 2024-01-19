@@ -6,16 +6,21 @@ using System.Threading.Tasks;
 
 namespace exercise.main
 {
+    public enum Status
+    {
+        Done,
+        Not_Done
+    }
     public class TodoItem
     {
 
         private string title;
         private string detail;
-        private string status;
+        private Status status;
         private string date;
         private string time;
 
-        public TodoItem(String title, String detail, String status, string date, string time)
+        public TodoItem(String title, String detail, Status status, string date, string time)
         {
             this.title = title;
             this.detail = detail;
@@ -24,12 +29,16 @@ namespace exercise.main
             this.time = time;
         }
 
-        public void setStatus(String status)
+        public void isCompleted()
         {
-            this.status = status;
+            this.status = Status.Done;
+        }
+        public void isNotCompleted()
+        {
+            this.status = Status.Not_Done;
         }
 
-        public String getStatus()
+        public Status getStatus()
         {
             return this.status;
         }
