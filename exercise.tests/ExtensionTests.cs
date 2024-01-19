@@ -14,19 +14,19 @@ namespace exercise.tests
         public void CreateUser()
         {
             //Set Up
-            System system = new System();
+            UserSystem system = new UserSystem();
             //Execute
             system.createUser("sebastian.hanssen@outlook.com", "password123");
             //Verify
             Assert.IsNotNull(system.userList);
-            Assert.That(system.userList[0].Username, Is.EqualTo("sebastian.hanssen@outlook.com"));
+            Assert.That(system.userList[0].Email, Is.EqualTo("sebastian.hanssen@outlook.com"));
         }
 
         [Test]
         public void CreateUserEmailError()
         {
             //Set Up
-            System system = new System();
+            UserSystem system = new UserSystem();
             //Execute
             system.createUser("sebastian.hanssenoutlook.com", "password123");
             //Verify
@@ -37,7 +37,7 @@ namespace exercise.tests
         public void CreateUserPasswordError()
         {
             //Set Up
-            System system = new System();
+            UserSystem system = new UserSystem();
             //Execute
             system.createUser("sebastian.hanssen@outlook.com", "pass");
             //Verify
@@ -48,14 +48,15 @@ namespace exercise.tests
         public void SignInFail()
         {
             //Set Up
-            System system = new System();
+            UserSystem system = new UserSystem();
             //Execute
             system.createUser("sebastian.hanssen@outlook.com", "password123");
-            system.userList[0].signIn();
+            system.signIn(system.userList[0]);
             //Verify
             Assert.IsNotNull(system.userList);
-            Assert.That(system.userList[0].Username, Is.EqualTo("sebastian.hanssen@outlook.com"));
+            Assert.That(system.userList[0].Email, Is.EqualTo("sebastian.hanssen@outlook.com"));
             Assert.That(system.errorMessage, Is.EqualTo("Account not enabled."));
+            Assert.That(system.userList[0].SignedIn, Is.EqualTo(false));
             Assert.That(system.userList[0].Status, Is.EqualTo(false));
         }
 
@@ -63,14 +64,14 @@ namespace exercise.tests
         public void SignIn()
         {
             //Set Up
-            System system = new System();
+            UserSystem system = new UserSystem();
             //Execute
             system.createUser("sebastian.hanssen@outlook.com", "password123");
-            system.admin.toggleUser(userList[0]);
-            system.userList[0].signIn();
+            system.toggleUser(system.userList[0]);
+            system.signIn(system.userList[0]);
             //Verify
             Assert.IsNotNull(system.userList);
-            Assert.That(system.userList[0].Username, Is.EqualTo("sebastian.hanssen@outlook.com"));
+            Assert.That(system.userList[0].Email, Is.EqualTo("sebastian.hanssen@outlook.com"));
             Assert.That(system.userList[0].Status, Is.EqualTo(true));
         }
 
@@ -78,10 +79,10 @@ namespace exercise.tests
         public void SignInNoUserError()
         {
             //Set Up
-            System system = new System();
+            UserSystem system = new UserSystem();
             //Execute
             system.createUser("sebastian.hanssen@outlook.com", "password123");
-            system.admin.toggleUser("s.h@outlook.com");
+            system.toggleUser("s.h@outlook.com");
             //Verify
             Assert.That(system.errorMessage, Is.EqualTo("There is no user with the e-mail s.h@outlook.com"));
         }

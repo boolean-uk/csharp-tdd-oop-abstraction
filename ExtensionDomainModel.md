@@ -19,7 +19,7 @@ account is enabled or disabled.
 |         |                            |                                          | Invalid Password    | Change errorMessage |
 |         |                            |                                          | Invalid Email       | Change errorMessage |
 |         |                            |                                          |                     |                     |
-| Admin   | toggleUser(User)           | Enables or disables a user in the system | User exists         | Toggle status       |
+| System  | toggleUser(User)           | Enables or disables a user in the system | User exists         | Toggle status       |
 |         |                            |                                          | User does not exist | Change errorMessage |
 |         |                            |                                          |                     |                     |
 | System  | signIn()                   | Signs in the user to the system          | Signs in            | Successful sign in  |
