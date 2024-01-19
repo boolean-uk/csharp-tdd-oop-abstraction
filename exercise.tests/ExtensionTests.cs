@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,72 +11,91 @@ namespace exercise.tests
     [TestFixture]
     public class ExtensionTests
     {
-        private User _user;
+        private Admin _admin;
 
         [SetUp]
         public void SetUp()
         {
-            _user = new User();
+            _admin = new Admin();
         }
 
-        [Test]
-        public void Tests()
+        [TestCase("asonroeinoit", "asonroeinoit@gmail.com", true, "account created!")]
+        [TestCase("", "@sro", false, "invalid password!")]
+        [TestCase("AAAAAAAAAA", "jetr", false, "invalid email!")]
+        public void accountCreation(string password, string email, bool pass, string msg)
         {
-            Assert.Pass();
-        }
+            var stringWriter = new StringWriter();
+            Console.SetOut(stringWriter);
 
-        [Test]
-        public void PassWordValid()
-        {
-            string res1 = _user.passWordCreate("asonroeinoit");
+            bool result = _admin.approveAccount(password, email);
 
-            Assert.AreEqual(res1, "success!");
+            var outputLines = stringWriter.ToString().Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
 
-            string res2 = _user.passWordCreate("as");
+            Assert.That(msg, Is.EqualTo(outputLines[0]));
 
-            Assert.AreEqual(res2, "invalid!");
-
-        }
-
-        [Test]
-        public void EmailValid()
-        {
-            string res1 = _user.EmailCreate("asonroeinoit@gmail.com");
-
-            Assert.AreEqual(res1, "success!");
-
-            string res2 = _user.EmailCreate("as");
-
-            Assert.AreEqual(res2, "invalid!");
+            Assert.AreEqual(pass, result);
 
         }
 
         [Test]
         public void NewDisabled()
         {
-            User us1 = new User();
+            _admin.approveAccount("AAAAAAAAAAA", "AAAAAAAAAAAA@");
+            var us1 = _admin.getAccount("AAAAAAAAAAA", "AAAAAAAAAAAA@");
 
+            Assert.NotNull(us1);
             Assert.IsFalse(us1.getStatus());
 
-            us1.setAccountEnabled();
+        }
 
+        [Test]
+        public void NonexistentAccountCannotBeFound()
+        {
+            var us1 = _admin.getAccount("AAAAAA", "AAAAA");
+            Assert.IsNull(us1);
+            
+        }
+
+        [Test]
+        public void onlyAdminCanEnableAndDisableAccount()
+        {
+            _admin.approveAccount("AAAAAAAAAAA", "AAAAAAAAAAAA@");
+            var us1 = _admin.getAccount("AAAAAAAAAAA", "AAAAAAAAAAAA@");
+            Assert.NotNull(us1);
+
+            us1.setAccountEnabled(us1);
+            Assert.IsFalse(us1.getStatus());
+
+            _admin.setAccountEnabled(us1);
             Assert.IsTrue(us1.getStatus());
 
-            us1.setAccountInabled();
-
+            _admin.setAccountInabled(us1);
             Assert.IsFalse(us1.getStatus());
         }
 
         [Test]
         public void CanUserLogin()
         {
-            User us1 = new User();
+            var stringWriter = new StringWriter();
+            Console.SetOut(stringWriter);
 
-            Assert.IsFalse(us1.getStatus());
+            _admin.approveAccount("AAAAAAAAAAA", "AAAAAAAAAAAA@");
+            var us1 = _admin.getAccount("AAAAAAAAAAA", "AAAAAAAAAAAA@");
+            Assert.NotNull(us1);
 
-            us1.setAccountEnabled();
+            bool login = us1.canLogin();
 
-            Assert.IsTrue(us1.getStatus());
+            Assert.IsFalse(login);
+
+            _admin.setAccountEnabled(us1);
+
+            Assert.IsTrue(us1.canLogin());
+
+            var outputLines = stringWriter.ToString().Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
+
+            Assert.That("Your account is not active - you can not login yet!", Is.EqualTo(outputLines[1]));
+            Assert.That("Your account is active - you can login!", Is.EqualTo(outputLines[2]));
+           
 
         }
     }

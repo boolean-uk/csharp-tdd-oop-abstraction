@@ -13,18 +13,38 @@ I want new accounts to be disabled by default until I manually set them as enabl
 I want users to know if they are able to log in or not based on whether their
 account is enabled or disabled.
 
+
 #### Class
-- User
+- Account
 
 #### Properties
-- private string _password;
-- private string _email;
-- private bool _status = false;
+- public bool _admin = false;
+- public bool _status = false;
+- public List<User> _users = new List<User>();
 
 
 #### Methods
-- public string passWordCreate(string password) : return success if pw length over 8, otherwise invalid
-- public string EmailCreate(string email) : return success if email contains @ otherwise invalid
-- getStatus() : get account status - also functions as a way to check if user can login
-- setAccountEnabled() : set _status to true
-- setAccountInabled() : set _status to false
+- User getAccount(string password, string email) : return User if exists, otherwise null
+- public void setAccountEnabled(User user) : if admin status, set User status to enabled
+- public void setAccountInabled(User user) : if admin status, set User status to inabled
+- public bool canLogin() : true if status is true, else false
+- public bool getStatus() : get status
+
+
+
+#### Class
+- User : Account
+
+#### Properties
+- private string _password {get};
+- private string _email {get};
+
+
+
+#### Class
+- Admin : Account
+
+#### Methods
+- public bool approveAccount(string username, string email) : 
+	* return true if password is over 8 characters and email contains @. 
+	* Saves new user to _users List.
