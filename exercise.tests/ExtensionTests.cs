@@ -82,5 +82,48 @@ namespace exercise.tests
             // Act & Assert
             Assert.DoesNotThrow(() => userAccountManagement.ChangeAccountState(nonExistingUser, true));
         }
+
+        [Test]
+    public void IsAccountActive_AccountExistsAndIsActive_ReturnsTrue()
+    {
+        // Arrange
+        string userName = "testUser";
+        userAccountManagement.CreateAccount(userName, "test@example.com", "strongPwd");
+
+        userAccountManagement.ChangeAccountState(userName, true);
+        // Act
+        bool isActive = userAccountManagement.isAccountActive(userName);
+
+        // Assert
+        Assert.True(isActive);
+    }
+
+    [Test]
+    public void IsAccountActive_AccountExistsAndIsNotActive_ReturnsFalse()
+    {
+        // Arrange
+        string userName = "testUser";
+        userAccountManagement.CreateAccount(userName, "test@example.com", "strongPwd");
+        userAccountManagement.ChangeAccountState(userName, false);
+
+        // Act
+        bool isActive = userAccountManagement.isAccountActive(userName);
+
+        // Assert
+        Assert.False(isActive);
+    }
+
+    [Test]
+    public void IsAccountActive_AccountDoesNotExist_ReturnsFalse()
+    {
+        // Arrange
+        string nonExistentUser = "nonExistentUser";
+
+        // Act
+        bool isActive = userAccountManagement.isAccountActive(nonExistentUser);
+
+        // Assert
+        Assert.False(isActive);
+    }
     }
 }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace exercise.main
 {
+   
     public class User {
         public string userName;
         public string email;
@@ -43,8 +44,7 @@ namespace exercise.main
         public bool isAccountActive(string userName) {
             foreach (User tmp in users)
             {
-                if (tmp.userName.Equals(userName))
-                {
+                if (tmp.userName.Equals(userName)) {
                     return tmp.state;
                 }
             }

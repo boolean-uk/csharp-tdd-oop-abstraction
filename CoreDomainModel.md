@@ -1,21 +1,21 @@
 ```C#
 class TodoItem {
     private string Title { get; }
-    private string Detail { get; }
-    private string Starus
+    private string Description { get; }
+    private bool Status
     private DateTime date;
 
-    public TodoItem(String title, String detail, String status) {
+    public stirng Title { get { return Title }; set { setTitle() }; }
+    public stirng Description { get { return Description }; set { setDescripton() }; }
+    public bool isDone { get { return Status }; set { setStatus() }; }
+    public string Date {get { date.ToString() }; } 
+
+    public TodoItem(String title, String detail, bool status) {
         // set
     }
 
-    public void setStatus(string status); // set the private status to the new status
-    public string getDate(); // get the date the TodoItem was created
-    public string getStatus(); // return the private status 
-
-    public string getDate(); // return date in string
-    public string getStatus(); // return status
-    public string getDetail(); // return details
-    public string getTitle(); // return title
+    private void setStatus(bool status); // set the private status to the new status
+    private void setDescription(string description);
+    private void setTitle(string title);
 }
 ```

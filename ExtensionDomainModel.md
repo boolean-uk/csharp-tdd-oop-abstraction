@@ -1,8 +1,8 @@
 ```C#
 Extension
 public class User {
-    private string userName;
-    private string email;
+    public string userName;
+    public string email;
     private string password;
     private bool state;
 }

@@ -8,43 +8,46 @@ namespace exercise.main
 {
     public class TodoItem
     {
+        private string _title;
+        private string _description; 
+        private bool _isDone;
+        private DateTime _date;
 
-        private string Title;
-        private string Detail; 
-        private string Status;
+        public string Title { get { return _title; } set { setTitle(value); } }
+        public string Description { get { return _description; } set { setDescription(value); } }
+        public bool IsDone { get { return _isDone; } }
+        public string Date {get { return _date.ToString("yyyy-MM-dd HH:mm:ss"); } } 
 
-        private DateTime date;
-
-        public TodoItem(String title, String detail, String status)
+        public TodoItem(String title, String detail, bool isDone)
         {
-            Title = title;
-            Detail = detail;
-            Status = status;
-            date = DateTime.Now;
+            _title = title;
+            _description = detail;
+            _isDone = isDone;
+            _date = DateTime.Now;
+        }
+        private void setDescription(string description)
+        {
+            _description = description;
+            
+        }
+        public void SetDone()
+        {
+            _isDone = true;
+        }
+        public void SetNotDone() {
+            _isDone = false;
+        }
+        public void SetInCompleat(bool state) {
+            _isDone = state;
         }
 
-        public void setStatus(String status)
-        {
-            Status = status;
+        private void setTitle(string title) {
+            _title = title;
         }
 
-        public string getDate() {
-            return date.ToString("yyyy-MM-dd HH:mm:ss");
-        }
-
-        public string getStatus()
+        public void ChangeIsDone()
         {
-            return Status;
-        }
-
-        public string getDetail()
-        {
-            return Detail;
-        }
-
-        public string getTitle()
-        {
-            return Title;
+            throw new NotImplementedException();
         }
     }
 }
