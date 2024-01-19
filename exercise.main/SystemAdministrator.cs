@@ -17,7 +17,7 @@ namespace exercise.main
 
         public override bool IsEnabled()
         {
-            throw new NotImplementedException();
+            return _isEnabled;
         }
     }
 }

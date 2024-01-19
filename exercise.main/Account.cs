@@ -14,28 +14,48 @@ namespace exercise.main
 
         public Account(string email, string password)
         {
+            if (validateEmail(email)) { _email = email; }
+
+            if (validatePassword(password)) { _password = password; }
+            _isEnabled = false;
         }
 
         public bool validateEmail(string email)
         {
-            throw new NotImplementedException();
+            if (!email.Contains('@'))
+            {
+                Console.WriteLine("invalid email");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         public bool validatePassword(string password)
         {
-            throw new NotImplementedException();
+            if (password.Length < 8)
+            {
+                Console.WriteLine("invalid password");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         public void EnableAccount(Account acc)
         {
-            throw new NotImplementedException();
+            if (acc is SystemAdministrator)
+            {
+                _isEnabled = true;
+            }
         }
 
-        public virtual bool IsEnabled() { throw new NotImplementedException(); }
+        public virtual bool IsEnabled() { return _isEnabled; }
 
-        public bool CanLogIn() 
-        {
-            throw new NotImplementedException();
-        }
+        public bool CanLogIn() { return _isEnabled; }
     }
 }
