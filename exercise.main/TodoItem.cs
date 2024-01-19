@@ -8,32 +8,68 @@ namespace exercise.main
 {
     public class TodoItem
     {
-
         private string title;
         private string detail;
-        private string status;
+        private bool isDone;
 
         private int date;
         private int time;
 
-        public TodoItem(String title, String detail, String status, int date, int time)
+        public TodoItem()
         {
+            this.title = "";
+            this.detail = "";
+            this.date = 0;
+            this.time = 0;
+            this.isDone = false;
+        }
+
+        public bool AddTask(String title, String detail, int date, int time, bool isDone = false)
+        {
+            if (title == "")
+                return false;
+
+            if (detail == "")
+                return false;
+
+            if (date > 31)
+                return false;
+
+            if (time > 12)
+                return false;
+
             this.title = title;
             this.detail = detail;
-            this.status = status;
-
             this.date = date;
             this.time = time;
+            this.isDone = isDone;
+            return true;
         }
 
-        public void SetTaskComplete()
+        public bool SetTaskComplete()
         {
-            status = "Complete";
+            isDone = true;
+            return isDone;
         }
 
-        public void SetTaskIncomplete()
+        public bool SetTaskIncomplete()
         {
-            status = "Incomplete";
+            isDone = false;
+            return isDone;
+        }
+
+        public bool IsTaskDone()
+        {
+            return isDone;
+        }
+
+        public bool AddDetails(string message)
+        {
+            if (message == "")
+                return false;
+
+            message += detail;
+            return true;
         }
 
         public void PrintDataAndTime()
