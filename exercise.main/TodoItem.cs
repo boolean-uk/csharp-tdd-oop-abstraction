@@ -9,12 +9,14 @@ namespace exercise.main
     public class TodoItem
     {
 
-        public string title;
-        public string detail;
-        public string status;
+        private string title;
+        private string detail;
+        private string status;
+        private DateTime dt;
 
         public TodoItem(String title, String detail, String status)
         {
+            dt = DateTime.Now;
             this.title = title;
             this.detail = detail;
             this.status = status;
@@ -29,5 +31,7 @@ namespace exercise.main
         {
             return this.status;
         }
+
+        public DateTime getCreationDate() { return this.dt; }
     }
 }
