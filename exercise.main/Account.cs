@@ -14,13 +14,13 @@ namespace exercise.main
 
         public Account(string email, string password)
         {
-            if (validateEmail(email)) { _email = email; }
+            if (IsValidEmail(email)) { _email = email; }
 
-            if (validatePassword(password)) { _password = password; }
+            if (IsValidPassword(password)) { _password = password; }
             _isEnabled = false;
         }
 
-        public bool validateEmail(string email)
+        public bool IsValidEmail(string email)
         {
             if (!email.Contains('@'))
             {
@@ -33,7 +33,7 @@ namespace exercise.main
             }
         }
 
-        public bool validatePassword(string password)
+        public bool IsValidPassword(string password)
         {
             if (password.Length < 8)
             {
