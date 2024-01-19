@@ -16,15 +16,31 @@ namespace exercise.tests
 
         [SetUp]
         public void SetUp() {
-            admin = new User("admin@admin.com", "admin", "Admin");
+            admin = new User("admin@admin.com", "admin", Role.ADMIN);
             _userManager = new Extension(admin);
         }
 
-        [Test]
-        public void TestCreateUser()
+
+        [TestCase ("test@email.com", "12345678")]
+        public void CanCreateUser(string email, string password)
         {
-            string actual = _userManager.CreateUser("email@email.com", "12345678");
+            string actual = _userManager.CreateUser(email, password);
             StringAssert.Contains("User Created!", actual);
+        }
+
+        [TestCase ("test.email.com")]
+        [TestCase ("wrong")]
+        public void CanNotCreateUserWithInvalidEmail(string email) {
+            string actual = _userManager.CreateUser(email, "12345678");
+            Assert.That(actual, Is.EqualTo("invalid email"));
+        }
+
+        [TestCase ("1234")]
+        [TestCase ("wrong")]
+        [TestCase ("@£!2")]
+        public void CanNotCreateUserWithInvalidPassword(string password) {
+            string actual = _userManager.CreateUser("email@email.com", password);
+            Assert.That("invalid password", Is.EqualTo(actual));
         }
 
         [Test]
@@ -32,22 +48,6 @@ namespace exercise.tests
         {
             string actual = _userManager.CreateUser("", "");
             StringAssert.Contains("Can Not Be Empty!", actual);
-        }
-
-        [TestCase ("Hej", "invalid email")]
-        [TestCase ("Email@email.com", "User Created!")]
-        public void TestValidEmail(string email, string expected)
-        {
-            string actual = _userManager.CreateUser(email, "12345678");
-            StringAssert.Contains(expected, actual);
-        }
-
-        [TestCase ("12345678", "User Created!")]
-        [TestCase ("1234", "invalid password")]
-        public void TestValidPassword(string password, string expected)
-        {
-            string actual = _userManager.CreateUser("valid@email.com", password);
-            StringAssert.Contains(expected, actual);
         }
 
         public void TestChangeStatus()

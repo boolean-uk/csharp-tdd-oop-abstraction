@@ -6,20 +6,33 @@ namespace exercise.tests;
 [TestFixture]
 public class CoreTests
 {
-    [Test]
-    public void TestChangeStatus()
+    [TestCase ("Task 1", "Running", TodoStatus.NOT_DONE)]
+    [TestCase ("", "", TodoStatus.NOT_DONE)]
+    public void CanCreateToDoItem(string title, string description, TodoStatus status)
     {
-        TodoItem todoItem = new TodoItem("Task 1", "Running", true);
-        Assert.That(true, Is.EqualTo(todoItem.IsDone));
+        TodoItem todoItem = new TodoItem(title, description, status);
+        Assert.That(todoItem.Title, Is.EqualTo(title));
+        Assert.That(todoItem.Detail, Is.EqualTo(description));
+        Assert.That(todoItem.Status, Is.EqualTo(status));
     }
 
-    [Test]
-    public void TestDateTime()
-    {
-        TodoItem todoItem = new TodoItem("Task 1", "Running", false);
-        DateTime created = todoItem.Date;
-        DateTime now = DateTime.Now;
+    [TestCase ("small")]
+    [TestCase ("")]
+    [TestCase ("CAPITAL")]
+    [TestCase ("Special@¤6/52")]
+    public void CanUpdateTitle(string update) {
+        TodoItem todoItem = new TodoItem("Title", "description", TodoStatus.NOT_DONE);
+        todoItem.UpdateTitle(update);
+        Assert.That(todoItem.Title, Is.EqualTo(update));
+    }
 
-        Assert.That(now.Date, Is.EqualTo(created.Date));
+    [TestCase ("small   ")]
+    [TestCase ("")]
+    [TestCase ("CAPITAL")]
+    [TestCase ("Special@¤6/52")]
+    public void CanUpdateDescription(string update) {
+        TodoItem todoItem = new TodoItem("Title", "description", TodoStatus.NOT_DONE);
+        todoItem.UpdateDescription(update);
+        Assert.That(todoItem.Detail, Is.EqualTo(update));
     }
 }

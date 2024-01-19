@@ -7,11 +7,15 @@ using System.Threading.Tasks;
 namespace exercise.main
 {
 
+    public enum TodoStatus {
+        DONE,
+        NOT_DONE
+    }
     public class TodoItem
     {
         private string _title;
         private string _detail;
-        public bool IsDone;
+        public TodoStatus Status;
         private DateTime _date;
 
         public DateTime Date { get { return _date; }}
@@ -20,12 +24,21 @@ namespace exercise.main
         public string Detail { get { return _detail; }}
 
 
-        public TodoItem(String title, String detail, bool isDone)
+        public TodoItem(String title, String detail, TodoStatus status)
         {
             this._title = title;
             this._detail = detail;
-            this.IsDone = isDone;
+            this.Status = status;
             this._date = DateTime.Now;
+        }
+
+        public bool UpdateTitle(string NewTitle) {
+            _title = NewTitle;
+            return true;
+        }
+        public bool UpdateDescription(string NewDescription) {
+            _detail = NewDescription;
+            return true;
         }
     }
 }

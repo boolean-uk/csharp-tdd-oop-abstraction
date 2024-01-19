@@ -1,26 +1,30 @@
 
 namespace exercise.main {
 
+    public enum Role {
+        USER,
+        ADMIN
+    }
     public class User {
         private string _email;
         private string _password;
         private bool _isEnabled;
-        private string _role;
+        private Role _role;
 
         public bool IsEnabled { get { return _isEnabled; }}
         public string Email { get { return _email; }}
         public string Password { get { return _password; }}
-        public string Role { get { return _role; }}
+        public Role Role { get { return _role; }}
 
-        public User(string email, string password,  string role = "User") {
+        public User(string email, string password,  Role role = Role.USER) {
             _email = email;
             _role = role;
             _password = password;
             _isEnabled = false;
             }
 
-        public bool UpdateIsEnabled(bool status) {
-            _isEnabled = status;
+        public bool UpdateIsEnabled(bool isEnabled) {
+            _isEnabled = isEnabled;
             return _isEnabled;
         }
 
@@ -31,9 +35,7 @@ namespace exercise.main {
         public Extension(User adminUser) {
             users = [adminUser];
         }
-        public bool UpdateRole(string role) {
-            return false;
-        }
+
         public string CreateUser(string email, string password) {
             if(email == "" || password == "")
                 return "Can Not Be Empty!";
@@ -56,7 +58,7 @@ namespace exercise.main {
         }
 
         public bool EnableUser(User admin, string user, bool status) {
-            if(admin.Role == "Admin") {
+            if(admin.Role == Role.ADMIN) {
                 foreach (User u in users)
                 {
                     if(u.Email == user) {
