@@ -9,10 +9,9 @@ namespace exercise.main
 
     public class TodoItem
     {
-
         private string _title;
         private string _detail;
-        private string _status;
+        public bool IsDone;
         private DateTime _date;
 
         public DateTime Date { get { return _date; }}
@@ -20,24 +19,13 @@ namespace exercise.main
         public string Title { get { return _title; }}
         public string Detail { get { return _detail; }}
 
-        public string Status { get { return _status; }}
 
-        public TodoItem(String title, String detail, String status)
+        public TodoItem(String title, String detail, bool isDone)
         {
             this._title = title;
             this._detail = detail;
-            this._status = status;
+            this.IsDone = isDone;
             this._date = DateTime.Now;
-        }
-
-        public string SetStatus(bool status) {
-            if(status == true) {
-                _status = "Complete";
-                return _status;
-            } else {
-                _status = "Not Complete";
-                return _status;
-            }
         }
     }
 }
