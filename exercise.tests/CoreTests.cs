@@ -16,7 +16,6 @@ namespace exercise.tests
         [Test]
         public void TestTodoItemCreation()
         {
-            // Arrange
             var title = "Test Title";
             var detail = "Test Detail";
             var status = "Test Status";
@@ -25,16 +24,24 @@ namespace exercise.tests
 
             Assert.AreEqual(title , todoItem.Title);
             Assert.AreEqual(detail , todoItem.Detail);
-            Assert.AreEqual(status , todoItem.Status);
-            Assert.AreEqual(DateTime.Now.Date , todoItem.CreatedAt.Date);
+            Assert.AreEqual(status == "complete" , todoItem.IsComplete);
+            Assert.AreEqual(DateTime.Now.Date , todoItem.Time.Date);
         }
 
         [Test]
         public void TestTodoItemStatusChange()
         {
-            var newStatus = "New Status";
-            _todoItem.setStatus(newStatus);
-            Assert.AreEqual(newStatus , _todoItem.getStatus());
+            _todoItem.SetComplete();
+            Assert.IsTrue(_todoItem.IsComplete);
+            _todoItem.SetIncomplete();
+            Assert.IsFalse(_todoItem.IsComplete);
         }
+
+        [Test]
+        public void TestTodoItemCreationTime()
+        {
+            Assert.AreEqual(DateTime.Now.Date , _todoItem.Time.Date);
+        }
+
     }
 }

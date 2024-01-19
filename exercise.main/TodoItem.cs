@@ -2,29 +2,36 @@
 {
     public class TodoItem
     {
+        private string _title;
+        private string _detail;
+        private string _status;
+        private DateTime _time;
 
-        public string Title { get; private set; }
-        public string Detail { get; private set; }
-        public string Status { get; set; }
-        public DateTime CreatedAt { get; private set; }
+        public string Title { get { return _title; } }
+        public string Detail { get { return _detail; } }
+        public bool IsComplete { get { return _status == "complete"; } }
+        public DateTime Time { get { return _time; } }
 
-
-        public TodoItem(string title , string detail , string status)
+        public TodoItem(String title , String detail , String status)
         {
-            Title = title;
-            Detail = detail;
-            Status = status;
-            CreatedAt = DateTime.Now;
+            this._title = title;
+            this._detail = detail;
+            this._status = status;
+            this._time = DateTime.Now;
         }
 
-        public void setStatus(String status)
+        public void SetComplete()
         {
-            Status = status;
+            this._status = "complete";
         }
-
-        public String getStatus()
+        public void SetIncomplete()
         {
-            return Status;
+            this._status = "incomplete";
+        }
+        public void SetDetail(String detail)
+        {
+            this._detail = detail;
         }
     }
+
 }
