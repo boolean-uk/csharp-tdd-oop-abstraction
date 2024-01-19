@@ -38,8 +38,8 @@ I want users to know if they are able to log in or not based on whether their
 account is enabled or disabled.
 ```
 
-| Classes       | Members            |Methods                   | Scenario                                  | Outputs |
-|---------------|--------------------|--------------------------|-------------------------------------------|---------|
-| `UserManager` |`List<User> Users`  | `CanLogin(string email)` | User staus is *Enabled*                   | true    |
-|               |                    |                          | User staus is *Disabled*                  | false   |
+| Classes       | Members            |Methods                   | Scenario                 | Outputs |
+|---------------|--------------------|--------------------------|--------------------------|---------|
+| `UserManager` |`List<User> Users`  | `CanLogin(string email)` | User staus is *Enabled*  | true    |
+|               |                    |                          | User staus is *Disabled* | false   |
 
