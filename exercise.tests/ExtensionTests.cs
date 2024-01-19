@@ -10,25 +10,13 @@ namespace exercise.tests
     public class ExtensionTests
     {
         public Account _account = new Account();
-        [Test]
-        public void createAccountTest1()
-        {
-            string result = _account.CreateAccount("eliassoprani.net", "blahblah");
-            Assert.AreEqual("email needs @", result);
-        }
-
-        [Test]
-        public void createAccountTest2()
-        {
-            string result = _account.CreateAccount("elias@soprani.net", "asd");
-            Assert.AreEqual("password can not be less than 8", result);
-        }
-
-        [Test]
-        public void createAccountTest3()
-        {
-            string result = _account.CreateAccount("elias@soprani.net", "longerthan8chars");
-            Assert.AreEqual("account created", result);
+        
+        [TestCase("eliassoprani.net", "blahblah", "email needs @")]
+        [TestCase("elias@soprani.net", "asd", "password can not be less than 8")]
+        [TestCase("elias@soprani.net", "longerthan8chars", "account created")]
+        public void TestCreateAccount(string email, string password, string expected){
+            string result = _account.CreateAccount(email, password);
+            Assert.That(result, Is.EqualTo(expected));
         }
 
         [Test]

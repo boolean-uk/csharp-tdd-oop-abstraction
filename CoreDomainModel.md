@@ -21,9 +21,11 @@ PROPERTIES
 
 METHODS
 constructor(string title, string details, string status)
-public void setStatusComplete(string status)
-	this._status = "complete"
-public void setStatusIncomplete(string status)
-	this._status = "incomplete"
+public void setStatusComplete()
+	this._status = true
+public void setStatusIncomplete()
+	this._status = false
 public void setDetail(string detail)
 	this._detail = detail
+public void setTitle(string title)
+	this._detail = title
