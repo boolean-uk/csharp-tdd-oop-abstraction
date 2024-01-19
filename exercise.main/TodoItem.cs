@@ -9,25 +9,26 @@ namespace exercise.main
     public class TodoItem
     {
 
-        public string title;
-        public string detail;
-        public string status;
+        private string _title;
+        private string _detail;
+        //I regard status as either completed or incomplete
+        private bool _status;
+        private string _creationTime;
 
-        public TodoItem(String title, String detail, String status)
+        public string Title { get => _title; }
+        public string Detail { get => _detail; }
+
+        public bool Status { get => _status; set => _status = value; }
+
+        public string CreationTime { get => _creationTime;}
+
+        public TodoItem(string title, string detail, bool status)
         {
-            this.title = title;
-            this.detail = detail;
-            this.status = status;
+            _title = title;
+            _detail = detail;
+            Status = status;
+            _creationTime = DateTime.Now.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss");
         }
 
-        public void setStatus(String status)
-        {
-            this.status = status;
-        }
-
-        public String getStatus()
-        {
-            return this.status;
-        }
     }
 }
