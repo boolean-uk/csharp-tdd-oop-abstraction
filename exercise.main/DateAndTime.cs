@@ -9,7 +9,6 @@ namespace exercise.main
     public class DateAndTime
     {
         public DateAndTime() { 
-        
         }
 
         public string GetDate()
