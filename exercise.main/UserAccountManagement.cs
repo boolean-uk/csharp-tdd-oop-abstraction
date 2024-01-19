@@ -10,7 +10,8 @@ namespace exercise.main
         public string userName;
         public string email;
         public string password;
-        public bool state;
+        public bool isAccountActive;
+        public bool isAdmin;
     }
     public class UserAccountManagement
     {
@@ -18,6 +19,23 @@ namespace exercise.main
 
         public UserAccountManagement() {
             users = new List<User>();
+            CreateAdminAccount("admin", "admin@example.com", "adminPassword");
+        }
+
+        private void CreateAdminAccount(string username, string email, string password) {
+            CreateAccount(username, email, password);
+            ChangeAccountActiveState(username, true);
+            SetOrRemoveAdminFlag(username, true);
+        }
+
+        private void SetOrRemoveAdminFlag(string username, bool state) {
+            foreach (User tmp in users)
+            {
+                if (tmp.userName.Equals(username))
+                {
+                    tmp.isAdmin = state;
+                }
+            }
         }
 
         public void CreateAccount(string userName, string email, string password) {
@@ -29,7 +47,8 @@ namespace exercise.main
                             userName = userName,
                             email = email,
                             password = password,
-                            state = false
+                            isAccountActive = false,
+                            isAdmin = false
                         };
                         users.Add(newUser);
                     } 
@@ -45,18 +64,16 @@ namespace exercise.main
             foreach (User tmp in users)
             {
                 if (tmp.userName.Equals(userName)) {
-                    return tmp.state;
+                    return tmp.isAccountActive;
                 }
             }
             return false;
         }
 
-        public void ChangeAccountState(string userName, bool state) {
-            foreach (User tmp in users)
-            {
-                if (tmp.userName.Equals(userName))
-                {
-                    tmp.state = state;
+        public void ChangeAccountActiveState(string userName, bool state) {
+            foreach (User tmp in users){
+                if (tmp.userName.Equals(userName)){
+                    tmp.isAccountActive = state;
                 }
             }
         }
@@ -77,6 +94,17 @@ namespace exercise.main
             } else {
                 throw new Exception("invalid email");
             }
+        }
+
+        public bool isAdmin(string adminUserName) {
+            foreach (User tmp in users){
+                if (tmp.userName.Equals(adminUserName)){
+                    if (tmp.isAdmin) {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
     }
 }

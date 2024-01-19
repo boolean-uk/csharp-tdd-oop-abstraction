@@ -67,7 +67,7 @@ namespace exercise.tests
             userAccountManagement.CreateAccount(userName, "test@example.com", "strongPwd");
 
             // Act
-            userAccountManagement.ChangeAccountState(userName, true);
+            userAccountManagement.ChangeAccountActiveState(userName, true);
 
             // Assert
             Assert.True(userAccountManagement.isAccountActive(userName));
@@ -80,50 +80,75 @@ namespace exercise.tests
             string nonExistingUser = "nonExistingUser";
 
             // Act & Assert
-            Assert.DoesNotThrow(() => userAccountManagement.ChangeAccountState(nonExistingUser, true));
+            Assert.DoesNotThrow(() => userAccountManagement.ChangeAccountActiveState(nonExistingUser, true));
         }
 
         [Test]
-    public void IsAccountActive_AccountExistsAndIsActive_ReturnsTrue()
-    {
-        // Arrange
-        string userName = "testUser";
-        userAccountManagement.CreateAccount(userName, "test@example.com", "strongPwd");
+        public void IsAccountActive_AccountExistsAndIsActive_ReturnsTrue()
+        {
+            // Arrange
+            string userName = "testUser";
+            userAccountManagement.CreateAccount(userName, "test@example.com", "strongPwd");
 
-        userAccountManagement.ChangeAccountState(userName, true);
-        // Act
-        bool isActive = userAccountManagement.isAccountActive(userName);
+            userAccountManagement.ChangeAccountActiveState(userName, true);
+            // Act
+            bool isActive = userAccountManagement.isAccountActive(userName);
 
-        // Assert
-        Assert.True(isActive);
-    }
+            // Assert
+            Assert.True(isActive);
+        }
 
-    [Test]
-    public void IsAccountActive_AccountExistsAndIsNotActive_ReturnsFalse()
-    {
-        // Arrange
-        string userName = "testUser";
-        userAccountManagement.CreateAccount(userName, "test@example.com", "strongPwd");
-        userAccountManagement.ChangeAccountState(userName, false);
+        [Test]
+        public void IsAccountActive_AccountExistsAndIsNotActive_ReturnsFalse()
+        {
+            // Arrange
+            string userName = "testUser";
+            userAccountManagement.CreateAccount(userName, "test@example.com", "strongPwd");
+            userAccountManagement.ChangeAccountActiveState(userName, false);
 
-        // Act
-        bool isActive = userAccountManagement.isAccountActive(userName);
+            // Act
+            bool isActive = userAccountManagement.isAccountActive(userName);
 
-        // Assert
-        Assert.False(isActive);
-    }
+            // Assert
+            Assert.False(isActive);
+        }
 
-    [Test]
-    public void IsAccountActive_AccountDoesNotExist_ReturnsFalse()
-    {
-        // Arrange
-        string nonExistentUser = "nonExistentUser";
+        [Test]
+        public void IsAccountActive_AccountDoesNotExist_ReturnsFalse()
+        {
+            // Arrange
+            string nonExistentUser = "nonExistentUser";
 
-        // Act
-        bool isActive = userAccountManagement.isAccountActive(nonExistentUser);
+            // Act
+            bool isActive = userAccountManagement.isAccountActive(nonExistentUser);
 
-        // Assert
-        Assert.False(isActive);
-    }
+            // Assert
+            Assert.False(isActive);
+        }
+        [Test]
+        public void IsAdmin_AdminExists_ReturnsTrue()
+        {
+            // Arrange
+            string adminUserName = "admin";
+
+            // Act
+            bool isAdmin = userAccountManagement.isAdmin(adminUserName);
+
+            // Assert
+            Assert.True(isAdmin);
+        }
+
+        [Test]
+        public void IsAdmin_RegularUser_ReturnsFalse()
+        {
+            // Arrange
+            string regularUserName = "regularUser";
+
+            // Act
+            bool isAdmin = userAccountManagement.isAdmin(regularUserName);
+
+            // Assert
+            Assert.False(isAdmin);
+        }
     }
 }
