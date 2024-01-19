@@ -12,17 +12,18 @@ namespace exercise.main.Extension
 
         public UserAccount(string email, string password) : base(email, password)
         {
-            throw new NotImplementedException();
         }
 
         public void Enable(Login login)
         {
-            throw new NotImplementedException();
+            if (login.IsAdmin()) isEnabled = true;
+            else throw new UnauthorizedAccessException("Illegal operation.");
         }
 
         public void Disable(Login login)
         {
-            throw new NotImplementedException();
+            if (login.IsAdmin()) isEnabled = false;
+            else throw new UnauthorizedAccessException("Illegal operation.");
         }
 
         public bool IsEnabled { get => isEnabled;}

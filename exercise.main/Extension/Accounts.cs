@@ -12,17 +12,17 @@ namespace exercise.main.Extension
 
         public Accounts()
         {
-            throw new NotImplementedException();
+            accounts = new List<Account>();
         }
 
         public void Add(Account account)
         {
-            throw new NotImplementedException();
+            accounts.Add(account);
         }
 
         public Account Get(string email)
         {
-            throw new NotImplementedException();
+            return accounts[accounts.FindIndex(a => a.Email == email)];
         }
 
         public List<Account> AccountList { get => accounts; set => accounts = value; }

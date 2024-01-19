@@ -44,7 +44,7 @@ namespace exercise.tests
         public void InvalidEmailTest(string email, string password)
         {
             UserAccount user;
-            Assert.That(() => user = new UserAccount("not an email", highlySecurePassword), Throws.TypeOf<Exception>().With.Message.Contains("Invalid email"));
+            Assert.That(() => user = new UserAccount(email, password), Throws.TypeOf<InvalidOperationException>().With.Message.Contains("Invalid email"));
         }
 
         [TestCase("valid@email.com", "1234567")]
@@ -53,7 +53,7 @@ namespace exercise.tests
         public void InvalidPasswordTest(string email, string password)
         {
             UserAccount user;
-            Assert.That(() => user = new UserAccount("not an email", highlySecurePassword), Throws.TypeOf<Exception>().With.Message.Contains("Invalid password"));
+            Assert.That(() => user = new UserAccount(email, password), Throws.TypeOf<InvalidOperationException>().With.Message.Contains("Invalid password"));
         }
 
         [Test]

@@ -27,7 +27,7 @@ namespace exercise.main.Extension
                 }
                 else throw new InvalidOperationException("Invalid password.");
             }
-            else throw new InvalidOperationException("Invalid email address");
+            else throw new InvalidOperationException("Invalid email address.");
         }
 
         public bool IsCorrectPassword(string password)
