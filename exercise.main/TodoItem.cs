@@ -12,12 +12,15 @@ namespace exercise.main
         public string title;
         public string detail;
         public string status;
+        private DateTime CreationDate;
 
         public TodoItem(String title, String detail, String status)
         {
             this.title = title;
             this.detail = detail;
             this.status = status;
+            this.CreationDate = DateTime.Now;
+            
         }
 
         public void setStatus(String status)
@@ -28,6 +31,12 @@ namespace exercise.main
         public String getStatus()
         {
             return this.status;
+        }
+
+        public string GetCreationDate()
+        {
+            string date = CreationDate.ToString("yyyy-MM-dd HH:mm:ss");
+            return date;
         }
     }
 }

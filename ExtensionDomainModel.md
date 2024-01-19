@@ -1,0 +1,5 @@
+|Classes               | Methods                                                                                                              | Purpose                          |
+|----------------------|----------------------------------------------------------------------------------------------------------------------|----------------------------------|
+| `Users`              | `createAccount(string username, string password)``validateEmail(string email)` `validatePassword(string password)`   | creates an account               |
+| `Users`              | `enableUser(int id)`                                                                                                 | enables a user to sign in        | 
+| `Users`              | `login(string email, string password, out response)`                                                                 | signs in a user                  | 
