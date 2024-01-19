@@ -17,6 +17,7 @@ namespace exercise.main
         protected string title { get; set; }
         protected string detail { get; set; }
         protected string status { get; set; }
+
         // NOTE: Alternatively "public string status { get; protected set; }" could be used instead, in order to remove the need for methods
 
         public TodoItem(String title, String detail, StatusState state = StatusState.Incomplete)

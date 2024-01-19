@@ -14,7 +14,8 @@ I want users to know if they are able to log in or not based on whether their
 account is enabled or disabled.
 ```
 
-| Classes         | Methods                                     | Scenario                                                 | Outputs             |
-|-----------------|---------------------------------------------|----------------------------------------------------------|---------------------|
-| ``   | ``                   |         | ``    |
-| ``   | ``                   |         | ``    |
+| Classes         | Methods                                          | Scenario                                                 | Outputs             |
+|-----------------|--------------------------------------------------|----------------------------------------------------------|---------------------|
+| `User`          | `public Account( string email, string password)` |                                                     |                     |
+| `Account`       | `public Account( string email, string password)` |                                                     |                     |
+|                 | ``                                               |                                                     | ``    |
