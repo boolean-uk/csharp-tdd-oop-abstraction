@@ -9,6 +9,7 @@
 * creationDateTime: DateTime (get) - The date and time of when a task was created.
 
 #### Interfaces/Methods
-* MarkComplete: void - Sets `isDone` to true.
-* MarkIncomplete:void - Sets `isDone` to false.
+* MarkDone: void - Sets `isDone` to true.
+* MarkUndone:void - Sets `isDone` to false.
+* Status: string - String representation of `isDone`. Either "complete" or "incomplete".
 * ToString: string - Should have an override for ToString to get a good visual representation of the todo item.

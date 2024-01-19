@@ -9,25 +9,34 @@ namespace exercise.main
     public class TodoItem
     {
 
-        public string title;
-        public string detail;
-        public string status;
+        private string title;
+        private string details;
+        private bool isDone;
+        private DateTime creationTime;
 
-        public TodoItem(String title, String detail, String status)
+        public TodoItem(String title, String details = "")
         {
-            this.title = title;
-            this.detail = detail;
-            this.status = status;
+            throw new NotImplementedException();
         }
 
-        public void setStatus(String status)
+        public void MarkDone()
         {
-            this.status = status;
+            throw new NotImplementedException();
         }
 
-        public String getStatus()
+        public void MarkUndone()
         {
-            return this.status;
+            throw new NotImplementedException();
         }
+
+        public string Status()
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Title { get => title; set => title = value; }
+        public string Details { get => details; set => details = value; }
+        public bool IsDone { get => isDone; }
+        public DateTime CreationTime { get => creationTime; }
     }
 }
