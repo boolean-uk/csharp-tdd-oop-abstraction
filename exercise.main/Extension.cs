@@ -13,40 +13,54 @@ namespace exercise.main
 
         
     }
-
+    public enum UserRole { User, Admin }
     public class Account
     {
         private string _userPassword;
         private string _userEmailAddress;
-
-        public enum roll { User, Admin }
-        
-        private roll _roll;
-        public bool AccountEnabeled;
+        private UserRole _role;
+        private bool _accountEnabeled;
         public Account(string userPassword, string userEmail) 
         {
             _userPassword = userPassword;
             _userEmailAddress = userEmail;
-            _roll = roll.User;
-            AccountEnabeled = false;
+            _role = UserRole.User;
+            _accountEnabeled = false;
         }
-        public Account(string userPassword, string userEmail, string AdminVerification)
+        public Account(string userPassword, string userEmail, UserRole userRole) // this constructor is needed to be able to create an account with Admin role.  
         {
             _userPassword = userPassword;
             _userEmailAddress = userEmail;
-            if (AdminVerification == "ADMIN")
-	        {
-                _roll = roll.Admin;
-                AccountEnabeled = true;
+            if (userRole == UserRole.Admin)
+            {
+                _role = UserRole.Admin;
+                _accountEnabeled = true;
 
+            }
+            else
+            {
+                _role = userRole;
+                _accountEnabeled = false;
             }
 
         }
 
         public string UserPassword { get { return _userPassword; } }
         public string UserEmailAddress { get { return _userEmailAddress; } }
-        public roll AcountRoll { get { return _roll; } }
-        
+        public UserRole AccountRole { get { return _role; } }
+
+        public bool AccountEnabeled { get { return _accountEnabeled;} }
+
+        public void EnableAccount(Account account)
+        {
+            if (account.AccountRole == UserRole.Admin) 
+            {
+                _accountEnabeled = true;
+            }
+            
+        }
+
+
     }
 
 
@@ -54,9 +68,13 @@ namespace exercise.main
     {
         Dictionary<string, Account> accounts;
 
+        Account LoggedInAcount = new Account("", "");  
+
         public WebPage() 
         {
             accounts = new Dictionary<string, Account>();
+            
+
         }
 
         public Dictionary<string,Account> Accounts { get { return accounts; } }
@@ -86,16 +104,22 @@ namespace exercise.main
 
             
         }
-        public string createAcount(string userPassword, string email, string AdminVerification)
+
+        //store the loged in user as variabel to test if it is an Admin
+        public string createAcount(string userPassword, string email, UserRole userRole)
         {
             if (accounts.ContainsKey(email))
             {
                 return new string("There is already an account with that email");
             }
-
-            if (userPassword.Count() >= 8 && email.Contains('@') && AdminVerification == "ADMIN")
+            if (userRole != UserRole.Admin)
             {
-                Account account = new Account(userPassword, email, AdminVerification);
+                return new string("Not valid UserRole for this function.");
+            }
+
+            if (userPassword.Count() >= 8 && email.Contains('@') )
+            {
+                Account account = new Account(userPassword, email, userRole);
                 accounts.Add(email, account);
                 return new string("New account was made");
             }
@@ -115,7 +139,10 @@ namespace exercise.main
             {
                 if (accounts[email].AccountEnabeled == true) 
                 {
+                    
+                    LoggedInAcount = accounts[email];
                     return new string("You are now loged in :)");
+                    
                 }
                 else
                 {
@@ -130,21 +157,16 @@ namespace exercise.main
         }
 
 
-        public string enableAccount(string EmailtoEnable, string AdminEmailForVerification)
+        public string enableAccount(string EmailtoEnable)
         {
             if (accounts.ContainsKey(EmailtoEnable))
             {
-                if (accounts.ContainsKey(AdminEmailForVerification))
+                if (LoggedInAcount.AccountRole == UserRole.Admin)
                 {
-                    if(GetAccount(AdminEmailForVerification).AcountRoll == Account.roll.Admin)
-                    {
-                        GetAccount(EmailtoEnable).AccountEnabeled = true;
-                        return new string("Account was enabeled");
-                    }
-                    else
-                    {
-                        return new string("Not a valid Admin verification");
-                    }
+
+                    GetAccount(EmailtoEnable).EnableAccount(LoggedInAcount);
+                    return new string("Account was enabeled");
+                    
                 }
                 else
                 {

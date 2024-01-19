@@ -15,29 +15,37 @@ namespace exercise.tests
         public void SetUp()
         {
             webPage = new WebPage();
+
+            
         }
 
 
         //Account tests
         [Test]
-        public void Tests1()
+        [TestCase("PassWord", "testEmail@test.com")]
+        [TestCase("", "testEmail@test.com")]
+        [TestCase("PassWord", "")]
+        public void Tests1(string passWord, string email)
         {
-            Account account = new Account("PassWord", "testEmail@test.com");
+            Account account = new Account(passWord, email);
 
-            Assert.That(account.UserPassword, Is.EqualTo("PassWord"));
-            Assert.That(account.UserEmailAddress, Is.EqualTo("testEmail@test.com"));
-            Assert.That(account.AcountRoll, Is.EqualTo(Account.roll.User));
+            Assert.That(account.UserPassword, Is.EqualTo(passWord));
+            Assert.That(account.UserEmailAddress, Is.EqualTo(email));
+            Assert.That(account.AccountRole, Is.EqualTo(UserRole.User));
             Assert.That(account.AccountEnabeled, Is.EqualTo(false));
         }
 
         [Test]
-        public void Tests2()
+        [TestCase("PassWord", "testEmail@test.com")]
+        [TestCase("", "testEmail@test.com")]
+        [TestCase("PassWord", "")]
+        public void Tests2(string password, string email)
         {
-            Account account = new Account("PassWord", "testEmail@test.com", "ADMIN");
+            Account account = new Account(password, email, UserRole.Admin);
 
-            Assert.That(account.UserPassword, Is.EqualTo("PassWord"));
-            Assert.That(account.UserEmailAddress, Is.EqualTo("testEmail@test.com"));
-            Assert.That(account.AcountRoll, Is.EqualTo(Account.roll.Admin));
+            Assert.That(account.UserPassword, Is.EqualTo(password));
+            Assert.That(account.UserEmailAddress, Is.EqualTo(email));
+            Assert.That(account.AccountRole, Is.EqualTo(UserRole.Admin));
             Assert.That(account.AccountEnabeled, Is.EqualTo(true));
         }
 
@@ -90,9 +98,10 @@ namespace exercise.tests
         {
 
             //LogIn
-            webPage.createAcount("PassWord", "Admin@test.com", "ADMIN");
+            webPage.createAcount("PassWord", "Admin@test.com", UserRole.Admin);
             webPage.createAcount("PassWord", "testEmail@test.com");
-            webPage.enableAccount("testEmail@test.com", "Admin@test.com");
+            webPage.LogIn("PassWord", "Admin@test.com");
+            webPage.enableAccount("testEmail@test.com");
 
             string test = webPage.LogIn("PassWord", "testEmail@test.com");
 
@@ -127,9 +136,10 @@ namespace exercise.tests
         {
             // enableAccount
 
-            webPage.createAcount("PassWord", "Admin@test.com", "ADMIN");
+            webPage.createAcount("PassWord", "Admin@test.com", UserRole.Admin);
             webPage.createAcount("PassWord", "testEmail@test.com");
-            string test = webPage.enableAccount("testEmail@test.com", "Admin@test.com");
+            webPage.LogIn("PassWord", "Admin@test.com");
+            string test = webPage.enableAccount("testEmail@test.com");
 
             Assert.That(test, Is.EqualTo("Account was enabeled"));
 
@@ -140,7 +150,8 @@ namespace exercise.tests
             //enableAccount
             webPage.createAcount("PassWord", "Admin@test.com");
             webPage.createAcount("PassWord", "testEmail@test.com");
-            string test = webPage.enableAccount("testEmail@test.com", "Admin@test.com");
+            webPage.LogIn("PassWord", "Admin@test.com");
+            string test = webPage.enableAccount("testEmail@test.com");
 
             Assert.That(test, Is.EqualTo("Not a valid Admin verification"));
         }
@@ -148,9 +159,10 @@ namespace exercise.tests
         public void Tests12()
         {
             //enableAccount
-            webPage.createAcount("PassWord", "Admin@test.com");
+            webPage.createAcount("PassWord", "Admin@test.com", UserRole.Admin);
             webPage.createAcount("PassWord", "testEmail@test.com");
-            string test = webPage.enableAccount("WrongTestEmail@test.com", "Admin@test.com");
+            webPage.LogIn("PassWord", "Admin@test.com");
+            string test = webPage.enableAccount("WrongTestEmail@test.com");
 
             Assert.That(test, Is.EqualTo("Not a valid email. No account is using it."));
         }
@@ -164,7 +176,7 @@ namespace exercise.tests
 
             Assert.That(test.UserPassword, Is.EqualTo(webPage.Accounts["testEmail@test.com"].UserPassword));
             Assert.That(test.AccountEnabeled, Is.EqualTo(webPage.Accounts["testEmail@test.com"].AccountEnabeled));
-            Assert.That(test.AcountRoll, Is.EqualTo(webPage.Accounts["testEmail@test.com"].AcountRoll)); 
+            Assert.That(test.AccountRole, Is.EqualTo(webPage.Accounts["testEmail@test.com"].AccountRole)); 
             Assert.That(test.UserEmailAddress, Is.EqualTo(webPage.Accounts["testEmail@test.com"].UserEmailAddress));
 
         }

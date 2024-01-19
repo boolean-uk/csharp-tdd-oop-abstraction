@@ -6,15 +6,20 @@ using System.Threading.Tasks;
 
 namespace exercise.main
 {
+    public enum TaskStatus
+    {
+        Done,
+        Not_done
+    }
     public class TodoItem
     {
 
         private string _taskTitle;
         private string _taskDetails;
-        private string _taskStatus;
+        private TaskStatus _taskStatus;
         private string _dateAndTime;
 
-        public TodoItem(String title, String detail, String status)
+        public TodoItem(String title, String detail, TaskStatus status)
         {
             _taskTitle = title;
             _taskDetails = detail;
@@ -24,27 +29,24 @@ namespace exercise.main
 
         public string taskTitle { get { return _taskTitle; } }
         public string taskDetails { get { return _taskDetails; } }
-        public string taskStatus { get { return _taskStatus; } }
+        public TaskStatus taskStatus { get { return _taskStatus; } }
 
 
-        public bool SetStatusDone()
+        public void SetStatusDone()
         {
-            if(_taskStatus != "Done") 
+            if(_taskStatus == TaskStatus.Not_done) 
             {
-                _taskStatus = "Done";
-                return true;
+                _taskStatus = TaskStatus.Done;
             }
-            else { return false; }
+            
         }
 
-        public bool SetStatusNotDone()
+        public void SetStatusNotDone()
         {
-            if (_taskStatus != "Not Done")
+            if (_taskStatus == TaskStatus.Done)
             {
-                _taskStatus = "Not Done";
-                return true;
+                _taskStatus = TaskStatus.Not_done;
             }
-            else { return false; }
         }
 
         public string GetDateAndTime() 

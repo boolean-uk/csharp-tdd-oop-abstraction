@@ -10,7 +10,7 @@ public class CoreTests
     [SetUp]
     public void SetUp()
     {
-        todoItem = new TodoItem("title" ,"details" ,"DONE");
+        todoItem = new TodoItem("title" ,"details" ,main.TaskStatus.Done);
     }
 
 
@@ -19,28 +19,28 @@ public class CoreTests
     {
         Assert.That(todoItem.taskTitle, Is.EqualTo("title"));
         Assert.That(todoItem.taskDetails, Is.EqualTo("details"));
-        Assert.That(todoItem.taskStatus, Is.EqualTo("DONE"));
+        Assert.That(todoItem.taskStatus, Is.EqualTo(main.TaskStatus.Done));
     }
 
     [Test] 
     public void Test2() 
     {
-        bool test = todoItem.SetStatusNotDone();
+        todoItem.SetStatusNotDone();
 
-        Assert.That(test, Is.True);
-        Assert.That(todoItem.taskStatus, Is.EqualTo("Not Done"));
+        Assert.That(todoItem.taskStatus, Is.EqualTo(main.TaskStatus.Not_done));
 
-        test = todoItem.SetStatusNotDone();
+        todoItem.SetStatusNotDone();
 
-        Assert.That(test, Is.False);
+        Assert.That(todoItem.taskStatus, Is.EqualTo(main.TaskStatus.Not_done));
 
-        test = todoItem.SetStatusDone();
 
-        Assert.That(test, Is.True);
-        Assert.That(todoItem.taskStatus, Is.EqualTo("Done"));
 
-        test = todoItem.SetStatusDone();
-        Assert.That(test, Is.False);
+        todoItem.SetStatusDone();
+
+        Assert.That(todoItem.taskStatus, Is.EqualTo(main.TaskStatus.Done));
+
+        todoItem.SetStatusDone();
+        Assert.That(todoItem.taskStatus, Is.EqualTo(main.TaskStatus.Done));
 
 
     }

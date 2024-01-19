@@ -2,7 +2,4 @@
 using exercise.main;
 
 Console.WriteLine("Hello, World!");
-TodoItem todoItem = new TodoItem("","","");
 
-Console.WriteLine(todoItem.GetDateAndTime());
-Console.ReadLine();
