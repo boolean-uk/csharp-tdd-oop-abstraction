@@ -9,9 +9,9 @@ namespace exercise.main
     public class TodoItem
     {
 
-        public string title;
-        public string detail;
-        public string status;
+        public string title { get; protected set; }
+        public string detail { get; protected set; }
+        public string status { get; protected set; }
 
         public TodoItem(String title, String detail, String status)
         {
