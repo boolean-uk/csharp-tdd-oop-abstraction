@@ -61,10 +61,7 @@ namespace exercise.main
             return password;
         }
 
-        public string GetStatus()
-        {
-            return this.status;
-        }
+     
 
         public bool IsEnabled() 
         {

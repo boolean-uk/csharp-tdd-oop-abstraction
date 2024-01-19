@@ -12,14 +12,14 @@ namespace exercise.main
 
         private string title;
         private string detail;
-        private string status;
+        public string status { get; protected set; }
         private readonly DateTime creationDateTime;
 
-        public TodoItem(String title, String detail, String status, DateTime creationDateTime)
+        public TodoItem(String title, String detail, DateTime creationDateTime)
         {
             this.title = title;
             this.detail = detail;
-            this.status = status;
+            this.status = "incomplete";
             this.creationDateTime = creationDateTime;
         }
 
@@ -48,22 +48,13 @@ namespace exercise.main
             get { return creationDateTime.ToString("yyyy-MM-dd HH:mm:ss"); }
         }
 
-
-        public string getStatus()
-        {
-            return this.status;
-        }
-
+  
 
         public string getTitle()
         {
             return this.title;
         }
 
-        /*public void setDetail(String status)
-        {
-            this.detail = detail;
-        }*/
       
 
         public string getDetail()

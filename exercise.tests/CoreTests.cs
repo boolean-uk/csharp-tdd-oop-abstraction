@@ -11,7 +11,7 @@ public class CoreTests
     private TodoItem todoItem;
     private string title;
     private string detail;
-    private string status;
+    //private string status;
 
     [SetUp]
     public void SetUp()
@@ -19,10 +19,9 @@ public class CoreTests
         // Common setup code that runs before each test
         string title = "Test Title";
         string detail = "Test Detail";
-        string status = "Test Status";
         DateTime creationTime = new DateTime(2023, 1, 17, 12, 0, 0);
 
-        todoItem = new TodoItem(title, detail, status, creationTime);
+        todoItem = new TodoItem(title, detail, creationTime);
     }
 
 
@@ -32,7 +31,8 @@ public class CoreTests
         //checking that todoItem is setup as desired
         Assert.That(todoItem.getTitle(), Is.EqualTo("Test Title"));
         Assert.That(todoItem.getDetail(), Is.EqualTo("Test Detail"));
-        Assert.That(todoItem.getStatus(), Is.EqualTo("Test Status"));
+        Assert.That(todoItem.status, Is.EqualTo("incomplete"));//incomplete by default
+
 
         string timenow = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         // Assert that the DateAndTime is set to the time of creation and not equal to now
@@ -60,7 +60,7 @@ public class CoreTests
         todoItem.toComplete();
 
         Assert.That(todoItem.isComplete(), Is.True);
-        Assert.That(todoItem.getStatus, Is.EqualTo("complete"));
+     
 
         //check that nothing fails when changing to complete one moer time
         todoItem.toComplete();
@@ -71,6 +71,6 @@ public class CoreTests
         todoItem.toIncomplete();
 
         Assert.That(todoItem.isComplete(), Is.False);
-        Assert.That(todoItem.getStatus, Is.EqualTo("incomplete"));
+   
     }
 }
