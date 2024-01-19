@@ -1,68 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace exercise.main
 {
-    public class User
+    public class User : Account
     {
         private string _password;
         private string _email;
-        private bool _status = false;
 
-        public User(string password, string email)
+        public string Password { get { return _password; } }
+        public string Email { get { return _email; } }
+        internal User(string password, string email)
         {
-            this._password = password;
-            this._email = _email;
+            _password = password;
+            _email = email;
         }
 
-        public User ()
-        {
-
-        }
-
-        public string passWordCreate(string password)
-        {
-            if (password.Length >= 8) 
-            {
-                _password = password;
-                return "success!";
-            }
-            else
-            {
-                return "invalid!";
-            }
-        }
-
-        public string EmailCreate(string email)
-        {
-            if (email.Contains("@"))
-            {
-                _email = email;
-                return "success!";
-            }
-            else
-            {
-                return "invalid!";
-            }
-        }
-
-        public bool getStatus()
-        {
-            return _status;
-        }
-
-        public void setAccountEnabled()
-        {
-            this._status = true;
-        }
-
-        public void setAccountInabled()
-        {
-            this._status = false;
-        }
 
     }
 }
