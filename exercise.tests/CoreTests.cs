@@ -1,11 +1,17 @@
+using exercise.main;
+
 namespace exercise.tests;
 
 [TestFixture]
 public class CoreTests
 {
     [Test]
-    public void Test()
+    public void TestDateTime()
     {
-        Assert.Pass();
+        TodoItem todoItem = new TodoItem("clean House", "Every nook and cranny", "Not complete");
+
+        Console.WriteLine(todoItem.getCreationDate());
+
+        
     }
 }
