@@ -4,8 +4,8 @@ namespace exercise.tests;
 public class CoreTests
 {
     [Test]
-    public void Test()
+    public void TodoItemHasValuesTest()
     {
-        Assert.Pass();
+       
     }
 }
