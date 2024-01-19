@@ -1,4 +1,5 @@
-﻿using System;
+﻿using exercise.main;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,10 +10,34 @@ namespace exercise.tests
     [TestFixture]
     public class ExtensionTests
     {
-        [Test]
-        public void Tests()
+        Extension system;
+        Admin admin;
+        [SetUp] 
+        public void setupTest()
         {
-            Assert.Pass();
+            system = new Extension();
+            admin = new Admin();
+        }
+        [Test]
+        public void enableUserTest()
+        {
+            User user = new User("password123", "me@domain.com");
+            admin.enableUser(user);
+            Assert.IsTrue(user.canLogin());
+        }
+        [Test]
+        public void checkUserTest()
+        {
+            Assert.True(system.addUser("1password2", "you@domain.comn"));
+        }
+        [Test]
+        public void canLoginTest()
+        {
+            User user = new User("password123", "me@domain.com");
+            User user2 = new User("TRACtoRman","tractor@yepp.pl");
+            admin.enableUser(user);
+            Assert.IsTrue(user.canLogin());
+            Assert.IsFalse(user2.canLogin());
         }
     }
 }
