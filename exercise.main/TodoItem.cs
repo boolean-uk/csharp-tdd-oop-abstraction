@@ -12,12 +12,14 @@ namespace exercise.main
         private string _title;
         private string _detail;
         private string _status;
+        private DateTime _created;
 
         public TodoItem(String title, String detail, String status)
         {
             this._title = title;
             this._detail = detail;
             this._status = status;
+            _created = DateTime.Now;
         }
 
         public void setStatus(String status)
@@ -38,6 +40,11 @@ namespace exercise.main
         public String getDetail()
         {
             return this._detail;
+        }
+
+        public DateTime getCreationTime() 
+        {
+            return new DateTime(_created.Ticks);
         }
     }
 }
