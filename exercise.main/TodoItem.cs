@@ -16,22 +16,25 @@ namespace exercise.main
 
         public TodoItem(String title, String details = "")
         {
-            throw new NotImplementedException();
+            this.creationTime = DateTime.Now;
+            this.title = title;
+            this.details = details;
+            this.isDone = false;
         }
 
         public void MarkDone()
         {
-            throw new NotImplementedException();
+            this.isDone = true;
         }
 
         public void MarkUndone()
         {
-            throw new NotImplementedException();
+            this.isDone = false;
         }
 
         public string Status()
         {
-            throw new NotImplementedException();
+            return IsDone ? "Done" : "Pending";
         }
 
         public string Title { get => title; set => title = value; }
