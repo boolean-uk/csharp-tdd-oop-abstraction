@@ -25,47 +25,45 @@ public class CoreTests
         TodoItem item = new TodoItem(title, descr, status);
 
         Assert.That(item.Title, Is.EqualTo(title));
-        Assert.That(item.Description, Is.EqualTo(descr));
+        Assert.That(item.Detail, Is.EqualTo(descr));
         Assert.That(item.Status, Is.EqualTo(status));
 
     }
 
-    [TestCase(false, true)]
-    [TestCase(true, true)]
-    public void CanMarkItemAsDone(TodoItemStatus initalstatus, TodoItemStatus finalState)
+    [TestCase(TodoItemStatus.NOT_DONE)]
+    [TestCase(TodoItemStatus.DONE)]
+    public void CanMarkItemAsDone(TodoItemStatus initalstatus)
     {
         TodoItem item = new TodoItem("", "", initalstatus);
         item.setDone();
 
-        Assert.That(item.Status, Is.EqualTo(finalStatus));
+        Assert.That(item.Status, Is.EqualTo(TodoItemStatus.DONE));
+    }
+
+    [TestCase(TodoItemStatus.NOT_DONE)]
+    [TestCase(TodoItemStatus.DONE)]
+    public void CanMarkItemAsNotDone(TodoItemStatus initalstatus)
+    {
+        TodoItem item = new TodoItem("", "", initalstatus);
+        item.setNotDone();
+
+        Assert.That(item.Status, Is.EqualTo(TodoItemStatus.NOT_DONE));
     }
 
     [Test]
     public void CanGetDateTime()
     {
-        DateTime dt = _tditem.getDateTime();
-        
-        string date = dt.Date.ToString();
+        DateTime dt = _tditem.DateTime;
+        string date = dt.ToString();
 
-        Assert.AreEqual(date, "17/01/2024 0.00.00");
+        DateTime now = DateTime.Now;
+        string date2 = now.ToString();
 
-    }
+        date = date.Substring(0, date.Length);
+        date2 = date2.Substring(0, date2.Length);
 
-    [Test]
-    public void StatusChanging()
-    {
-        string st1 = _tditem.getStatus();
+        Assert.AreEqual(date, date2);
 
-        Assert.AreEqual(st1, "incomplete");
-
-        _tditem.setTaskComplete();
-
-        Assert.AreEqual(_tditem.getStatus(), "complete");
-
-
-        _tditem.setTaskIncomplete();
-
-        Assert.AreEqual(_tditem.getStatus(), "incomplete");
 
     }
 

@@ -4,42 +4,42 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace exercise.main
-{
+namespace exercise.main;
+
+    public enum TodoItemStatus { DONE, NOT_DONE }
+
     public class TodoItem
     {
 
         private string title;
         private string detail;
-        private string status;
-        public readonly DateTime dateTime;
+        private TodoItemStatus status;
+        private DateTime dateTime;
 
-        public TodoItem(string title, string detail, string status)
+        public string Title { get { return title;  } }
+        public string Detail { get { return detail; } }
+
+        public TodoItemStatus Status { get { return status; } }
+
+        public DateTime DateTime { get { return dateTime; } }
+
+        public TodoItem(string title, string detail, TodoItemStatus status)
         {
             this.title = title;
             this.detail = detail;
             this.status = status;
-            dateTime = DateTime.Now;
+            this.status = status;
+            this.dateTime = DateTime.Now;
         }
 
-        public void setTaskComplete()
+        public void setDone()
         {
-            this.status = "complete";
+            this.status = TodoItemStatus.DONE;
         }
 
-        public void setTaskIncomplete()
+        public void setNotDone()
         {
-            this.status = "incomplete";
+            this.status = TodoItemStatus.NOT_DONE;
         }
-
-        public String getStatus()
-        {
-            return this.status;
-        }
-
-        public DateTime getDateTime()
-        {
-            return this.dateTime;
-        }
-    }
+  
 }
