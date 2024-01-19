@@ -83,14 +83,15 @@ namespace exercise.tests
             system.CreateUserAccount("email@email.com", "password");
             system.CreateUserAccount("admin@admin.com", "password", true);
 
-            User user = system.Accounts[0];
-            Administrator admin = system.Accounts[1];
+            //Casting. Probably not a smart thing to do and if so, be cast inside CreateUserAccount().
+            User user = (User)system.Accounts[0];
+            Administrator admin = (Administrator)system.Accounts[1];
 
             //Act
             bool userDisabledByDefault = user.IsEnabled;
-            admin.SetEnabled(user, true);
+            admin.EnableAccount(user, true);
             bool userIsNowEnabled = user.IsEnabled;
-            admin.SetEnabled(user, false);
+            admin.EnableAccount(user, false);
             bool userIsDisabledAgain = user.IsEnabled;
 
             //Assert
@@ -99,18 +100,21 @@ namespace exercise.tests
             Assert.That(userIsDisabledAgain, Is.EqualTo(false));
         }
 
-        [Test, Order(5)]
-        public void Test_05_LogIn_Fail()
+        [Test, Order(6)]
+        public void Test_06_LogIn_Fail()
         {
             //Arrange
             ComputerSystem system = new ComputerSystem();
             system.CreateUserAccount("email@email.com", "password");
 
+            //Casting. Probably not a smart thing to do and if so, be cast inside CreateUserAccount().
+            User user = (User)system.Accounts[0];
+
             //Act
             bool expectedResultMethod = system.LogIn("email@email.com", "password");
             bool actualResultMethod = false;
 
-            bool expectedResultIsLoggedIn = system[0].IsLoggedIn;
+            bool expectedResultIsLoggedIn = system.Accounts[0].IsLoggedIn;
             bool actualResultIsLoggedIn = false;
 
             //Assert
@@ -118,18 +122,24 @@ namespace exercise.tests
             Assert.That(expectedResultIsLoggedIn, Is.EqualTo(actualResultIsLoggedIn));
         }
 
-        [Test, Order(6)]
-        public void Test_06_LogIn_Success()
+        [Test, Order(7)]
+        public void Test_07_LogIn_Success()
         {
             //Arrange
             ComputerSystem system = new ComputerSystem();
             system.CreateUserAccount("email@email.com", "password");
+            system.CreateUserAccount("admin@admin.com", "password", true);
+
+            //Casting. Probably not a smart thing to do and if so, be cast inside CreateUserAccount().
+            User user = (User)system.Accounts[0];
+            Administrator admin = (Administrator)system.Accounts[1];
+            admin.EnableAccount(user, true);
 
             //Act
             bool expectedResultMethod = system.LogIn("email@email.com", "password");
             bool actualResultMethod = true;
 
-            bool expectedResultIsLoggedIn = system[0].IsLoggedIn;
+            bool expectedResultIsLoggedIn = system.Accounts[0].IsLoggedIn;
             bool actualResultIsLoggedIn = true;
 
             //Assert

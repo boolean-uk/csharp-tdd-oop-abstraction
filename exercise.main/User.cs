@@ -8,5 +8,9 @@ namespace exercise.main
 {
     public class User : Account
     {
+        public User(string email, string password) : base(email, password)
+        {
+            setAdmin(false);
+        }
     }
 }

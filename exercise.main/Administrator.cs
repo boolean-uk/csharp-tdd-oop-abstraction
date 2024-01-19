@@ -8,5 +8,10 @@ namespace exercise.main
 {
     public class Administrator : Account
     {
+
+        public Administrator(string email, string password) : base(email, password)
+        {
+            setAdmin(true);
+        }
     }
 }
