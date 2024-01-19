@@ -1,0 +1,7 @@
+Class			Properties			Methods				Return Type
+TodoItem		Title(string)			get/setTitle			get : string, set : bool
+			Detail(string)			get/setDetail			get : string, set : bool
+			Status(string)			get/setStatus			get : string, set : bool
+			Date(string)			getDate				string
+			Time(string)			getTime				string
+
