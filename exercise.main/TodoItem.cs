@@ -9,13 +9,12 @@ namespace exercise.main
 {
     public class TodoItem
     {
-
         private string _title;
         private string _detail;
         private bool _status;
-        public readonly string _dateTime;
-        
+        private readonly string _dateTime;
         public string Title { get { return _title; } }
+        public string Detail { get { return _detail; } }
         public TodoItem(String title, String detail)
         {
             _title = title;
@@ -23,12 +22,10 @@ namespace exercise.main
             _status = false;
             _dateTime = DateTime.Now.ToString();
         }
-
         public void changeStatus()
         {
             _status = !_status;
         }
-
         public bool getStatus()
         {
             return _status;

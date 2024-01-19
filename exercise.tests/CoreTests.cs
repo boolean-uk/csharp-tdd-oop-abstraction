@@ -5,13 +5,23 @@ namespace exercise.tests;
 [TestFixture]
 public class CoreTests
 {
+    [TestCase("Help grandma", "Buy groceries for grandma")]
+    [TestCase("", "")]
+    [TestCase("", "Buy groceries for grandma")]
+    [TestCase("Help grandma", "")]
+    public void createTodoItemTest(string title, string detail)
+    {
+        TodoItem todo = new TodoItem(title, detail);
+        Assert.That(todo.Title, Is.EqualTo(title));
+        Assert.That(todo.Detail, Is.EqualTo(detail));
+    }
     [Test]
-    public void Test()
+    public void statusTest()
     {
         TodoItem todo = new TodoItem("Help grandma","Buy groceries for grandma");
-        Assert.That(todo.getStatus().Equals("incomplete"));
+        Assert.IsFalse(todo.getStatus());
         todo.changeStatus();
-        Assert.That(todo.getStatus().Equals("complete"));
+        Assert.IsTrue(todo.getStatus());
     }
     [Test]
     public void dateTest()

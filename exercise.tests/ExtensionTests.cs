@@ -1,4 +1,5 @@
 ﻿using exercise.main;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,16 +20,27 @@ namespace exercise.tests
             admin = new Admin();
         }
         [Test]
+        public void addUserTest()
+        {
+            User user1 = system.addUser("password123", "me@domain.com");
+            User user2 = system.addUser("1password2", "you@domain.com");
+            Assert.That(system.Users.Contains(user1));
+            Assert.That(system.Users.Contains(user2));
+        }
+        [Test]
         public void enableUserTest()
         {
-            User user = new User("password123", "me@domain.com");
+            User user = system.addUser("password123", "me@domain.com");
             admin.enableUser(user);
             Assert.IsTrue(user.canLogin());
         }
         [Test]
         public void checkUserTest()
         {
-            Assert.True(system.addUser("1password2", "you@domain.comn"));
+            User user = system.addUser("1password2", "you@domain.com");
+            Assert.IsTrue(!user.canLogin());
+            admin.enableUser(user);
+            Assert.IsTrue(user.canLogin());
         }
         [Test]
         public void canLoginTest()

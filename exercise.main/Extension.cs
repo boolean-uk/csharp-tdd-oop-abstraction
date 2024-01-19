@@ -10,7 +10,8 @@ namespace exercise.main
     {
         private string _password;
         private string _email;
-        public bool _enabled;
+        private bool _enabled;
+        public bool Enabled { get { return _enabled; } set { _enabled = value; } }
         public User(string password, string email)
         {
             _password = password;
@@ -35,35 +36,28 @@ namespace exercise.main
     {
         public bool enableUser(User user)
         {
-            user._enabled = true;
+            user.Enabled = true;
             return true;
         }
     }
     public class Extension
     {
         private List<User> users = new List<User>();
-        public bool addUser(string password, string email)
+        public List<User> Users { get { return users; } }
+        public User addUser(string password, string email)
         {
             bool checkPass = checkPassword(password);
             bool checkEm = checkEmail(email);
-            if (checkPass == true)
+            User tempUser = new User(password, email);
+            if (checkPass == true && checkEm == true)
             {
-                if (checkEm == true)
-                {
-                    users.Add(new User(password, email));
-                    return true;
-                }
-                else
-                {
-                    Console.WriteLine("Invalid email!");
-                    return false;
-                }
+                users.Add(tempUser);
+                return tempUser;
             }
             else
             {
-                Console.WriteLine("Invalid password!");
-                return false;
-            }           
+                throw new ArithmeticException("Invalid password or email!");
+            }
         }
         private bool checkPassword(string password)
         {
