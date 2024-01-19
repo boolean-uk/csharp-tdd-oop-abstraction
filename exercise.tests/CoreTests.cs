@@ -1,11 +1,19 @@
+using exercise.main;
+
 namespace exercise.tests;
 
 [TestFixture]
 public class CoreTests
 {
     [Test]
-    public void Test()
+    public void CreationDate()
     {
-        Assert.Pass();
+        //Set Up
+        TodoItem item = new TodoItem("Wash dishes", "Wash all the dishes.", false);
+        //Execute
+        item.toggleStatus();
+        //Verify
+        Assert.That(item.Status, Is.EqualTo(true));
+        Assert.IsNotNull(item.CreationDate);
     }
 }

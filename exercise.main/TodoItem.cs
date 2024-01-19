@@ -27,6 +27,9 @@ namespace exercise.main
             this.status = !status;
         }
 
+        public bool Status { get { return this.status; } }
+        public DateTime CreationDate { get { return this.creationdate; } }
+
         public string getStatus()
         {
             if (this.status == false)
