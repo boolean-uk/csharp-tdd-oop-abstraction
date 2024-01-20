@@ -16,38 +16,43 @@ account is enabled or disabled.
 ### PROPERTIES:
    private string _email
    private string _password
-   private bool _accountStatus // Initialize as false
+   private AccountStatus _accountStatus // Initialize as false
 
 ### METHODS:
-   public bool CreatePassword(string pass)
+   public string CreatePassword(string pass)
         // If password length is greater than 7 accept it
 
-   public bool AddEmail(string email)
+   public string AddEmail(string email)
        If email contains @ set the email & return "success"
        if email invalid return string "invalid email"
 
-   public bool AccountEnabled()
+   public AccountStatus AccountEnabled()
        return _accountStatus
    public void EnableAccount()
    public void DisableAccount()
+
+   public enum AccountStatus
+       disabled
+       enabled
 
 
 ## public class TodoItem
 ### PROPERTIES:
    private string title
    private string detail
-   private string status
+   private bool status
    private DateTime createdAt
 
 ### METHODS:
-   public TodoItem(String title, String detail, String status)
+   public TodoItem(String title, String detail)
        Intialize the TodoItem and set createdAt to the current time
 
-   public void setStatus(String status)
-       set status
+   public void setStatusDone()
 
-   public String getStatus
-       outputs status
+   public void setStatusNotDone()
+
+   public string getStatus
+       outputs string depending on status
 
    public DateTime getTimeCreated()
        outputs createdAt

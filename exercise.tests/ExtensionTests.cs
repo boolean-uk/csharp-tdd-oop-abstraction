@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using exercise.main;
+﻿using exercise.main;
+using static exercise.main.User;
 
 namespace exercise.tests
 {
@@ -11,15 +7,16 @@ namespace exercise.tests
     public class ExtensionTests
     {
 
-        [TestCase("email@test.com","password","success")]
-        [TestCase("email@test.com", "pass", "invalid password")]
-        public void TestUserPassword(string email, string password, string returnString) {
-            User user = new User(email,password);
-            Assert.AreEqual(user.CreatePassword(password), returnString);        
+        [TestCase("email@test.com", "password", "success")]
+        [TestCase("email@test.com", "pass", "invalid password, must be more than 7 characters")]
+        public void TestUserPassword(string email, string password, string returnString)
+        {
+            User user = new User(email, password);
+            Assert.AreEqual(user.CreatePassword(password), returnString);
         }
 
-        [TestCase("email@test.com","password", "success")]
-        [TestCase("email", "password","invalid email")]
+        [TestCase("email@test.com", "password", "success")]
+        [TestCase("email", "password", "invalid email, does not contain @")]
         public void TestSetEmail(string email, string password, string returnString)
         {
             User user = new User(email, password);
@@ -30,45 +27,55 @@ namespace exercise.tests
         public void AccountDisabledDefault()
         {
             User user = new User("email@test.com", "123456789");
-            Assert.That(user.AccountEnabled(), Is.False);
+            Assert.That(user.AccountEnabled(), Is.EqualTo(AccountStatus.DISABLED));
         }
 
         [Test]
-        public void AccountEnabled() {
+        public void AccountEnabled()
+        {
             User user = new User("email@test.com", "123456789");
-            Assert.That(user.AccountEnabled, Is.False);
+            Assert.That(user.AccountEnabled, Is.EqualTo(AccountStatus.DISABLED));
 
             user.EnableAccount();
-            Assert.That(user.AccountEnabled, Is.True);
+            Assert.That(user.AccountEnabled, Is.EqualTo(AccountStatus.ENABELD));
 
+            user.EnableAccount();
+            Assert.That(user.AccountEnabled, Is.EqualTo(AccountStatus.ENABELD));
+        }
+
+        [Test]
+        public void AccountDisable()
+        {
+            User user = new User("email@test.com", "123456789");
+            Assert.That(user.AccountEnabled, Is.EqualTo(AccountStatus.DISABLED));
             user.DisableAccount();
-            Assert.That(user.AccountEnabled, Is.False);
+            Assert.That(user.AccountEnabled, Is.EqualTo(AccountStatus.DISABLED));
         }
 
         [Test]
         public void NoEmail()
         {
             User user = new User("email", "123456789");
-            Assert.That(user.AccountEnabled, Is.False);
+            Assert.That(user.AccountEnabled, Is.EqualTo(AccountStatus.DISABLED));
 
             user.EnableAccount();
-            Assert.That(user.AccountEnabled, Is.False);
+            Assert.That(user.AccountEnabled, Is.EqualTo(AccountStatus.DISABLED));
 
             user.DisableAccount();
-            Assert.That(user.AccountEnabled, Is.False);
+            Assert.That(user.AccountEnabled, Is.EqualTo(AccountStatus.DISABLED));
         }
 
         [Test]
         public void NoPassword()
         {
             User user = new User("email@test.com", "1");
-            Assert.That(user.AccountEnabled, Is.False);
+            Assert.That(user.AccountEnabled, Is.EqualTo(AccountStatus.DISABLED));
 
             user.EnableAccount();
-            Assert.That(user.AccountEnabled, Is.False);
+            Assert.That(user.AccountEnabled, Is.EqualTo(AccountStatus.DISABLED));
 
             user.DisableAccount();
-            Assert.That(user.AccountEnabled, Is.False);
+            Assert.That(user.AccountEnabled, Is.EqualTo(AccountStatus.DISABLED));
         }
     }
 }

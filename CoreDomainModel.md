@@ -5,18 +5,21 @@ I want to see a Date and Time the task was created but I do not want it changed.
     PROPERTIES:
         private string title
         private string detail
-        private string status
+        private bool status
         private DateTime createdAt
 
     METHODS:
-        public TodoItem(String title, String detail, String status)
+        public TodoItem(String title, String detail)
             Intialize the TodoItem and set createdAt to the current time
 
-        public void setStatus(String status)
+        public void setStatusDone()
+            set status
+        
+        public void setStatusNotDone()
             set status
 
-        public String getStatus
-            outputs status
+        public string getStatus
+            outputs string depending on status state
 
         public DateTime getTimeCreated()
             outputs createdAt

@@ -5,34 +5,50 @@ namespace exercise.tests;
 [TestFixture]
 public class CoreTests
 {
-    [Test]
-    public void Test()
+    [TestCase("test", "test")]
+    [TestCase("", "")]
+    public void TodoItemCreation(string title, string detail)
     {
-        Assert.Pass();
+        TodoItem todo = new TodoItem(title, detail);
+        Assert.That(todo.getStatus, Is.EqualTo("Not done"));
+        DateTime dateTime = DateTime.Now;
+        Assert.That(todo.getCreated().ToString(), Is.EqualTo(dateTime.ToString()));
     }
 
-
-    [TestCase("TestTitle", "TestDetail", "TestStatus")]
-    public void GetCreationTime(string title, string detail, string status)
+    [TestCase("TestTitle", "TestDetail")]
+    public void getStatus(string title, string detail)
     {
-        TodoItem todoItem = new TodoItem(title, detail, status);
-        DateTime testCreationTime =  DateTime.Now;
+        TodoItem todoItem = new TodoItem(title, detail);
+        Assert.That(todoItem.getStatus(), Is.EqualTo("Not done"));
+    }
 
+    [TestCase("TestTitle", "TestDetail")]
+    public void setStatusDone(string title, string detail)
+    {
+        TodoItem todoItem = new TodoItem(title, detail);
+        Assert.That(todoItem.getStatus(), Is.EqualTo("Not done"));
+        todoItem.setStatusDone();
+        Assert.That(todoItem.getStatus(), Is.EqualTo("Done"));
+        todoItem.setStatusDone();
+        Assert.That(todoItem.getStatus(), Is.EqualTo("Done"));
+    }
+
+    [TestCase("TestTitle", "TestDetail")]
+    public void setStatusNotDone(string title, string detail)
+    {
+        TodoItem todoItem = new TodoItem(title, detail);
+        Assert.That(todoItem.getStatus(), Is.EqualTo("Not done"));
+        todoItem.setStatusNotDone();
+        Assert.That(todoItem.getStatus(), Is.EqualTo("Not done"));
+    }
+
+    [TestCase("TestTitle", "TestDetail")]
+    public void GetCreationTime(string title, string detail)
+    {
+        TodoItem todoItem = new TodoItem(title, detail);
+        DateTime testCreationTime = DateTime.Now;
         Assert.That(todoItem.getCreated().ToString(), Is.EqualTo(testCreationTime.ToString()));
     }
 
-    [TestCase("TestTitle", "TestDetail", "TestStatus")]
-    public void getStatus(string title, string detail, string status)
-    {
-        TodoItem todoItem = new TodoItem(title, detail, status);
-        Assert.That(todoItem.getStatus(), Is.EqualTo(status));
-    }
 
-    [TestCase("TestTitle", "TestDetail", "TestStatus","newStatus")]
-    public void setStatus(string title, string detail, string status, string newStatus)
-    {
-        TodoItem todoItem = new TodoItem(title, detail, status);
-        todoItem.setStatus(newStatus);
-        Assert.That(todoItem.getStatus(), Is.EqualTo(newStatus));
-    }
 }
