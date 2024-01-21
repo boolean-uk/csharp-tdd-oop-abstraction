@@ -51,6 +51,7 @@ namespace exercise.tests
         {
             myUserAccount = new UserAccount("valid@example.com", "validpassword");
             myUserAccount.EnableAccount();
+            Assert.IsTrue(myUserAccount.IsEnabled);
             myUserAccount.DisableAccount();
             Assert.IsFalse(myUserAccount.IsEnabled);
         }
