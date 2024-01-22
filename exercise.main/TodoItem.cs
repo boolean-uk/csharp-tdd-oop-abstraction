@@ -9,25 +9,37 @@ namespace exercise.main
     public class TodoItem
     {
 
-        public string title;
-        public string detail;
-        public string status;
+        private string title;
+        private string details;
+        private bool isDone;
+        private DateTime creationTime;
 
-        public TodoItem(String title, String detail, String status)
+        public TodoItem(String title, String details = "")
         {
+            this.creationTime = DateTime.Now;
             this.title = title;
-            this.detail = detail;
-            this.status = status;
+            this.details = details;
+            this.isDone = false;
         }
 
-        public void setStatus(String status)
+        public void MarkDone()
         {
-            this.status = status;
+            this.isDone = true;
         }
 
-        public String getStatus()
+        public void MarkUndone()
         {
-            return this.status;
+            this.isDone = false;
         }
+
+        public string Status()
+        {
+            return IsDone ? "Done" : "Pending";
+        }
+
+        public string Title { get => title; set => title = value; }
+        public string Details { get => details; set => details = value; }
+        public bool IsDone { get => isDone; }
+        public DateTime CreationTime { get => creationTime; }
     }
 }
