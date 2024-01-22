@@ -8,26 +8,35 @@ namespace exercise.main
 {
     public class TodoItem
     {
+        private string _title;
+        private string _detail;
+        private bool _status;
+        private DateTime _dateTime;
 
-        public string title;
-        public string detail;
-        public string status;
-
-        public TodoItem(String title, String detail, String status)
+        public TodoItem(string title, string detail, bool status)
         {
-            this.title = title;
-            this.detail = detail;
-            this.status = status;
+            this._title = title;
+            this._detail = detail;
+            this._status = status;
+            this._dateTime = DateTime.Now;
+        }
+        public void changeStatus() 
+        {
+            if(_status)
+            {
+                this._status = false;
+            }
+            this._status = true;
         }
 
-        public void setStatus(String status)
+        public DateTime getDateTime()
         {
-            this.status = status;
+            return _dateTime;
         }
 
-        public String getStatus()
+        public bool getStatus()
         {
-            return this.status;
+            return this._status;
         }
     }
 }
