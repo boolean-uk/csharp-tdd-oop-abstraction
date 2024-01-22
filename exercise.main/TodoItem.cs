@@ -8,26 +8,34 @@ namespace exercise.main
 {
     public class TodoItem
     {
-
-        public string title;
-        public string detail;
-        public string status;
+        // private for better abstraction, can only be accessed within this class
+        private string _title;
+        private string _detail;
+        private string _status;
+        //  for the user story, tasks need a time and date created, but only to be read not modified
+        private readonly DateTime _dateTimeCreated;
 
         public TodoItem(String title, String detail, String status)
         {
-            this.title = title;
-            this.detail = detail;
-            this.status = status;
+            this._title = title;
+            this._detail = detail;
+            this._status = status;
+           this. _dateTimeCreated = DateTime.Now;
         }
 
         public void setStatus(String status)
         {
-            this.status = status;
+            this._status = status;
         }
 
         public String getStatus()
         {
-            return this.status;
+             return this._status;
+        }
+
+        public DateTime getDateTimeCreated()
+        {
+            return this._dateTimeCreated;
         }
     }
 }
