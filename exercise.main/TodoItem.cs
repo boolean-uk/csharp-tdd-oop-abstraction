@@ -6,28 +6,39 @@ using System.Threading.Tasks;
 
 namespace exercise.main
 {
+
+    public enum TodoStatus {
+        DONE,
+        NOT_DONE
+    }
     public class TodoItem
     {
+        private string _title;
+        private string _detail;
+        public TodoStatus Status;
+        private DateTime _date;
 
-        public string title;
-        public string detail;
-        public string status;
+        public DateTime Date { get { return _date; }}
 
-        public TodoItem(String title, String detail, String status)
+        public string Title { get { return _title; }}
+        public string Detail { get { return _detail; }}
+
+
+        public TodoItem(String title, String detail, TodoStatus status)
         {
-            this.title = title;
-            this.detail = detail;
-            this.status = status;
+            this._title = title;
+            this._detail = detail;
+            this.Status = status;
+            this._date = DateTime.Now;
         }
 
-        public void setStatus(String status)
-        {
-            this.status = status;
+        public bool UpdateTitle(string NewTitle) {
+            _title = NewTitle;
+            return true;
         }
-
-        public String getStatus()
-        {
-            return this.status;
+        public bool UpdateDescription(string NewDescription) {
+            _detail = NewDescription;
+            return true;
         }
     }
 }
