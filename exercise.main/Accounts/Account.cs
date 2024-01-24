@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace exercise.main
+namespace exercise.main.Accounts
 {
     public abstract class Account
     {
@@ -14,15 +14,18 @@ namespace exercise.main
 
         public Account(string email, string password)
         {
-            if (IsValidEmail(email)) { _email = email; }
+            if (!IsValidEmail(email)) { throw new ArgumentException("Email does not conform to our standards."); }
 
-            if (IsValidPassword(password)) { _password = password; }
+            if (!IsValidPassword(password)) { throw new ArgumentException("Passord does not conform to our standards"); }
+
+            _email = email;
+            _password = password;
             _isEnabled = false;
         }
 
         public bool IsValidEmail(string email)
         {
-            if (!email.Contains('@'))
+            if (!(email.Contains('@') || email == null))
             {
                 Console.WriteLine("invalid email");
                 return false;
@@ -35,7 +38,7 @@ namespace exercise.main
 
         public bool IsValidPassword(string password)
         {
-            if (password.Length < 8)
+            if (password.Length < 8 || password == null)
             {
                 Console.WriteLine("invalid password");
                 return false;
@@ -56,6 +59,6 @@ namespace exercise.main
 
         public virtual bool IsEnabled() { return _isEnabled; }
 
-        public bool CanLogIn() { return _isEnabled; }
+        public virtual bool CanLogIn() { return _isEnabled; }
     }
 }

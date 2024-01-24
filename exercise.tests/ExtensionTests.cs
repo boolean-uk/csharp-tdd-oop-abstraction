@@ -1,4 +1,4 @@
-﻿using exercise.main;
+﻿using exercise.main.Accounts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,51 +11,46 @@ namespace exercise.tests
     public class ExtensionTests
     {
         [Test]
-        [TestCase("ABCDE", "invalid password")] // Too short
-        [TestCase("ABCDEFGH", "")] // Valid 
-        [TestCase("ABABABABABABABABABABABAB", "")] // Kinda long, but fine
-        public void PasswordValidityTest(string password, string expectedOutput)
+        [TestCase("ABCDE", true)] // Too short
+        [TestCase("ABCDEFGH", false)] // Valid 
+        [TestCase("ABABABABABABABABABABABAB", false)] // Kinda long, but fine
+        public void PasswordValidityTest(string password, bool shouldGiveError)
         {
             // Arrange
             string email = "valid@email.abc";
-            StringWriter sw = new StringWriter();
-            Console.SetOut(sw);
 
             // Act
-            Account user = new User(email, password);
-            sw.Close();
-            string output = sw.ToString();
-            output = output.Replace("\r\n", ""); // If line endings remove them
-
-            // Assert
-            Assert.That(output, Is.EqualTo(expectedOutput));
-
-            // Restore
-            Console.SetOut(new StreamWriter(Console.OpenStandardOutput()));
+            if (!shouldGiveError)
+            {
+                Assert.DoesNotThrow(() => new User(email, password));
+            }
+            else
+            {
+                Assert.Throws<ArgumentException>(() => new User(email, password));
+            }
 
         }
 
         [Test]
-        [TestCase("my@email.site", "")]
-        [TestCase("Hello.My.Name.Is.Very.Long@email.site", "")]
-        [TestCase("ThisIsMyNameNotMyEmail", "invalid email")]
-        public void EmailValidityTest(string email, string expectedOutput)
+        [TestCase("my@email.site", false)]
+        [TestCase("Hello.My.Name.Is.Very.Long@email.site", false)]
+        [TestCase("ThisIsMyNameNotMyEmail", true)]
+        public void EmailValidityTest(string email, bool shouldGiveError)
         {
             // Arrange
             string password = "abcdefgh";
-            StringWriter sw = new StringWriter();
-            Console.SetOut(sw);
 
             // Act
-            User user = new User(email, password);
-            string output = sw.ToString();
-            output = output.Replace("\r\n", ""); // If line endings remove them
+            if (!shouldGiveError) 
+            {
+                Assert.DoesNotThrow(() => new User(email, password));
+            }
+            else
+            {
+                Assert.Throws<ArgumentException>(() => new User(email, password));
+            }
+            
 
-            // Assert
-            Assert.That(output, Is.EqualTo(expectedOutput));
-
-            // Restore
-            Console.SetOut(new StreamWriter(Console.OpenStandardOutput()));
         }
 
         [Test]

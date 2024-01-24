@@ -4,20 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace exercise.main
+namespace exercise.main.Accounts
 {
     public class SystemAdministrator : Account
     {
-        private bool _isEnabled; // Admin account are default enabled
 
         public SystemAdministrator(string email, string password) : base(email, password)
         {
-            _isEnabled = true;
         }
 
-        public override bool IsEnabled()
-        {
-            return _isEnabled;
-        }
+        public override bool IsEnabled() { return true; }
+
+        public override bool CanLogIn() { return true; }
     }
 }
