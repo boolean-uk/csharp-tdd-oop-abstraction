@@ -19,7 +19,7 @@ namespace exercise.main
         // Attributes
         private string _email;
         private string _password;
-        private AccountStatus _accountStatus; // Use the AccountStatus enum
+        private AccountStatus _accountStatus; // Using the AccountStatus enum
 
         // Constructor for User Account Creation
         public User(string email, string password)
