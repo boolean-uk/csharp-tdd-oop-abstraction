@@ -9,25 +9,46 @@ namespace exercise.main
     public class TodoItem
     {
 
-        public string title;
-        public string detail;
-        public string status;
+        private string _title;
+        private string _detail;
+        private bool _status;
+        private string _dateTimeCreated;
 
-        public TodoItem(String title, String detail, String status)
+        public string Title
         {
-            this.title = title;
-            this.detail = detail;
-            this.status = status;
+            get => _title;
+            set => _title = value;
+        }
+        public string Detail 
+        {
+            get => _detail; 
+            set => _detail = value; 
+        }
+        public bool Status => _status;
+
+        public string DateTimeCreated => _dateTimeCreated;
+
+        public TodoItem(String title, String detail)
+        {
+            _title = title;
+            _detail = detail;
+            _status = false;
+            _dateTimeCreated = GetDateTimeCreated();
         }
 
-        public void setStatus(String status)
+        public string GetDateTimeCreated()
         {
-            this.status = status;
+            return "DateTime.Now.ToString(\"yyyy-MM-dd HH:mm:ss\")";
         }
 
-        public String getStatus()
+        public void SetComplete()
         {
-            return this.status;
+            _status = true;
+        }
+
+        public void SetIncomplete()
+        {
+            _status = false;
         }
     }
 }
