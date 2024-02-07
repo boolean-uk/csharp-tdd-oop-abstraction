@@ -14,45 +14,47 @@ public class CoreTests
     [SetUp]
     public void Setup()
     {
-        todoItem = new TodoItem("Code", "Finish abstraction exercise", "Incomplete");
+        todoItem = new TodoItem("Code", "Finish abstraction exercise");
     }
 
     [Test]
     public void TestGetTitle()
     {
-        Assert.That(todoItem.getTitle(), Is.EqualTo("Code"));
+        Assert.That(todoItem.Title, Is.EqualTo("Code"));
     }
 
     [Test]
     public void TestSetTitle()
     {
-        todoItem.setTitle("Walk outside");
-        Assert.That(todoItem.getTitle(), Is.EqualTo("Walk outside"));
+        todoItem.Title = "Walk outside";
+        Assert.That(todoItem.Title, Is.EqualTo("Walk outside"));
     }
 
     [Test]
     public void TestGetDetail()
     {
-        Assert.That(todoItem.getDetail(), Is.EqualTo("Finish abstraction exercise"));
+        Assert.That(todoItem.Detail, Is.EqualTo("Finish abstraction exercise"));
     }
 
     [Test]
     public void TestSetDetail()
     {
-        todoItem.setDetail("5K");
-        Assert.That(todoItem.getDetail(), Is.EqualTo("5K"));
+        todoItem.Detail = "5K";
+        Assert.That(todoItem.Detail, Is.EqualTo("5K"));
     }
 
     [Test]
     public void TestGetStatus()
     {
-        Assert.That(todoItem.getStatus(), Is.EqualTo("Incomplete"));
+        Assert.That(todoItem.Status, Is.EqualTo(false));
     }
 
     [Test]
     public void TestSetStatus()
     {
-        todoItem.setStatus("Complete");
-        Assert.That(todoItem.getStatus(), Is.EqualTo("Complete"));
+        todoItem.SetComplete();
+        Assert.That(todoItem.Status, Is.True);
+        todoItem.SetIncomplete();
+        Assert.That(todoItem.Status, Is.False);
     }
 }

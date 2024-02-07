@@ -11,7 +11,6 @@ namespace exercise.tests
     public class ExtensionTests
     {
         User user;
-        User user2; 
 
         [SetUp]
         public void Setup( ) 
@@ -22,58 +21,54 @@ namespace exercise.tests
         [Test]
         public void TestGetEmail()
         {
-            Assert.That(user.getEmail(), Is.EqualTo("user@user.com"));
+            Assert.That(user.Email, Is.EqualTo("user@user.com"));
         }
 
         [Test]
         public void TestSetEmail()
         {
-            string newEmail = user.setEmail("new@user.com");
-            Assert.That(user.getEmail(), Is.EqualTo("new@user.com"));
-            Assert.That(newEmail, Is.EqualTo("Email succesfully set"));
+            user.Email = "new@user.com";
+            Assert.That(user.Email, Is.EqualTo("new@user.com"));
         }
 
         [Test]
         public void TestSetInvalidEmail ()
         {
-            string newEmail = user.setEmail("new!user.com");
-            Assert.That(newEmail, Is.EqualTo("Invalid email"));
-            Assert.That(user.getEmail(), Is.EqualTo("user@user.com"));
+            Assert.Throws<ArgumentException>(() => user.SetEmail("new!user.com"), "Invalid email");
+            Assert.That(user.Email, Is.EqualTo("user@user.com"));
         }
 
         [Test]
         public void GetPassword()
         {
-            Assert.That(user.getPassword(), Is.EqualTo("password"));
+            Assert.That(user.Password, Is.EqualTo("password"));
         }
 
         [Test]
         public void TestSetPassword()
         {
-            string newPassword = user.setPassword("newpassword");
-            Assert.That(user.getPassword(), Is.EqualTo("newpassword"));
-            Assert.That(newPassword, Is.EqualTo("Password succesfully set"));
+            user.Password = "newpassword";
+            Assert.That(user.Password, Is.EqualTo("newpassword"));
         }
 
         [Test]
         public void TestSetInvalidPassword()
         {
-            string newPassword = user.setPassword("wrong");
-            Assert.That(newPassword, Is.EqualTo("Password should be at least 8 characters long"));
-            Assert.That(user.getPassword(), Is.EqualTo("password"));
+            Assert.Throws<ArgumentException>(() => user.SetPassword("wrong"), "Password should be at least 8 characters long");
+            Assert.That(user.Password, Is.EqualTo("password"));
         }
 
         [Test]
         public void TestGetIsEnabled()
         {
-            Assert.That(user.getIsEnabled(), Is.EqualTo(false));
+            Assert.That(user.IsEnabled, Is.EqualTo(false));
         }
 
         [Test]
         public void TestSetIsEnabled()
         {
-            user.setIsEnabled(true);
-            Assert.That(user.getIsEnabled(), Is.EqualTo(true));
+            user.SetIsEnabled(true);
+            Assert.That(user.IsEnabled, Is.EqualTo(true));
         }
 
     }

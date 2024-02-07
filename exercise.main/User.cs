@@ -8,65 +8,75 @@ namespace exercise.main
 {
     public class User
     {
-        private string email;
-        private string password;
-        private bool isEnabled;
+        private string _email;
+        private string _password;
+        private bool _isEnabled;
+
+        public string Email
+        {
+            get { return _email; }
+            set { SetEmail(value); }
+        }
+
+        public string Password
+        {
+            get { return _password; }
+            set { SetPassword(value); }
+        }
+
+        public bool IsEnabled
+        {
+            get { return _isEnabled; }
+            set { SetIsEnabled(value); }
+        }
 
         public User(string email, string password)
         {
-            this.setEmail(email);
-            this.setPassword(password);
-            this.isEnabled = false;
+           _email = email;
+            _password = password;
+            _isEnabled = false;
         }
 
-        public string getEmail()
+        private bool IsValidEmail(string email)
         {
-            return this.email;
+            return email.Contains("@");
         }
 
-        public string setEmail(string email)
+        private bool IsValidPassword(string password)
         {
-            if (email.Contains("@"))
+            return password.Length >= 8;
+        }
+
+        public void SetEmail(string email)
+        {
+            if (IsValidEmail(email))
             {
-                this.email = email;
-                return "Email succesfully set";
+                _email = email;
             }
-            return "Invalid email";
-
-        }
-
-        public string getPassword()
-        {
-            return this.password;
-        }
-
-        public string setPassword(string password)
-        {
-            if(password.Length >= 8)
+            else
             {
-                this.password = password;
-                return "Password succesfully set";
+                throw new ArgumentException("Invalid email");
             }
-            return "Password should be at least 8 characters long";
         }
 
-        public bool getIsEnabled()
+        public void SetPassword(string password)
         {
-            return this.isEnabled;
-        }
-
-        public void setIsEnabled(bool isEnabled)
-        {
-            this.isEnabled = isEnabled;
-        }
-
-        public string isAbleToLogin()
-        {
-            if (getIsEnabled())
+            if (IsValidPassword(password))
             {
-                return "You're able to login";
+                _password = password;
             }
-            return "You're not able to login";
+            else
+            {
+                throw new ArgumentException("Password should be at least 8 characters long");
+            }
         }
+
+        public void SetIsEnabled(bool isEnabled)
+        {
+            _isEnabled = isEnabled;
+        }
+
+        public string IsAbleToLogin() => IsEnabled ? "You're able to login" : "You're not able to login";
     }
+
 }
