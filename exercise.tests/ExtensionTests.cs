@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using exercise.main.AccountManager;
 
 namespace exercise.tests
 {
@@ -10,9 +6,29 @@ namespace exercise.tests
     public class ExtensionTests
     {
         [Test]
-        public void Tests()
+        public void CreateUserTest()
         {
-            Assert.Pass();
+            User user = new User("Testuser@test.com", "HenrikPassword");
+
+            Assert.That(user.Email, Is.EqualTo("Testuser@test.com"));
+            Assert.IsFalse(user.IsEnabled);
+        }
+        [Test]
+        public void EnableAccount()
+        {
+            User user = new User("Testuser@test.com", "HenrikPassword");
+            user.EnableAccount();
+
+            Assert.IsTrue(user.IsEnabled);
+        }
+
+        [Test]
+        public void LoginWithPassword()
+        {
+            User user = new User("Testuser@test.com", "HenrikPassword");
+            user.EnableAccount();
+
+            Assert.That(user.TryLogin("HenrikPassword"), Is.True);
         }
     }
 }
