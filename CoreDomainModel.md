@@ -1,4 +1,7 @@
-| Classes  	| Methods               	| Scenarios                                                 	| Outputs                	|
-|----------	|-----------------------	|-----------------------------------------------------------	|------------------------	|
-| TodoItem 	|                       	|                                                           	|                        	|
-|          	| GetCreationDateTime() 	| User wants to retrieve date and time the task was created 	| Creation date and time 	|
+| Classes  | Methods  | Scenarios        | Output        |
+|----------|----------|------------------|---------------|
+| TodoItem | DateTime | ShowCreationTime | "CreationTime"|
+|		   | Status   | Set Status       | "Status"      |
+|		   | Title    | Set Title        | "Title"       |
+|		   | Detail   | Set Details      | "Details"     |
+|----------|----------|------------------|---------------|

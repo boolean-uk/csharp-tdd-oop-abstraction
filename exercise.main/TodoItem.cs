@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace exercise.main
+﻿namespace exercise.main
 {
     public class TodoItem
     {
@@ -9,6 +7,18 @@ namespace exercise.main
         private string detail;
         private string status;
         private readonly DateTime creationDateTime;
+
+        // Read-only property for creation date and time
+        public DateTime CreationDateTime => creationDateTime;
+
+        // Constructor
+        public TodoItem(string title, string detail, string status)
+        {
+            Title = title;
+            Detail = detail;
+            Status = status;
+            creationDateTime = DateTime.Now;
+        }
 
         // Public properties
         public string Title
@@ -27,18 +37,6 @@ namespace exercise.main
         {
             get { return status; }
             set { status = value; }
-        }
-
-        // Read-only property for creation date and time
-        public DateTime CreationDateTime => creationDateTime;
-
-        // Constructor
-        public TodoItem(string title, string detail, string status)
-        {
-            Title = title;
-            Detail = detail;
-            Status = status;
-            creationDateTime = DateTime.Now;
         }
     }
 }
