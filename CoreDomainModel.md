@@ -13,4 +13,10 @@ private DateTime _dateTimeCreatedTask; // creates a DateTime stamp of the create
 METHODS 
 private string GetStatus(); { return _status }; 
 private string SetStatus(); { return _status };
-private DateTime GetDateTimeCreatedTask(); { return _dateTimeCreatedTask(); }
+private DateTime GetDateTimeCreatedTask(); { return DateTime.Now.ToString(DAG: dd-MM-yyyy, TIJD: HH-mm-ss"); }
+
+
+```
+As a system administrator,
+I want my users to have to create a user account with an email address and a password.
+```

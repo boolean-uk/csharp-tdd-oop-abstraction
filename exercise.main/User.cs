@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace exercise.main
 {
-    internal class UserAccount
+    public class User 
     {
+
     }
 }
