@@ -26,15 +26,18 @@ namespace exercise.main
 
         public String GetTitle()
         {
+            Console.WriteLine($"Title: {this._title}");
             return _title;
         }
         public void SetTitle(String title)
         {
+            Console.WriteLine($"This is the new title of the todo task: {title}");
             this._title = title;
         }
 
         public String GetDetail() 
         {
+            Console.WriteLine($"Detail(s): {_detail}");
             return _detail;
         }
 
@@ -50,14 +53,15 @@ namespace exercise.main
 
         public void SetStatus(String status)
         {
+            Console.WriteLine($"You've changed the status from {this._status} to {status}.");
             this._status = status;
         }
 
         public string GetDateTimeCreatedTask()
         {
             // returns a formatted DateTime to string.
-            Console.WriteLine($"When '{_title} {_detail} {_status}' on todo is created: {_dateTimeCreatedTask}");
-            return DateTime.Now.ToString("DAG: dd-MM-yyyy, TIJD HH-mm-ss");
+            //Console.WriteLine($"When '{_title} {_detail} {_status}' on todo is created: {_dateTimeCreatedTask}");
+            return DateTime.Now.ToString("DAG: dd-MM-yyyy, TIJD: HH-mm-ss");
         }
         
     }
